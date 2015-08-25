@@ -19,7 +19,9 @@ b) updates and bugfixes concerning the data and code.
 If you find this useful please cite the **PAPER** in your work!
 
 Thank you,
+
 Dan Dediu
+
 August 2015
 
 
