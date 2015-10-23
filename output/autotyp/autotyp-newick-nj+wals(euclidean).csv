@@ -1,0 +1,404 @@
+Family	Success	Comments	Tree
+Kwadi-Khoe	FAIL	NJ: the distances matrix has too few non-missing data	
+Ju	FAIL	NJ: the distances matrix has too few non-missing data	
+Hadza	FAIL	NJ: too few languages	
+Sandawe	FAIL	NJ: too few languages	
+Kordofanian	FAIL	NJ: the distances matrix has too few non-missing data	
+Kwa	FAIL	NJ: the distances matrix has too few non-missing data	
+Mande	FAIL	NJ: the distances matrix has too few non-missing data	
+North Atlantic	FAIL	NJ: the distances matrix has too few non-missing data	
+Ijoid	FAIL	NJ: the distances matrix is too small	
+Adamawa-Ubangi	FAIL	NJ: the distances matrix has too few non-missing data	
+Benue-Congo	FAIL	NJ: the distances matrix has too few non-missing data	
+Saharan	FAIL	NJ: the distances matrix is too small	
+Fur	FAIL	NJ: too few languages	
+Kuliak	FAIL	NJ: the distances matrix has too few non-missing data	
+Nera	FAIL	NJ: too few languages	
+Nubian	FAIL	NJ: the distances matrix has too few non-missing data	
+Nilotic	SUCCESS	NJ	('Karimojong [i-kdj][w-kmj][a-1723][g-kara1483]':12.8,(('Datooga [i-tcc][w-dat][a-2532][g-dato1239]':4.65,'Luo [i-luo][w-luo][a-1919][g-luok1236]':8.08):10.6,'Maa [i-mas][w-maa][a-167][g-masa1300]':10.6):8.61,(((('Pokot [i-pko][w-pkt][a-2304][g-poko1263]':12,'Sebei [i-kpz][w-seb][a-1809][g-kups1238]':6.46):11.1,'Acholi [i-ach][w-acl][a-603][g-acol1236]':11.8):6.86,(((('Anywa [i-anu][w-any][a-900][g-anua1242]':12.7,'Jur Luwo [i-lwo][w-jlu][a-1924][g-luwo1239]':0):8.91,'Nuer [i-nus][w-nue][a-2219][g-nuer1246]':13.6):6.86,(('Lango [i-laj][w-lan][a-159][g-lang1324]':10.9,'Shilluk [i-shk][w-shl][a-2423][g-shil1265]':9.77):9.74,('Bari [i-bfa][w-bar-kuk][a-1000][g-bari1284]':6.37,'Kuku [i-bfa][w-bar-kuk][a-1233][g-bari1284]':6.37):13.2):7.61):8.25,'Pari [i-lkr][w-par][a-1894][g-pari1256]':15.1):7.61):7.06,('Teso [i-teo][w-tes][a-2548][g-teso1249]':14.1,'Turkana [i-tuv][w-tna][a-2641][g-turk1308]':12.1):8.32):6.71);
+Gumuz	FAIL	NJ: too few languages	
+Berber	SUCCESS	NJ	('Berber {Rif} [i-rif][w-brf][a-2369][g-tari1263]':30.4,('Berber {Chaouia} [i-shy][w-bch][a-2426][g-tach1249]':24.4,'Berber {Mzab} [i-mzb][w-bmz][a-2123][g-tumz1238]':20.2):28.5,(((('Shilha [i-shi][w-tas][a-2969][g-tach1250]':22.3,'Tashlhiyt [i-shi][w-tas][a-2421][g-tach1250]':22.3):31.1,'Berber {Wargla} [i-oua][w-bou][a-2264][g-taga1278]':13.5):24.5,(('Berber {Figuig} [i-tzm][w-bma-bse][a-750][g-cent2194]':22.3,'Tamazight {Ayt Ndhir} [i-tzm][w-bma-bse][a-571][g-cent2194]':22.3):22.3,'Berber {Ayt Seghrouchen Middle Atlas} [i-tzm][w-bma-bse][a-1435][g-cent2194]':22.3):28.9):26.4,((((('Tamashek {Burkin Faso} [i-taq][w-tsk][a-3042][g-tama1365]':22.3,'Tamashek {Mali} [i-taq][w-tsk][a-3040][g-tama1365]':22.3):44.6,'Berber {Siwa} [i-siz][w-bsi][a-2432][g-siwi1239]':0):36.6,'Tuareg {Ahaggar} [i-thv][w-tai-tgh-tug][a-2566][g-taha1241]':16.4):26.4,((('Berber {Kabyle} [i-kab][w-kbl][a-2882][g-kaby1243]':22.3,'Kabyle [i-kab][w-kbl][a-120][g-kaby1243]':22.3):26.7,'Tuareg {Ghat} [i-thv][w-tai-tgh-tug][a-1421][g-taha1241]':17.9):24.8,'Tuareg {Air} [i-thv][w-tai-tgh-tug][a-1420][g-taha1241]':19.8):22):30.6,'Zenaga [i-zen][w-zen][a-2806][g-zena1248]':11.8):25.8):23);
+Chadic	FAIL	NJ: the distances matrix has too few non-missing data	
+Egyptian	FAIL	NJ: the distances matrix is too small	
+Semitic	FAIL	NJ: the distances matrix has too few non-missing data	
+Omotic	FAIL	NJ: the distances matrix has too few non-missing data	
+Cushitic	FAIL	NJ: the distances matrix has too few non-missing data	
+Beja	FAIL	NJ: too few languages	
+Sumerian	FAIL	NJ: too few languages	
+Elamite	FAIL	NJ: too few languages	
+Hurro-Urartean	FAIL	NJ: too few languages	
+Basque	SUCCESS	NJ	('Basque {Sakana} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1243][g-basq1248]':0,'Basque {Roncalese} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1242][g-basq1248]':0,((((((((('Basque {Souletin} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1075][g-basq1248]':0,'Basque {Zeberio} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1244][g-basq1248]':0):0,'Basque {Basaburua and Imoz} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1235][g-basq1248]':0):0,'Basque {Bidasoa Valley} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1236][g-basq1248]':0):0,'Basque {Gernica} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1237][g-basq1248]':0):0,'Basque {Hondarribia} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1238][g-basq1248]':0):0,'Basque [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-32][g-basq1248]':0):0,'Basque {Lekeitio} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1239][g-basq1248]':0):0,'Basque {Northern High Navarrese} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1240][g-basq1248]':0):0,'Basque {Onati} [i-eus][w-bqb-bqg-bqh-bqi-bql-bqn-bqo-bqr-bqs-bqz-bsq][a-1241][g-basq1248]':0):0);
+Indo-European	SUCCESS	NJ	((((('Dutch {Zeeuws} [i-nld][w-dbr-dli-dut][a-2693][g-dutc1256]':11.3,'French {Cajun} [i-fra][w-fre][a-2898][g-stan1290]':13):12.5,'Dutch [i-nld][w-dbr-dli-dut][a-1440][g-dutc1256]':11.8):12.3,((((((((((((((((('Dumaki [i-dmk][w-dmk][a-1356][g-doma1260]':10.1,'Sinhala [i-sin][w-snh][a-2456][g-sinh1246]':14.2):14.8,'Frisian {Eastern} [i-frs][w-fea-fri][a-1500][g-east2288]':7.39):13.3,'German {Zurich} [i-gsw][w-alt-gbe-gos-gpz-gtg-gzu][a-1310][g-swis1247]':6.19):13.5,(((((('Armenian {Iranian} [i-hye][w-arm-arw-arz][a-1224][g-nucl1235]':12.1,'Armenian {Western} [i-hye][w-arm-arw-arz][a-610][g-nucl1235]':12.1):12.1,'Armenian {Eastern} [i-hye][w-arm-arw-arz][a-25][g-nucl1235]':12.1):19.3,'Ormuri [i-oru][w-orm][a-2258][g-ormu1247]':15):11.8,'Waigali [i-wbk][w-wgl][a-396][g-waig1243]':5.27):12.5,'Low German {Old} [i-nds][w-lge][a-2853][g-nort2627]':4.87):11.6,'Luxemburgeois [i-ltz][w-lux][a-1921][g-luxe1241]':5.43):15):23,(('Afrikaans [i-afr][w-afr][a-844][g-afri1274]':10.6,'Cornish [i-cor][w-crn][a-1183][g-corn1251]':13.7):15.1,'Scottish Gaelic [i-gla][w-gae][a-715][g-scot1245]':15.4):5.86):11.9,'German {Thurgau} [i-gsw][w-alt-gbe-gos-gpz-gtg-gzu][a-1309][g-swis1247]':8.27):19.5,'Spanish {Canary Islands} [i-spa][w-spa-spc][a-1406][g-stan1288]':11.3):11.5,'Asturian [i-ast][w-ast][a-936][g-astu1245]':9.54):12.7,((('Icelandic [i-isl][w-ice][a-110][g-icel1247]':19,'Romani {Burgenland} [i-rmo][w-rbg][a-2372][g-sint1235]':5.3):13.4,'Slovincian [i-csb][w-ksu-svc][a-1256][g-kash1274]':4.07):11.7,(('Wakhi {Hunza} [i-wbl][w-wak][a-2916][g-wakh1245]':12.1,'Wakhi {Wakhan} [i-wbl][w-wak][a-2709][g-wakh1245]':12.1):15.7,'Vafsi [i-vaf][w-vaf][a-2681][g-vafs1240]':20.9):15.4):14.6):13.2,(((((((((('Talysh {Northern} [i-tly][w-taz-tls][a-2929][g-taly1247]':12.1,'Talysh {Southern} [i-tly][w-taz-tls][a-1429][g-taly1247]':12.1):12.1,'Talysh {Azerbaijan} [i-tly][w-taz-tls][a-1428][g-taly1247]':12.1):23.6,'Breton [i-bre][w-bre][a-1067][g-bret1244]':0.701):13.4,'Bagri [i-bgq][w-bgi][a-1007][g-bagr1243]':10.8):21,'Marathi [i-mar][w-mhi][a-2081][g-mara1378]':9.59):16.8,'Nepali [i-nep][w-nep][a-206][g-nepa1252]':13.8):16.8,'Ladin [i-lld][w-ldn][a-1895][g-ladi1250]':4.79):15.1,('Domari [i-rmt][w-dom][a-2373][g-doma1258]':16.6,'Romani {Welsh} [i-rmw][w-rwe][a-2374][g-wels1246]':18.9):19):9.55,((((((('Greek {Cypriot} [i-ell][w-gcy-grk][a-1304][g-mode1248]':12.1,'Greek {modern} [i-ell][w-gcy-grk][a-464][g-mode1248]':12.1):12.1,('Italian {Bologna} [i-ita][w-ifi-ita][a-1471][g-ital1282]':12.1,'Italian {Fiorentino} [i-ita][w-ifi-ita][a-1328][g-ital1282]':12.1):12.1):12.1,(('Italian {Genoa} [i-ita][w-ifi-ita][a-1886][g-ital1282]':12.1,'Italian [i-ita][w-ifi-ita][a-725][g-ital1282]':12.1):12.1,'Bosnian [i-bos][w-bos][a-1407][g-bosn1245]':12.1):12.1):12.6,(((((((('Belorussian [i-bel][w-blr][a-2389][g-bela1254]':14.1,'Konkani [i-knn][w-kkn][a-1788][g-konk1267]':10.2):14.6,'Manx [i-glv][w-mnx][a-2014][g-manx1243]':11.6):11.9,'Oriya {Kotia} [i-ort][w-oko][a-2257][g-adiv1239]':7.95):14,'Gilaki [i-glk][w-gil][a-1549][g-gila1241]':6.05):11.7,'Romanian [i-ron][w-mol-rom][a-683][g-roma1327]':8.42):16,'Dhivehi [i-div][w-dhi][a-2457][g-dhiv1236]':12.9):12.6,(('Oriya [i-ori][w-oya][a-641][g-nucl1284]':14.2,'Sindhi [i-snd][w-sdh][a-2454][g-sind1272]':10.1):13.6,'Savi [i-sdg][w-sav][a-2404][g-savi1242]':8.63):16.5):11.1,'Sorbian {Lower} [i-dsb][w-srl][a-2714][g-lowe1385]':3.23):4.88):17.3,(((((((('Dari [i-prs][w-dri][a-2334][g-dari1249]':14.9,'Panjabi [i-pan][w-pan][a-2315][g-panj1256]':9.38):18.2,'Moldavian [i-ron][w-mol-rom][a-1398][g-roma1327]':8.84):13.2,('Kalami [i-gwc][w-kal][a-1582][g-kala1373]':14.2,'Tajik [i-tgk][w-taj][a-2289][g-taji1245]':10.1):18.5):12.2,'Persian [i-pes][w-prs][a-456][g-west2369]':15.6):16.1,'Sorbian {Upper} [i-hsb][w-sou][a-2716][g-uppe1395]':9.05):5.84,'Italian {Turinese} [i-ita][w-ifi-ita][a-2311][g-ital1282]':11.1):12.7,'Italian {Napolitanian} [i-ita][w-ifi-ita][a-2197][g-ital1282]':11.6):11.9,(((('Dimili [i-diq][w-zaz][a-2919][g-diml1238]':14,'Magahi [i-mag][w-mgh][a-2071][g-maga1260]':10.3):13.9,'Frisian {Western} [i-fry][w-frw][a-1498][g-west2354]':8.53):13.2,(((((((((('Maithili [i-mai][w-mai][a-169][g-mait1250]':22.5,'Shekhawati [i-swv][w-skw][a-2021][g-shek1243]':7.54):13,'Polabian [i-pox][w-plb][a-2326][g-pola1255]':4.75):13.1,'Vedda [i-ved][w-ved][a-2687][g-vedd1240]':0):11.9,'Kati {Afghanistan} [i-bsh][w-ktz][a-1072][g-kati1270]':0.235):16.6,'Brokskat [i-bkk][w-bkt][a-1031][g-brok1247]':7.46):14.8,'Prasuni [i-prn][w-pra][a-2333][g-pras1239]':13.3):13.7,'Torwali [i-trw][w-trw][a-2615][g-torw1241]':10.1):14,('Shina {Eastern} [i-scl][w-sna][a-636][g-shin1264]':12.1,'Shina [i-scl][w-sna][a-2401][g-shin1264]':12.1):14.5):13.3,((((((('Yaghnobi [i-yai][w-ygn][a-2762][g-yagn1238]':12.1,'Zebaki [i-sgl][w-ish][a-2884][g-sang1316]':12.1):11.8,'Ossetic [i-oss][w-oss][a-325][g-osse1243]':12.4):12.4,'Kumauni {Johari} [i-kfy][w-kum][a-1340][g-kuma1273]':11.6):12.4,'Kumauni [i-kfy][w-kum][a-1738][g-kuma1273]':11.9):12.6,'Kabatei [i-xkp][w-kbt][a-2750][g-kaba1276]':11.7):15.3,('Pashto [i-pst][w-psh][a-2340][g-cent1973]':12.9,'Shahrudi [i-shm][w-klr][a-2924][g-shah1254]':11.3):12):12.3,(('Gojri [i-gju][w-goj][a-1545][g-guja1253]':12.7,'Gujarati [i-guj][w-guj][a-1544][g-guja1252]':11.6):13.4,'Koluri [i-shm][w-klr][a-2424][g-shah1254]':11.5):13.4):13.2):12.8,'Bhojpuri [i-bho][w-bho][a-1011][g-bhoj1244]':15.4):12.5):15.2,(((((((('Bulgarian [i-bul][w-bul][a-678][g-bulg1262]':13.6,'Kalasha [i-kls][w-klh][a-1779][g-kala1372]':20.6):11.4,'Shughni [i-sgh][w-rsh][a-2885][g-shug1248]':11.5):12.5,'Rushan [i-sgh][w-rsh][a-2416][g-shug1248]':11.8):12.3,'Roshorvi [i-sgh][w-rsh][a-2887][g-shug1248]':12):12.2,'Khufi [i-sgh][w-rsh][a-2883][g-shug1248]':12):12.2,'Bartangi [i-sgh][w-rsh][a-2886][g-shug1248]':12.1):13.4,'Tat {Muslim} [i-ttt][w-tmu][a-2631][g-musl1236]':11.3):13.8,('Bangla [i-ben][w-ben][a-639][g-beng1280]':11.3,'Lamani [i-lmn][w-lmn][a-1901][g-lamb1269]':13):11.5):19.4):9.24):11.4):16.2,((('Halbi [i-hlb][w-hlb][a-1610][g-halb1244]':16.5,'Vasavi [i-vas][w-vas][a-2686][g-vasa1239]':12.6):24.1,((((((((((('Yiddish {Bessarabian} [i-ydd][w-ydb-ydl-ylt][a-1446][g-east2295]':12.1,'Yiddish [i-ydd][w-ydb-ydl-ylt][a-814][g-east2295]':12.1):12.1,('Yiddish {Lithuanian} [i-ydd][w-ydb-ydl-ylt][a-1447][g-east2295]':12.1,'Yiddish {Lodz} [i-ydd][w-ydb-ydl-ylt][a-1448][g-east2295]':12.1):12.1):12.5,'Polish [i-pol][w-pol][a-2330][g-poli1260]':11.8):16.1,'Lithuanian [i-lit][w-lit][a-1890][g-lith1251]':15.2):13.1,'Russian [i-rus][w-rus][a-340][g-russ1263]':16.7):13.1,'Ukrainian [i-ukr][w-ukr][a-2660][g-ukra1253]':14.1):11.6,'Irish {Donegal} [i-gle][w-ird-iri-irm][a-1300][g-iris1253]':12.5):15.9,(('Hindi [i-hin][w-hin][a-99][g-hind1269]':13.3,'Irish {Munster} [i-gle][w-ird-iri-irm][a-1301][g-iris1253]':11):12.7,'Irish [i-gle][w-ird-iri-irm][a-435][g-iris1253]':11.5):9.85):17.2,'Kokni [i-kex][w-kkz][a-1732][g-kukn1238]':12.9):10.3,'Slovene [i-slv][w-slo][a-2447][g-slov1268]':16.6):11.2,'Czech [i-ces][w-cze][a-1207][g-czec1258]':21.2):16):7.67,('Bhili [i-bhb][w-bhi][a-1009][g-bhil1251]':12.1,'Mawchi [i-mke][w-mwc][a-2022][g-mawc1242]':12.1):18.5):16.9):11.9,('Faroese [i-fao][w-far][a-710][g-faro1244]':13.7,'Latvian [i-lav][w-lat][a-549][g-latv1249]':16.2):16.2):16.3):12.7,'Frisian {North} [i-frr][w-fno][a-1499][g-nort2626]':6.46):14.5):11.8,('Danish [i-dan][w-dsh][a-1375][g-dani1285]':15.4,'German {Bern} [i-gsw][w-alt-gbe-gos-gpz-gtg-gzu][a-1307][g-swis1247]':8.88):14.1):12,((('Swedish [i-swe][w-swe-swv][a-677][g-swed1254]':12.1,'Swedish {Vasterbotten} [i-swe][w-swe-swv][a-1415][g-swed1254]':12.1):14.7,'Awadhi [i-awa][w-awd][a-946][g-awad1243]':12.9):12.9,'German {Appenzell} [i-gsw][w-alt-gbe-gos-gpz-gtg-gzu][a-1306][g-swis1247]':8.87):13.7):11.9,('Norwegian {Bokmål} [i-nob][w-nor][a-711][g-norw1259]':15.7,'Romansch {Scharans} [i-roh][w-rmc-rsc-rsm-rsu][a-1389][g-roma1326]':8.61):13.7):16.5,('Alsatian [i-gsw][w-alt-gbe-gos-gpz-gtg-gzu][a-1305][g-swis1247]':9.85,'French {colloquial} [i-fra][w-fre][a-79][g-stan1290]':14.4):9.59):11.2,((('Catalan {Balearic} [i-cat][w-ctl][a-3024][g-stan1289]':15.6,'Romansch [i-roh][w-rmc-rsc-rsm-rsu][a-2368][g-roma1326]':8.7):11.9,('Catalan {Standard} [i-cat][w-ctl][a-726][g-stan1289]':16.6,'Hawrami [i-hac][w-hwr][a-1590][g-gura1251]':12.2):10.1):12.8,'Occitan [i-oci][w-occ-pro][a-1904][g-occi1239]':12.6):15.7):14.5,(((('Ladino [i-lad][w-lno][a-2465][g-ladi1251]':10.1,'Spanish [i-spa][w-spa-spc][a-569][g-stan1288]':14.2):13.8,'German {Ostschweiz} [i-gsw][w-alt-gbe-gos-gpz-gtg-gzu][a-1308][g-swis1247]':8.44):9.98,'German {Timisoara} [i-deu][w-gbl-ger-gha-gma-gth-gti][a-1299][g-stan1295]':10.6):12.7,'German [i-deu][w-gbl-ger-gha-gma-gth-gti][a-87][g-stan1295]':11.5):11.9):12.5,'Dutch {Brabantic} [i-nld][w-dbr-dli-dut][a-1270][g-dutc1256]':11.7):12.3):12.2,'Dutch {Limburg} [i-nld][w-dbr-dli-dut][a-1271][g-dutc1256]':11.9):12.2,((((('English [i-eng][w-eng][a-74][g-stan1293]':16.3,'Romansch {Surmeiran} [i-roh][w-rmc-rsc-rsm-rsu][a-1390][g-roma1326]':8.02):13.2,('Macedonian [i-mkd][w-mcd][a-2024][g-mace1250]':17.3,'Romansch {Sursilvan} [i-roh][w-rmc-rsc-rsm-rsu][a-1391][g-roma1326]':6.93):15.2):8.59,'German {Upper Austrian} [i-bar][w-gau-gba-gvi][a-1227][g-bava1246]':10.5):12.8,'German {Mansfeldisch} [i-deu][w-gbl-ger-gha-gma-gth-gti][a-1297][g-stan1295]':11.5):12.4,'German {Bavarian} [i-bar][w-gau-gba-gvi][a-963][g-bava1246]':11.9):12.2,(((((((((((((('Kashmiri [i-kas][w-kas][a-633][g-kash1277]':23.1,'Mazanderani [i-mzn][w-mzn][a-2126][g-maza1291]':1.23):10.9,'Romani {Sepecides} [i-rmn][w-rav-rbu][a-798][g-balk1252]':7.39):12.8,'Bangla {Chittagong} [i-ctg][w-bec][a-1145][g-chit1275]':8.87):14.2,'Welsh [i-cym][w-wec-wel][a-2726][g-wels1247]':14.3):11.1,'Darai [i-dry][w-dar][a-1399][g-dara1250]':9.6):12.6,'Romani {Bugurdzi} [i-rmn][w-rav-rbu][a-1394][g-balk1252]':9.97):15.8,'Yazgulyam [i-yah][w-yaz][a-2761][g-yazg1240]':3.64):11.3,('Romani {Ajia Varvara} [i-rmn][w-rav-rbu][a-1393][g-balk1252]':11.1,'Urdu [i-urd][w-urd][a-2671][g-urdu1245]':13.2):14.3):12.3,('Romani {Kalderash} [i-rmy][w-rka-rlo][a-1395][g-vlax1238]':12.1,'Romani {Lovari} [i-rmy][w-rka-rlo][a-1396][g-vlax1238]':12.1):16.6):9.52,'German {Westphalian} [i-wep][w-gwe][a-2717][g-west2356]':9.02):13.5,'German {Thuringian} [i-deu][w-gbl-ger-gha-gma-gth-gti][a-1298][g-stan1295]':10.7):12.7,'German {Hannover} [i-deu][w-gbl-ger-gha-gma-gth-gti][a-1296][g-stan1295]':11.6):12.4,'German {Berlin} [i-deu][w-gbl-ger-gha-gma-gth-gti][a-1295][g-stan1295]':11.9):12.2,(((('Kashubian [i-csb][w-ksu-svc][a-1187][g-kash1274]':5.59,'Portuguese [i-por][w-por][a-609][g-port1283]':18.7):12.7,((('Takestani [i-tks][w-tts][a-2926][g-take1255]':12.1,'Tati {Southern} [i-tks][w-tts][a-2578][g-take1255]':12.1):11.4,(('Assamese [i-asm][w-ass][a-638][g-assa1263]':13.4,'Slovak [i-slk][w-svk][a-2444][g-slov1269]':10.9):12.1,'Khowar [i-khw][w-khw][a-1752][g-khow1242]':10.9):16.3):12.7,'Galician [i-glg][w-glc][a-1550][g-gali1258]':8.77):18.2):11.1,'German {Viennese} [i-bar][w-gau-gba-gvi][a-1228][g-bava1246]':10.2):13,'German {Ripuarian} [i-ksh][w-grp][a-1795][g-kols1241]':11.2):12.4):12.2);
+Nakh-Daghestanian	SUCCESS	NJ	((('Chechen [i-che][w-chc][a-49][g-chec1245]':8.25,'Dargi {standard} [i-dar][w-drg][a-2826][g-darg1241]':4.49):7.28,'Dargi {Icari} [i-dar][w-drg][a-2949][g-darg1241]':5.47):6.74,((((((((('Aghul [i-agx][w-agl][a-856][g-aghu1253]':6.37,'Agul [i-agx][w-agl][a-2828][g-aghu1253]':6.37):5.44,'Tsakhur [i-tkr][w-tsa][a-2577][g-tsak1249]':7.3):9.59,'Budukh [i-bdk][w-bdk][a-987][g-budu1248]':2.23):12.7,'Udi [i-udi][w-udi][a-389][g-udii1243]':0):13.2,'Kryz [i-kry][w-krz][a-1816][g-kryt1240]':1.66):7.85,('Bagwalal [i-kva][w-bgv][a-1840][g-bagv1239]':4.22,'Lak [i-lbe][w-lak][a-155][g-lakk1252]':8.53):9.4):6.69,('Bezhta [i-kap][w-bez][a-1700][g-bezh1248]':4.77,'Rutul [i-rut][w-rut][a-2388][g-rutu1240]':7.98):7.22):7.59,'Tsez [i-ddo][w-tsz][a-1263][g-dido1241]':6.93):6.92,(((((('Karata [i-kpt][w-krt][a-1807][g-kara1474]':3.37,'Lezgi [i-lez][w-lez][a-162][g-lezg1247]':9.38):10.9,'Akhvakh [i-akv][w-axv][a-872][g-akhv1239]':1.8):6.45,('Chamalal [i-cji][w-chm][a-1149][g-cham1309]':0.816,'Godoberi [i-gdo][w-god][a-1531][g-ghod1238]':11.9):9.67):8.08,'Hinuq [i-gin][w-hnk][a-1542][g-hinu1240]':2.97):6.4,(('Hunzib [i-huz][w-hzb][a-530][g-hunz1247]':11.1,'Tabasaran [i-tab][w-tbs][a-2511][g-taba1259]':1.67):6.65,'Akhvakh {Northern} [i-akv][w-axv][a-2962][g-akhv1239]':1.39):8.89):6.78,((('Ingush [i-inh][w-ing][a-114][g-ingu1240]':11.4,'Xinalug [i-kjj][w-khi][a-413][g-khin1240]':1.3):6.5,'Andi [i-ani][w-anx][a-895][g-andi1255]':1.17):9.44,'Khwarshi [i-khv][w-khv][a-1751][g-khva1239]':3.18):6.82):7.39):7.57,(((('Archi [i-aqc][w-arc][a-917][g-arch1244]':7.71,'Dargi {Mehweb} [i-dar][w-drg][a-2948][g-darg1241]':5.04):7.07,'Dargi {Chirag} [i-dar][w-drg][a-2947][g-darg1241]':5.68):6.44,(('Avar {Chadakolob} [i-ava][w-ava][a-2960][g-avar1256]':6.37,'Avar [i-ava][w-ava][a-942][g-avar1256]':6.37):7.89,'Dargi {Kubachi} [i-dar][w-drg][a-145][g-darg1241]':4.86):7.2):6.72,((('Dargi {Urakhi} [i-dar][w-drg][a-2950][g-darg1241]':3.67,'Tsova-Tush [i-bbl][w-ttu][a-970][g-bats1242]':9.08):7.47,'Dargi {Kaitag} [i-dar][w-drg][a-2967][g-darg1241]':5.28):6.48,'Tindi [i-tin][w-tnd][a-2572][g-tind1238]':2.47):6.74):6.44);
+West Caucasian	SUCCESS	NJ	('Abkhaz [i-abk][w-abk][a-7][g-abkh1244]':14.7,(('Adyghe {Abzakh} [i-ady][w-adt-ady-ash][a-1210][g-adyg1241]':7.27,'Adyghe {Shapsugh} [i-ady][w-adt-ady-ash][a-1211][g-adyg1241]':7.27):7.27,('Adyghe {Temirgoy} [i-ady][w-adt-ady-ash][a-1212][g-adyg1241]':7.27,'Circassian {West} [i-ady][w-adt-ady-ash][a-458][g-adyg1241]':7.27):7.27):9.85,(('Abaza [i-abq][w-abz][a-824][g-abaz1241]':0,'Circassian {East} [i-kbd][w-kab][a-675][g-kaba1278]':14.5):12.2,'Ubykh [i-uby][w-uby][a-2656][g-ubyk1235]':8.97):9.8);
+Uralic	SUCCESS	NJ	('Saami {North} [i-sme][w-sno][a-700][g-nort2671]':11.6,(('Hungarian [i-hun][w-hun][a-107][g-hung1274]':10.3,'Saami {Kildin} [i-sjd][w-ski][a-709][g-kild1236]':3.55):9.72,'Veps [i-vep][w-vep][a-2689][g-veps1250]':0.731):8.31,(((((('Nenets {Forest} [i-yrk][w-nen-ntu][a-716][g-nene1249]':6.91,'Nenets {Tundra} [i-yrk][w-nen-ntu][a-205][g-nene1249]':6.91):11.1,'Mansi [i-mns][w-mns][a-680][g-mans1258]':15):8.61,((((('Mari {Hill} [i-mrj][w-mah][a-2078][g-west2392]':7.25,'Nganasan [i-nio][w-nga][a-2172][g-ngan1291]':6.57):10.4,'Komi {Permyak} [i-koi][w-kop][a-717][g-komi1269]':4.9):9.24,'Mari {Meadow} [i-mhr][w-mme][a-1928][g-east2328]':9.76):8.94,('Kamass [i-xas][w-kms][a-2746][g-kama1351]':5.99,'Selkup [i-sel][w-skp][a-2393][g-selk1253]':7.83):12.2):7.53,(('Mordvin {Moksha} [i-mdf][w-mmo][a-1957][g-moks1248]':7.93,'Udmurt [i-udm][w-udm][a-679][g-udmu1245]':5.89):13.3,'Mordvin {Erzya} [i-myv][w-moe][a-2120][g-erzy1239]':7.59):9.06):10.1):7.97,(((('Komi {Zyrian} [i-kpv][w-kzy-yzv][a-139][g-komi1268]':6.91,'Yazva [i-kpv][w-kzy-yzv][a-1350][g-komi1268]':6.91):8.05,'Saami {South} [i-sma][w-scs][a-701][g-sout2674]':20.2):8.59,'Karelian [i-krl][w-krl][a-1814][g-kare1335]':4.08):8.55,'Khanty [i-kca][w-kty][a-681][g-khan1273]':11.4):8.59):9.44,'Estonian [i-est][w-est][a-1480][g-esto1258]':11.8):7.46,(('Finnish [i-fin][w-fin][a-78][g-finn1318]':12.6,'Izhor [i-izh][w-izh][a-1666][g-ingr1248]':1.23):7.07,('Liv [i-liv][w-liv][a-1891][g-livv1244]':0,'Votic [i-vot][w-vot][a-2696][g-voti1245]':13.8):12):8.64):7.44);
+Turkic	SUCCESS	NJ	('Tuva [i-tyv][w-tuv][a-387][g-tuvi1240]':8.48,(((((((('Azari {Iranian} [i-azb][w-aze-azi][a-954][g-sout2697]':8.11,'Kirghiz [i-kir][w-kfy-kgz][a-1725][g-kirg1245]':6.3):4.89,'Gagauz [i-gag][w-gag][a-1516][g-gaga1249]':9.52):8.58,'Kirghiz {Fu-Yu} [i-kir][w-kfy-kgz][a-1339][g-kirg1245]':5.83):10.3,'Chuvash [i-chv][w-chv][a-57][g-chuv1255]':5.43):10.5,'Turkish [i-tur][w-tur][a-502][g-nucl1301]':10.1):13.3,'Karakalpak [i-kaa][w-kkp][a-1695][g-kara1467]':7.59):8.48,'Uighur [i-uig][w-uyg][a-611][g-uigh1240]':4.96):8.82,(((('Kazakh [i-kaz][w-kaz][a-1705][g-kaza1248]':7.12,'Tatar {Crimean} [i-crh][w-cri][a-1181][g-crim1257]':7.29):9.02,'Turkmen [i-tuk][w-tkm][a-2534][g-turk1304]':5.39):11.7,'Urum [i-uum][w-urm][a-2677][g-urum1249]':2.71):0,('Tatar {Baraba} [i-tat][w-tmi-ttb-tvo][a-1431][g-tata1255]':7.21,'Tatar [i-tat][w-tmi-ttb-tvo][a-2630][g-tata1255]':7.21):8.18):15.1):8.22,(((((((('Karaim [i-kdr][w-krm][a-1726][g-kara1464]':10.3,'Kumyk [i-kum][w-kuq][a-1820][g-kumy1244]':4.08):11.7,'Salar [i-slr][w-slr][a-2445][g-sala1264]':2.71):10.3,'Karachay-Balkar [i-krc][w-krc][a-124][g-kara1465]':8.25):9.31,'Dolgan [i-dlg][w-dol][a-1351][g-dolg1241]':20.1):9.27,'Saryg Yughur [i-ybe][w-syg][a-2766][g-west2402]':5.14):7.6,(((((('Noghay [i-nog][w-nog-nok-tlb-yta][a-2193][g-noga1249]':7.21,'Noghay {Karagash} [i-nog][w-nog-nok-tlb-yta][a-1370][g-noga1249]':7.21):7.21,('Tatar-Noghay {Alabugat} [i-nog][w-nog-nok-tlb-yta][a-1371][g-noga1249]':7.21,'Tatar {Yurt} [i-nog][w-nog-nok-tlb-yta][a-1372][g-noga1249]':7.21):7.21):9.52,'Khalaj [i-klj][w-khl][a-670][g-turk1303]':4.89):9.25,'Tofa {Karagas} [i-kim][w-tof][a-719][g-kara1462]':2.84):6.4,'Aynu [i-aib][w-ayn][a-861][g-ainu1251]':3.64):11.6,'Chulym [i-clw][w-cly][a-1141][g-chul1246]':3.65):8.7):8.06,'Turkic {West Xorasan} [i-kmz][w-tex-twx][a-1346][g-khor1269]':5.4):7.78,((('Khakas [i-kjh][w-khk][a-1763][g-khak1248]':7.6,'Yakut [i-sah][w-ykt][a-2662][g-yaku1245]':6.81):8.12,((('Shor [i-cjs][w-shr][a-1153][g-shor1247]':5.97,'Tatar {Mishar} [i-tat][w-tmi-ttb-tvo][a-1432][g-tata1255]':8.44):7.48,'Bashkir [i-bak][w-bsk][a-1094][g-bash1264]':6.93):7.48,'Altai {Southern} [i-alt][w-aso][a-880][g-sout2694]':6.93):8.91):7.74,'Turkic {East-Central Xorasan} [i-kmz][w-tex-twx][a-1345][g-khor1269]':5.51):7.86):7.57);
+Mongolic	SUCCESS	NJ	(('Kalmyk {Issyk-Kul} [i-xal][w-kiq-kmk-oir][a-1342][g-kalm1243]':2.29,'Mangghuer [i-mjg][w-mgg][a-2016][g-tuuu1240]':10.9):8.57,(('Moghol [i-mhj][w-mog][a-2029][g-mogh1245]':7.87,'Santa [i-sce][w-sta][a-2400][g-dong1285]':5.29):8.33,'Baonan [i-peh][w-bao][a-2285][g-bona1250]':15):9.84,((('Mongolian {Peripheral} [i-mvf][w-ord][a-2895][g-peri1253]':2.38,'Shira Yughur [i-yuy][w-shy][a-2798][g-east2337]':10.8):9.27,(('Dagur [i-dta][w-dgr][a-1416][g-daur1238]':12.5,'Ordos [i-mvf][w-ord][a-2102][g-peri1253]':0.708):7.29,'Kalmyk [i-xal][w-kiq-kmk-oir][a-1341][g-kalm1243]':0):7.89):8.85,'Mongolian {Khalkha} [i-khk][w-kha][a-188][g-halh1238]':11.3):8.48);
+Tungusic	SUCCESS	NJ	('Negidal [i-neg][w-neg][a-2153][g-negi1245]':1.96,('Nanai [i-gld][w-nai][a-201][g-nana1257]':4.57,'Udihe [i-ude][w-udh][a-2657][g-udih1248]':9.72):12.3,(((('Evenki [i-evn][w-eve-sol][a-527][g-even1259]':7.14,'Solon [i-evn][w-eve-sol][a-1288][g-even1259]':7.14):14.3,'Ulcha [i-ulc][w-ulc][a-2663][g-ulch1241]':0):9.71,('Even [i-eve][w-evn][a-738][g-even1260]':8.24,'Jurchen [i-juc][w-jur][a-1690][g-jurc1239]':6.04):11.2):8.22,(('Manchu [i-mnc][w-mnc][a-2015][g-manc1252]':26.4,'Oroch [i-oac][w-orc][a-2239][g-oroc1248]':2.11):9.77,'Orok [i-oaa][w-ork][a-2238][g-orok1265]':4.89):13.5):8.12);
+Yukagir	FAIL	NJ: the distances matrix is too small	
+Yeniseian	FAIL	NJ: the distances matrix is too small	
+Ainu	FAIL	NJ: too few languages	
+Japanese	FAIL	NJ: the distances matrix is too small	
+Korean	FAIL	NJ: too few languages	
+Chukchi-Kamchatkan	SUCCESS	NJ	('Koryak [i-kpy][w-kry][a-1808][g-kory1246]':23.1,'Chukchi [i-ckt][w-chk][a-56][g-chuk1273]':22.1,(('Itelmen [i-itl][w-ite][a-116][g-itel1242]':12.8,'Kerek [i-krk][w-krq][a-1813][g-kere1280]':12):24.8,'Alutor [i-alr][w-alu][a-879][g-alut1245]':0):14.7);
+Eskimo-Aleut	FAIL	NJ: the distances matrix has too few non-missing data	
+Burushaski	FAIL	NJ: too few languages	
+Nahali	FAIL	NJ: too few languages	
+Dravidian	FAIL	NJ: the distances matrix has too few non-missing data	
+Sino-Tibetan	FAIL	NJ: the distances matrix has too few non-missing data	
+Austroasiatic	FAIL	NJ: the distances matrix has too few non-missing data	
+Great Andamanese	SUCCESS	NJ	('Aka-Cari [i-aci][w-akc][a-829][g-akac1240]':0,'Aka-Biada [i-abj][w-akb][a-827][g-akab1249]':0,('Aka-Kede [i-akx][w-akk][a-873][g-akak1252]':0,'A-Pucikwar [i-apq][w-apk-gan][a-912][g-apuc1241]':0):0);
+Onge	FAIL	NJ: too few languages	
+Tai-Kadai	FAIL	NJ: the distances matrix has too few non-missing data	
+Austronesian	FAIL	NJ: the distances matrix has too few non-missing data	
+Timor-Alor-Pantar	FAIL	NJ: the distances matrix has too few non-missing data	
+West Papuan	FAIL	NJ: the distances matrix has too few non-missing data	
+Tanglapui	FAIL	NJ: too few languages	
+Sentani	FAIL	NJ: the distances matrix is too small	
+Dani	FAIL	NJ: the distances matrix is too small	
+Mek	FAIL	NJ: the distances matrix has too few non-missing data	
+Engan-Kewa	FAIL	NJ: the distances matrix is too small	
+Wiru	FAIL	NJ: too few languages	
+Chimbu-Wahgi	FAIL	NJ: the distances matrix has too few non-missing data	
+Eastern Highlands	FAIL	NJ: the distances matrix has too few non-missing data	
+Greater Binanderean	FAIL	NJ: the distances matrix has too few non-missing data	
+Koiarian	SUCCESS	NJ	('Koita [i-kqi][w-kta][a-1810][g-koit1244]':3.36,'Koiali {Mountain} [i-kpx][w-kmo][a-486][g-moun1252]':3.2,('Koiari [i-kbk][w-koi][a-669][g-gras1249]':5.2,'Omie [i-aom][w-omi][a-904][g-omie1241]':0):19.8);
+Madang	SUCCESS	NJ	('Kobon [i-kpw][w-kob][a-136][g-kobo1249]':14,('Bongu [i-bpu][w-bon][a-1057][g-bong1291]':0,'Siroi [i-ssd][w-sro][a-2479][g-siro1249]':13.7):8.64,((('Anamuxra [i-imi][w-amx][a-1645][g-anam1248]':12.8,'Kalam [i-kmh][w-klq][a-1782][g-kala1397]':0.934):9.42,('Amele [i-aey][w-ame][a-20][g-amel1241]':11,'Bau [i-bbd][w-bau][a-969][g-bauu1244]':2.7):9.95):8.54,(((('Mugil [i-mlp][w-mug][a-2031][g-barg1252]':13.9,'Tauya [i-tya][w-tau][a-367][g-tauy1241]':12.1):8.02,('Garus [i-gyb][w-grs][a-1587][g-garu1246]':6,'Usan [i-wnu][w-usa][a-393][g-usan1239]':7.73):12.4):8.5,'Waskia [i-wsk][w-wsk][a-407][g-wask1241]':12.8):7.99,'Nend [i-anh][w-nnd][a-894][g-nend1239]':14.2):9.09):8.41);
+Kwalean	FAIL	NJ: too few languages	
+Finisterre-Huon	FAIL	NJ: the distances matrix has too few non-missing data	
+Lower Mamberamo	FAIL	NJ: too few languages	
+Taurap	FAIL	NJ: too few languages	
+East Cenderawasih Bay	FAIL	NJ: the distances matrix is too small	
+Lakes Plain	FAIL	NJ: the distances matrix has too few non-missing data	
+Macro-Ok	FAIL	NJ: the distances matrix has too few non-missing data	
+Marind	FAIL	NJ: the distances matrix has too few non-missing data	
+Kolopom	FAIL	NJ: the distances matrix is too small	
+Kiwaian	FAIL	NJ: too few languages	
+South Central Papuan	FAIL	NJ: too few languages	
+Pawaian	FAIL	NJ: too few languages	
+Nimboran	FAIL	NJ: the distances matrix is too small	
+Morwap	FAIL	NJ: too few languages	
+Macro-Skou	SUCCESS	NJ	('Skou [i-skv][w-sko][a-2849][g-nucl1634]':0.129,'Barupu [i-wra][w-brp][a-3198][g-wara1302]':9.09,((('Krisa [i-ksi][w-isa][a-307][g-kris1246]':7.64,'Poko-Rawo [i-rwa][w-pok][a-2390][g-rawo1244]':15.1):4.48,'Vanimo [i-vam][w-dum][a-395][g-vani1248]':0):8.91,'Sko [i-skv][w-sko][a-2440][g-nucl1634]':0.129):1.14);
+Border	FAIL	NJ: the distances matrix has too few non-missing data	
+Karkar	FAIL	NJ: too few languages	
+Sepik	FAIL	NJ: the distances matrix has too few non-missing data	
+Torricelli	FAIL	NJ: the distances matrix has too few non-missing data	
+Lower Sepik - Ramu	FAIL	NJ: the distances matrix has too few non-missing data	
+Gapun	FAIL	NJ: too few languages	
+Sulka	FAIL	NJ: too few languages	
+West New Britain	FAIL	NJ: too few languages	
+South Bougainville	SUCCESS	NJ	('Nasioi [i-nas][w-nas][a-440][g-naas1242]':15.9,'Motuna [i-siw][w-mot][a-191][g-siwa1245]':6.42,'Buin [i-buo][w-bun][a-1084][g-tere1278]':6.83);
+North Bougainville	FAIL	NJ: the distances matrix is too small	
+East New Britain	FAIL	NJ: the distances matrix has too few non-missing data	
+Orya-Mawes-Tor-Kwerba	FAIL	NJ: the distances matrix has too few non-missing data	
+Pama-Nyungan	FAIL	NJ: the distances matrix has too few non-missing data	
+Mangarayan	FAIL	NJ: too few languages	
+Mirndi	SUCCESS	NJ	('Wambaya [i-wmb][w-wam][a-575][g-wamb1258]':12.1,'Jaminjung [i-djd][w-jam][a-1331][g-djam1255]':21.9,'Djingili [i-jig][w-dji][a-68][g-djin1251]':11.5);
+Tangkic	SUCCESS	NJ	('Yukulta [i-gcd][w-yuk][a-424][g-gang1267]':30.1,'Lardil [i-lbz][w-lrd][a-1872][g-lard1243]':0,'Kayardild [i-gyd][w-kay][a-128][g-kaya1319]':30.1);
+Gunwingguan	SUCCESS	NJ	('Waray [i-wrz][w-wry][a-400][g-wara1290]':10.6,((('Ngandi [i-nid][w-ngn][a-2169][g-ngan1295]':2.71,'Rembarrnga [i-rmb][w-rmb][a-473][g-remb1249]':0):4.28,'Ngalkbun [i-ngk][w-nkb][a-2161][g-ngal1292]':2.5):4.95,'Wagiman [i-waq][w-wag][a-2702][g-wage1238]':8.52):3.75,((('Ngalakan [i-nig][w-ngl][a-209][g-ngal1293]':8.98,'Nunggubuyu [i-nuy][w-nug][a-318][g-nung1290]':6.37):9.09,('Gunwinggu [i-gup][w-bbw][a-93][g-gunw1252]':1.36,'Mayali [i-gup][w-bbw][a-655][g-gunw1252]':1.36):15.8):6.39,'Gunbalang [i-wlg][w-gnb][a-2724][g-kunb1251]':17.9):1.97);
+Wagiman - Wardaman	FAIL	NJ: too few languages	
+Tiwi	FAIL	NJ: too few languages	
+Western Daly	SUCCESS	NJ	('Maranungku [i-zmr][w-mku][a-556][g-mara1386]':0.569,'Emmi [i-zmr][w-mku][a-891][g-mara1386]':0.569,('Maringarr [i-zmt][w-mrr][a-2812][g-mari1419]':1.14,'Marrithiyel [i-mfr][w-mrh][a-178][g-mari1424]':0):19.9);
+Southern Daly	SUCCESS	NJ	('Ngankikurungkurr [i-nam][w-ngg-ngk][a-2133][g-nang1259]':0,'Ngan`gityemerri [i-nam][w-ngg-ngk][a-1363][g-nang1259]':0,'Murrinh-patha [i-mwf][w-mpa][a-196][g-murr1258]':39.2);
+Northern Daly	FAIL	NJ: the distances matrix is too small	
+Iwaidjan	FAIL	NJ: the distances matrix is too small	
+Bunuban	FAIL	NJ: the distances matrix is too small	
+Nyulnyulan	FAIL	NJ: the distances matrix has too few non-missing data	
+Worrorran	FAIL	NJ: the distances matrix is too small	
+Djerragan	FAIL	NJ: the distances matrix is too small	
+Maran	SUCCESS	NJ	('Warndarang [i-wnd][w-wrn][a-405][g-wand1263]':19.1,'Mara [i-mec][w-mra][a-1965][g-mara1385]':4.6,'Alawa [i-alh][w-alw][a-16][g-alaw1244]':7.67);
+Gaagudju	FAIL	NJ: too few languages	
+Garrwan	FAIL	NJ: too few languages	
+Nakkaran	FAIL	NJ: too few languages	
+Larakiya	FAIL	NJ: too few languages	
+Pomoan	FAIL	NJ: the distances matrix has too few non-missing data	
+Yuman	FAIL	NJ: the distances matrix has too few non-missing data	
+Chimariko	FAIL	NJ: too few languages	
+Karok	FAIL	NJ: too few languages	
+Shasta	FAIL	NJ: too few languages	
+Washo	FAIL	NJ: too few languages	
+Yokuts-Utian	FAIL	NJ: the distances matrix has too few non-missing data	
+Plateau Penutian	SUCCESS	NJ	('Sahaptin {Umatilla} [i-uma][w-smt][a-2666][g-umat1237]':12.6,'Nez Perce [i-nez][w-nez][a-208][g-nezp1238]':8.97,'Klamath [i-kla][w-klm][a-685][g-klam1254]':8.46);
+Maiduan	SUCCESS	NJ	('Nisenan [i-nsz][w-nsn][a-2210][g-nise1244]':9.51,'Maidu {Northeast} [i-nmu][w-mne][a-168][g-nort2952]':7.96,'Konkow [i-mjd][w-knw][a-1927][g-nort2951]':3.99);
+Wintuan	FAIL	NJ: the distances matrix is too small	
+Chinookan	FAIL	NJ: the distances matrix is too small	
+Chumashan	FAIL	NJ: the distances matrix is too small	
+Haida	FAIL	NJ: the distances matrix is too small	
+Kutenai	FAIL	NJ: too few languages	
+Salinan	FAIL	NJ: too few languages	
+Timucua	FAIL	NJ: too few languages	
+Zuni	FAIL	NJ: too few languages	
+Takelma-Kalapuyan	FAIL	NJ: the distances matrix is too small	
+Algic	FAIL	NJ: the distances matrix has too few non-missing data	
+Atakapa	FAIL	NJ: too few languages	
+Caddoan	FAIL	NJ: the distances matrix has too few non-missing data	
+Chimakuan	FAIL	NJ: the distances matrix is too small	
+Chitimacha	FAIL	NJ: too few languages	
+Iroquoian	SUCCESS	NJ	('Oneida [i-one][w-ond][a-461][g-onei1249]':6.42,(('Mohawk [i-moh][w-moh][a-2054][g-moha1258]':3.13,'Onondaga [i-ono][w-onn][a-2252][g-onon1246]':6.95):10.4,('Cayuga [i-cay][w-cyg][a-1118][g-cayu1261]':17.5,'Seneca [i-see][w-snc][a-349][g-sene1264]':0):11.9):10.6,(('Cherokee [i-chr][w-che][a-1134][g-cher1273]':17.7,'Tuscarora [i-tus][w-tus][a-2639][g-tusc1257]':13):10.5,'Wyandot [i-wya][w-wya][a-2743][g-wyan1247]':7.96):9.75);
+Keresan	SUCCESS	NJ	('Keresan {Santa Ana} [i-kee][w-ksa][a-1727][g-east1472]':0,'Keresan {Laguna} [i-kee][w-ksa][a-2958][g-east1472]':0,'Acoma [i-kjq][w-aco][a-10][g-west2632]':19);
+Kiowa-Tanoan	SUCCESS	NJ	('Tewa {San Juan Pueblo} [i-tew][w-tew-trg-tsj][a-1419][g-tewa1260]':0.114,(('Kiowa [i-kio][w-kio][a-132][g-kiow1266]':3.38,'Tiwa {Southern} [i-tix][w-tws][a-2575][g-sout2961]':15.8):5.4,'Tiwa {Northern} [i-twf][w-twn][a-2517][g-nort1550]':6.35):11.3,(('Jemez [i-tow][w-jem][a-2603][g-jeme1245]':0.91,'Tewa {Arizona} [i-tew][w-tew-trg-tsj][a-2553][g-tewa1260]':0):0.797,'Tewa {Rio Grande} [i-tew][w-tew-trg-tsj][a-1418][g-tewa1260]':0.114):0.797);
+Muskogean	SUCCESS	NJ	('Alabama [i-akz][w-abm][a-618][g-alab1237]':1.7,('Creek [i-mus][w-crk-smn][a-1182][g-cree1270]':4.24,'Creek {Seminole} [i-mus][w-crk-smn][a-1255][g-cree1270]':4.24):6.79,((('Chickasaw [i-cic][w-cck][a-1143][g-chic1270]':8.49,'Mikasuki [i-mik][w-mki][a-2007][g-mika1239]':0):7.64,'Koasati [i-cku][w-koa][a-135][g-koas1236]':10.2):7.68,'Choctaw [i-cho][w-cct][a-54][g-choc1276]':12.2):6.97);
+Na-Dene	FAIL	NJ: the distances matrix has too few non-missing data	
+Natchez	FAIL	NJ: too few languages	
+Salishan	FAIL	NJ: the distances matrix has too few non-missing data	
+Siouan	FAIL	NJ: the distances matrix has too few non-missing data	
+Tonkawa	FAIL	NJ: too few languages	
+Tsimshianic	SUCCESS	NJ	('Tsimshian {Coast} [i-tsi][w-tsi][a-522][g-nucl1649]':11.8,'Nisgha [i-ncg][w-nsg][a-654][g-nisg1240]':8.74,'Gitksan [i-git][w-git][a-88][g-gitx1241]':13.2);
+Tunica	FAIL	NJ: too few languages	
+Alsean	FAIL	NJ: too few languages	
+Uto-Aztecan	SUCCESS	NJ	((('Eudeve [i-opt][w-eud][a-765][g-opat1246]':15.6,'Pima Bajo [i-pia][w-pba][a-2291][g-pima1248]':15):15,'Cupeno [i-cup][w-cup][a-1203][g-cupe1243]':18.6):14.9,((((('Guarijio [i-var][w-grj][a-2685][g-huar1255]':12.2,'River Warihio [i-var][w-grj][a-2939][g-huar1255]':12.2):23.2,'Nahuatl {North Puebla} [i-ncj][w-nhn][a-2144][g-nort2957]':25.9):16,(((('Hopi [i-hop][w-hop][a-687][g-hopi1249]':16.2,'Nahuatl {Pajapan} [i-nhp][w-npa][a-2167][g-isth1241]':8.22):16.3,'Huichol [i-hch][w-hui][a-1600][g-huic1243]':15):14.3,((('Cora [i-crn][w-cor][a-688][g-elna1235]':13.1,'Tepehuan {Southeastern} [i-stp][w-tps][a-2544][g-sout2976]':11.4):16.2,'Nahuatl {Michoacan} [i-ncl][w-nhm][a-2145][g-mich1245]':16.4):11,'Nahuatl {Sierra de Zacapoaxtla} [i-azz][w-nsz][a-956][g-high1278]':8.59):15.5):15.1,'Nahuatl {Tetelcingo} [i-nhg][w-nht][a-572][g-tete1251]':19.5):14.1):12.3,'Luiseno [i-lui][w-lui][a-166][g-luis1253]':19.6):13.8,'Tepehuan {Northern} [i-ntp][w-tpn][a-2214][g-nort2959]':19.3):15.4,(((((((('Kawaiisu [i-xaw][w-kws][a-1703][g-kawa1283]':18.6,'Tubar [i-tbu][w-tub][a-2527][g-tuba1279]':5.81):17.2,'Pipil [i-ppl][w-pip][a-332][g-pipi1250]':17.1):13.1,('Nahuatl {Xalitla} [i-ngu][w-nhx][a-2129][g-guer1241]':5.94,'Shoshoni [i-par][w-tsh][a-2271][g-pana1305]':18.5):18.4):12.9,((('Chemehuevi [i-ute][w-cmh-put-ute][a-1441][g-utes1238]':12.2,'Paiute {Southern} [i-ute][w-cmh-put-ute][a-441][g-utes1238]':12.2):16.5,'Tubatulabal [i-tub][w-tbb][a-2633][g-tuba1278]':7.92):14.5,'Mayo [i-mfy][w-myo][a-1933][g-mayo1264]':5.62):16.8):14,'Paiute {Northern} [i-pao][w-pno][a-718][g-nort2954]':21):15.4,(('Mono {USA} [i-mnr][w-mno][a-2057][g-mono1275]':11.8,'Tepecano [i-tep][w-tpc][a-2549][g-tepe1278]':29):19.8,'Tarahumara {Central} [i-tar][w-tce][a-2519][g-cent2131]':12.3):17.8):13.2,'Comanche [i-com][w-cmn][a-523][g-coma1245]':19.1):13.6,(((('Nevome [i-ood][w-nev-ood][a-1383][g-toho1245]':12.2,'O`odham [i-ood][w-nev-ood][a-328][g-toho1245]':12.2):15.6,('Cahuilla [i-chl][w-cah][a-520][g-cahu1264]':19.4,'Nahuatl {Mecayapan Isthmus} [i-nhx][w-nmi][a-2135][g-isth1242]':5.07):17):12.5,'Nahuatl {Central} [i-nhn][w-nhc][a-2166][g-cent2132]':0):14.1,(('Serrano [i-ser][w-srr][a-2414][g-serr1255]':6.94,'Yaqui [i-yaq][w-yaq][a-503][g-yaqu1251]':17.5):14.4,(('Shoshone {Wind River} [i-shh][w-sho-swr][a-1403][g-shos1248]':12.2,'Tumpisa Shoshone [i-shh][w-sho-swr][a-385][g-shos1248]':12.2):11.6,('Raramuri [i-tac][w-twe][a-689][g-lowl1265]':12.2,'Tarahumara {Western} [i-tac][w-twe][a-2512][g-lowl1265]':12.2):18.8):19.2):13.7):13.7):12.6);
+Wakashan	FAIL	NJ: the distances matrix has too few non-missing data	
+Yuchi	FAIL	NJ: too few languages	
+Yuki-Wappo	FAIL	NJ: the distances matrix is too small	
+Otomanguean	FAIL	NJ: the distances matrix has too few non-missing data	
+Tequistlatecan	FAIL	NJ: the distances matrix is too small	
+Huave	FAIL	NJ: the distances matrix is too small	
+Misumalpan	FAIL	NJ: the distances matrix is too small	
+Mixe-Zoque	FAIL	NJ: the distances matrix has too few non-missing data	
+Tarascan	FAIL	NJ: too few languages	
+Totonac-Tepehuan	FAIL	NJ: the distances matrix has too few non-missing data	
+Mayan	FAIL	NJ: the distances matrix has too few non-missing data	
+Cuitlatec	FAIL	NJ: too few languages	
+Paesan	FAIL	NJ: too few languages	
+Chibchan	SUCCESS	NJ	((('Buglere [i-sab][w-bgl][a-2392][g-bugl1243]':4.98,'Guaymi [i-gym][w-nbr][a-90][g-ngab1239]':11):3.13,'Motilon {Chibchan} [i-mot][w-mti][a-2059][g-bari1297]':2.54):6.96,((('Cogui [i-kog][w-cog][a-1792][g-cogu1240]':4.88,'Teribe [i-tfr][w-trb][a-2556][g-teri1250]':6.22):8.04,'Chimila [i-cbg][w-cma][a-1122][g-chim1309]':3.06):6.55,'Kuna [i-kvn][w-kun][a-1833][g-bord1248]':8.47):8.56,(((((('Cabecar [i-cjp][w-cab][a-1152][g-cabe1245]':0,'Damana [i-mbp][w-dam][a-1940][g-mala1522]':11.1):8.67,'Boruca [i-brn][w-brc][a-1066][g-boru1252]':2.43):9.32,'Ika [i-arh][w-ika][a-532][g-arhu1242]':9.62):9.55,'Rama [i-rma][w-ram][a-454][g-rama1270]':14.4):8.95,('Muisca [i-chb][w-msc][a-1121][g-chib1270]':5.68,'Pech [i-pay][w-pec][a-2272][g-pech1241]':5.42):12.7):8.53,'Bribri [i-bzd][w-bri][a-519][g-brib1243]':12.1):8.32);
+Camsa	FAIL	NJ: too few languages	
+Arawakan	FAIL	NJ: the distances matrix has too few non-missing data	
+Arawan	FAIL	NJ: the distances matrix has too few non-missing data	
+Cofan	FAIL	NJ: too few languages	
+Candoshi	FAIL	NJ: too few languages	
+Jivaroan	SUCCESS	NJ	('Shuar [i-jiv][w-jiv][a-352][g-shua1257]':41.7,'Achuar [i-acu][w-acu][a-832][g-achu1248]':0,('Aguaruna [i-agr][w-agr][a-853][g-agua1253]':9.37,'Huambisa [i-hub][w-hmb][a-1620][g-huam1247]':13.6):23);
+Yaguan	FAIL	NJ: too few languages	
+Sabelan	FAIL	NJ: too few languages	
+Urarina	FAIL	NJ: too few languages	
+Boran	FAIL	NJ: the distances matrix is too small	
+Quechuan	FAIL	NJ: the distances matrix has too few non-missing data	
+Aymaran	FAIL	NJ: the distances matrix is too small	
+Yurakare	FAIL	NJ: too few languages	
+Pano-Tacanan	SUCCESS	NJ	(('Araona [i-aro][w-ana][a-620][g-arao1248]':12.7,'Matses [i-mcf][w-myr][a-1947][g-mats1244]':1.92):15.1,((('Cashinahua [i-cbs][w-csh][a-45][g-cash1254]':0.0402,'Cavinena [i-cav][w-cav][a-1116][g-cavi1250]':14.5):14.6,'Karipuna {Guapore} [i-kuq][w-kdg][a-1837][g-kari1317]':0):9.41,'Ese Ejja [i-ese][w-ese][a-1477][g-esee1248]':11.5):9.76,((((('Capanahua [i-kaq][w-cap][a-1701][g-capa1241]':8.76,'Cashibo [i-cbr][w-cas][a-1126][g-cash1251]':5.83):7.58,('Matis [i-mpq][w-mts][a-2067][g-mati1255]':7.58,'Yaminahua [i-yaa][w-yam][a-2757][g-yami1256]':7):8.47):7.93,'Sharanahua [i-mcd][w-shh][a-1946][g-shar1245]':8.38):10.4,'Shipibo-Konibo [i-shp][w-shk][a-567][g-ship1254]':12.9):9.63,(('Amahuaca [i-amc][w-amc][a-884][g-amah1246]':13.4,'Chacobo [i-cao][w-cbo][a-1113][g-chac1251]':7.28):21.8,'Tacana [i-tna][w-tac][a-2590][g-taca1256]':11.9):11.8):7.52);
+Chon	SUCCESS	NJ	('Tehuelche [i-teh][w-teh][a-2545][g-tehu1242]':10.1,'Selknam [i-ona][w-sel][a-565][g-onaa1245]':12.9,'Gununa-Kune [i-pue][w-gku][a-92][g-puel1244]':11);
+Kawesqaran	FAIL	NJ: too few languages	
+Mapudungun	FAIL	NJ: too few languages	
+Huarpe	FAIL	NJ: too few languages	
+Matacoan	SUCCESS	NJ	('Wichi [i-mzh][w-wch][a-2124][g-wich1264]':18.4,'Maka [i-mca][w-mca][a-477][g-maca1260]':0,'Chulupi [i-cag][w-chu][a-1109][g-niva1238]':18.4);
+Macro-Ge	SUCCESS	NJ	('Rikbaktsa [i-rkb][w-rik][a-925][g-rikb1245]':6.03,(('Maxakali [i-mbl][w-max][a-506][g-maxa1247]':5.34,'Xavante [i-xav][w-xav][a-2747][g-xava1240]':2.64):7.59,'Xerente [i-xer][w-xer][a-2748][g-xere1240]':0.379):6.24,(((((('Kaingang [i-kgp][w-kng][a-1741][g-kain1272]':5.74,'Krenak [i-kqq][w-kqq][a-3114][g-kren1239]':2.23):10.1,'Kraho [i-xra][w-krh][a-2755][g-krah1246]':3.93):7.42,(('Canela [i-ram][w-ckr-cnl][a-756][g-cane1242]':3.99,'Canela-Kraho [i-ram][w-ckr-cnl][a-43][g-cane1242]':3.99):9.18,'Apinaye [i-apn][w-api][a-911][g-apin1244]':5.09):7.51):4.33,((('Bororo [i-bor][w-brr][a-648][g-boro1282]':3.95,'Panara [i-kre][w-pnx][a-3170][g-pana1307]':18.3):7.78,('Chiquito [i-cax][w-cqt][a-1117][g-chiq1248]':1.99,'Xokleng [i-xok][w-xok][a-646][g-xokl1240]':5.98):11.8):9.22,'Kayapo [i-txu][w-kyp][a-2647][g-kaya1330]':3.1):9.69):6.56,((('Javae [i-kpj][w-jva][a-1802][g-kara1500]':3.99,'Karaja [i-kpj][w-jva][a-2951][g-kara1500]':3.99):5.33,'Yate [i-fun][w-ful][a-1509][g-fuln1247]':2.64):7.97,'Djeoromitxi [i-jbt][w-jbt][a-3105][g-djeo1235]':0):5.85):5.86,'Jabuti [i-jbt][w-jbt][a-1675][g-djeo1235]':0.563):5.27);
+Muran	FAIL	NJ: too few languages	
+Itonama	FAIL	NJ: too few languages	
+Aikana	FAIL	NJ: too few languages	
+Nambikwara	FAIL	NJ: too few languages	
+Iranshe	FAIL	NJ: too few languages	
+Trumai	FAIL	NJ: too few languages	
+Movima	FAIL	NJ: too few languages	
+Cayuvava	FAIL	NJ: too few languages	
+Tupian	FAIL	NJ: the distances matrix has too few non-missing data	
+Cariban	FAIL	NJ: the distances matrix has too few non-missing data	
+Yanomaman	FAIL	NJ: the distances matrix has too few non-missing data	
+Warao	FAIL	NJ: too few languages	
+Kartvelian	SUCCESS	NJ	('Svan [i-sva][w-sva][a-481][g-svan1243]':15.7,('Laz {Ardeşen} [i-lzz][w-laz][a-2971][g-lazz1240]':4.54,'Laz [i-lzz][w-laz][a-1926][g-lazz1240]':4.54):19.2,('Georgian [i-kat][w-geo][a-86][g-nucl1302]':0,'Mingrelian [i-xmf][w-mgl][a-2752][g-ming1252]':9.08):15.1);
+Kunama	FAIL	NJ: too few languages	
+Eastern Central Sudanic	SUCCESS	NJ	('Moru [i-mgd][w-mou][a-1979][g-moru1253]':3.3,('Logbara [i-lgg][w-lug][a-163][g-lugb1240]':4.45,'Logoti [i-log][w-lgt][a-1907][g-logo1259]':2.99):3.68,((((('Mangbetu [i-mdj][w-mbt][a-1960][g-mang1394]':14.8,'Ngiti [i-niy][w-nti][a-561][g-ngit1239]':9.08):9.4,'Lese [i-les][w-les][a-1880][g-lese1243]':0):5.44,'Avokaya [i-avu][w-avo][a-944][g-avok1242]':1.07):3.81,('Lendu [i-led][w-ldu][a-1876][g-lend1245]':13,'Mamvu [i-mdi][w-mmv][a-1959][g-mamv1243]':13.5):4.2):3.9,'Ma`di [i-mhi][w-mad][a-1988][g-madi1260]':5.97):2.79);
+Songhai	SUCCESS	NJ	('Zarma [i-dje][w-zar][a-1332][g-zarm1239]':12.2,'Songhai {Koyra Chiini} [i-khq][w-kch][a-443][g-koyr1240]':3.71,'Koroboro Senni [i-ses][w-kse][a-144][g-koyr1242]':9.92);
+Coos	FAIL	NJ: too few languages	
+Nivkh	FAIL	NJ: the distances matrix is too small	
+Siuslawan	FAIL	NJ: too few languages	
+Barbacoan	SUCCESS	NJ	('Tsafiki [i-cof][w-tsf][a-471][g-colo1256]':1.66,'Cayapa [i-cbi][w-cay][a-1123][g-chac1249]':2.31,('Awa Pit [i-kwi][w-awp][a-469][g-awac1239]':13.3,'Guambiano [i-gum][w-gmb][a-1570][g-guam1248]':6.51):4.86);
+Tucanoan	SUCCESS	NJ	('Yuruti [i-yui][w-yrt][a-2791][g-yuru1263]':2.15,((('Barasano [i-bsn][w-brs][a-493][g-bara1380]':8.01,'Barasano {Northern} [i-bao][w-bno][a-962][g-waim1255]':0):6.83,'Macuna [i-myy][w-mcn][a-2122][g-macu1260]':1.18):5.19,('Desano [i-des][w-des][a-1276][g-desa1247]':7.35,'Guanano [i-gvc][w-gno][a-1577][g-guan1269]':0.662):5.75):4.39,((('Retuara [i-tnc][w-ret][a-2591][g-tani1257]':6.37,'Tatuyo [i-tav][w-tty][a-2520][g-tatu1247]':1.64):4.9,(('Cubeo [i-cub][w-cub][a-1200][g-cube1242]':5.55,'Secoya [i-sey][w-sec][a-2415][g-seco1241]':2.46):6.48,'Siriano [i-sri][w-sri][a-2472][g-siri1274]':1.53):5.15):4.45,(((((('Koreguaje [i-coe][w-kje][a-1169][g-kore1283]':4.73,'Piratapuyo [i-pir][w-prt][a-2299][g-pira1254]':3.28):4.41,'Orejon [i-ore][w-ore][a-2254][g-orej1242]':3.6):6.46,'Tucano [i-tuo][w-tuc][a-2637][g-tuca1252]':6.28):7.64,'Siona [i-snn][w-sin][a-2428][g-sion1247]':9.09):12.9,'Carapana [i-cbc][w-crp][a-1119][g-cara1272]':3.05):6.61,'Tuyuca [i-tue][w-tuy][a-2634][g-tuyu1244]':4.56):5.83):4.37);
+Kadugli-Krongo	SUCCESS	NJ	('Krongo [i-kgo][w-kro][a-495][g-kron1241]':21.2,'Katcha [i-xtc][w-kad-ktc][a-1338][g-katc1249]':0,'Kadugli [i-xtc][w-kad-ktc][a-1337][g-katc1249]':0);
+Senufo	FAIL	NJ: the distances matrix has too few non-missing data	
+Miao-Yao	FAIL	NJ: the distances matrix has too few non-missing data	
+Kru	FAIL	NJ: the distances matrix has too few non-missing data	
+Dagan	FAIL	NJ: too few languages	
+Bongo-Bagirmi	FAIL	NJ: the distances matrix has too few non-missing data	
+Wissel Lakes	FAIL	NJ: the distances matrix is too small	
+Choco	FAIL	NJ: the distances matrix has too few non-missing data	
+Angan	FAIL	NJ: the distances matrix has too few non-missing data	
+Gur	FAIL	NJ: the distances matrix has too few non-missing data	
+Central Solomons	SUCCESS	NJ	('Savosavo [i-svs][w-svs][a-2500][g-savo1255]':10.9,'Lavukaleve [i-lvk][w-lav][a-550][g-lavu1241]':10.6,'Bilua [i-blb][w-bil][a-1035][g-bilu1245]':16.4);
+Maban	SUCCESS	NJ	('Runga [i-rou][w-run][a-2381][g-rung1258]':8.45,'Masalit [i-mls][w-msl][a-2082][g-nucl1440]':7.85,'Maba [i-mde][w-mab][a-554][g-maba1277]':6.77);
+Surmic	SUCCESS	NJ	(('Murle [i-mur][w-mrl][a-559][g-murl1244]':6.46,'Tennet [i-tex][w-ten][a-2554][g-tenn1246]':9.45):6.27,(('Baale [i-koe][w-blj][a-1791][g-kaci1244]':0,'Majang [i-mpe][w-maj][a-2063][g-maja1242]':5.6):8.41,'Didinga [i-did][w-did][a-1321][g-didi1258]':3.93):5.98,(((('Chai [i-suq][w-cai-trm][a-1413][g-suri1267]':2.8,'Tirmaga [i-suq][w-cai-trm][a-1414][g-suri1267]':2.8):15.9,'Me`en [i-mym][w-mee][a-2117][g-meen1242]':8.5):4.82,'Koegu [i-xwg][w-koe][a-2772][g-kweg1241]':12.7):4.67,'Mursi [i-muz][w-mur][a-2098][g-murs1242]':6.86):3.21);
+Chapakuran	FAIL	NJ: too few languages	
+Witotoan	SUCCESS	NJ	('Ocaina [i-oca][w-oca][a-2240][g-ocai1244]':11.7,'Huitoto {Minica} [i-hto][w-hmi-htt][a-1619][g-mini1256]':3.23,(('Huitoto {Murui} [i-huu][w-hum][a-1624][g-muru1274]':7.45,'Witoto [i-huu][w-hum][a-578][g-muru1274]':7.45):14.9,'Huitoto {Muinane} [i-hux][w-hmu][a-1626][g-nupo1240]':0):14.9);
+Guaicuruan	SUCCESS	NJ	('Toba [i-tob][w-tob][a-2596][g-toba1269]':12.6,('Abipon [i-axb][w-abi][a-582][g-abip1241]':9.06,'Mocovi [i-moc][w-mcv][a-2050][g-moco1246]':1.21):2.15,('Kadiweu [i-kbc][w-kdw][a-1706][g-kadi1248]':4.18,'Pilaga [i-plg][w-pga][a-2306][g-pila1245]':4.65):1.9);
+Cahuapanan	FAIL	NJ: the distances matrix is too small	
+South Atlantic	FAIL	NJ: the distances matrix has too few non-missing data	
+Kariri	FAIL	NJ: too few languages	
+Hatam	FAIL	NJ: too few languages	
+Dogon	FAIL	NJ: the distances matrix has too few non-missing data	
+!Ui-Taa	SUCCESS	NJ	('!Xoo [i-nmn][w-xoo][a-653][g-xooo1239]':0,'|Xam [i-xam][w-xam][a-2745][g-xamm1241]':13.2,'‡Hoan [i-huc][w-huc][a-3150][g-huaa1248]':6.8);
+Gunabidjian	FAIL	NJ: too few languages	
+Yana	FAIL	NJ: too few languages	
+Coahuiltec	FAIL	NJ: too few languages	
+Limilngan	FAIL	NJ: too few languages	
+Etruscan	FAIL	NJ: too few languages	
+Tasmanian	FAIL	NJ: the distances matrix is too small	
+Nyima	FAIL	NJ: too few languages	
+Jirajaran	FAIL	NJ: too few languages	
+Betoi	FAIL	NJ: too few languages	
+Comecrudan	FAIL	NJ: too few languages	
+Esmeralda	FAIL	NJ: too few languages	
+Sign Language Hong Kong	FAIL	NJ: too few languages	
+Sign Language International	FAIL	NJ: too few languages	
+Karankawa	FAIL	NJ: too few languages	
+Kriol {Fitzroy Crossing}	FAIL	NJ: too few languages	
+Kwaza	FAIL	NJ: too few languages	
+Lughat al-Isharat al-Lubnaniya	FAIL	NJ: too few languages	
+Lule-Vilela	FAIL	NJ: too few languages	
+Mako	FAIL	NJ: too few languages	
+Mochica	FAIL	NJ: too few languages	
+Puquina	FAIL	NJ: too few languages	
+Russian-Chinese Pidgin	FAIL	NJ: too few languages	
+Yurimangi	FAIL	NJ: too few languages	
+Palaihninan	FAIL	NJ: the distances matrix is too small	
+Sign Language Adamorobe	FAIL	NJ: too few languages	
+Sign Language Argentinian	FAIL	NJ: too few languages	
+Senagi	FAIL	NJ: the distances matrix is too small	
+Kresh-Aja	FAIL	NJ: the distances matrix is too small	
+Amberbakan-Kebar	FAIL	NJ: too few languages	
+Harakmbut	FAIL	NJ: too few languages	
+Andoke	FAIL	NJ: too few languages	
+Jarawa Andamanese	FAIL	NJ: too few languages	
+Angolar	FAIL	NJ: too few languages	
+Anindilyakwa	FAIL	NJ: too few languages	
+Zaparoan	FAIL	NJ: the distances matrix has too few non-missing data	
+Sign Language American	FAIL	NJ: too few languages	
+Auslan	FAIL	NJ: too few languages	
+Awin-Pare	FAIL	NJ: too few languages	
+Zamucoan	FAIL	NJ: too few languages	
+Bosavi	FAIL	NJ: the distances matrix is too small	
+Bislama	FAIL	NJ: too few languages	
+Melayu Betawi	FAIL	NJ: too few languages	
+Sign Language British	FAIL	NJ: too few languages	
+Kaure	FAIL	NJ: too few languages	
+Kata Kolok	FAIL	NJ: too few languages	
+Berbice Dutch Creole	FAIL	NJ: too few languages	
+Beothuk	FAIL	NJ: too few languages	
+Burraran	FAIL	NJ: the distances matrix is too small	
+Sign Language Flemish	FAIL	NJ: too few languages	
+Miskito Coast English Creole	FAIL	NJ: too few languages	
+Sign Language Brazilian	FAIL	NJ: too few languages	
+Moseten	FAIL	NJ: too few languages	
+Chavacano	FAIL	NJ: too few languages	
+Kakua-Nukak	FAIL	NJ: the distances matrix is too small	
+Cholonan	FAIL	NJ: too few languages	
+Tayo	FAIL	NJ: too few languages	
+Seychelles Creole	FAIL	NJ: too few languages	
+Sign Language Chinese	FAIL	NJ: too few languages	
+Guahiboan	SUCCESS	NJ	('Macaguan [i-mbn][w-mcg][a-1939][g-maca1259]':0,'Guayabero [i-guo][w-gyb][a-1571][g-guay1257]':0,((('Playero [i-gob][w-pla][a-1555][g-play1240]':0,'Sikuani [i-guh][w-ghb-skn][a-1311][g-guah1255]':0):0,'Cuiba [i-cui][w-cui][a-1201][g-cuib1242]':0):0,'Guahibo [i-guh][w-ghb-skn][a-1568][g-guah1255]':0):0);
+Daju	FAIL	NJ: the distances matrix has too few non-missing data	
+Guadeloupe Creole	FAIL	NJ: too few languages	
+Martinique Creole	FAIL	NJ: too few languages	
+Ndyuka	FAIL	NJ: too few languages	
+Lesser Antillean French Creole	FAIL	NJ: too few languages	
+Sign Language Dutch	FAIL	NJ: too few languages	
+Taman	SUCCESS	NJ	('Tama [i-tma][w-mii-tma][a-2584][g-tama1331]':0,'Sungor [i-sjg][w-sug][a-2496][g-assa1269]':0,'Miisiirii [i-tma][w-mii-tma][a-1430][g-tama1331]':0);
+Duna-Pogaia	FAIL	NJ: too few languages	
+Esselen	FAIL	NJ: too few languages	
+West Kutubu	FAIL	NJ: too few languages	
+Sign Language Quebec	FAIL	NJ: too few languages	
+East Kutubu	FAIL	NJ: too few languages	
+Guianese French Creole	FAIL	NJ: too few languages	
+Mairasi	FAIL	NJ: too few languages	
+Sign Language Finnish	FAIL	NJ: too few languages	
+Sign Language French	FAIL	NJ: too few languages	
+Laal	FAIL	NJ: too few languages	
+Suki-Gogodala	FAIL	NJ: the distances matrix is too small	
+Sign Language German	FAIL	NJ: too few languages	
+Sign Language Greek	FAIL	NJ: too few languages	
+Guato	FAIL	NJ: too few languages	
+Mascoyan	FAIL	NJ: the distances matrix is too small	
+Haitian Creole	FAIL	NJ: too few languages	
+Hawaiian Creole	FAIL	NJ: too few languages	
+Sign Language Icelandic	FAIL	NJ: too few languages	
+West Bomberai	FAIL	NJ: the distances matrix is too small	
+Sign Language Indo-Pakistani {Indian dialects}	FAIL	NJ: too few languages	
+Sign Language Italian	FAIL	NJ: too few languages	
+Sign Language Irish	FAIL	NJ: too few languages	
+Sign Language Israeli	FAIL	NJ: too few languages	
+Jamaican Creole	FAIL	NJ: too few languages	
+Morehead and Upper Maro Rivers	SUCCESS	NJ	('Yei [i-jei][w-yei][a-1679][g-yeii1239]':4.68,'Moraori [i-mok][w-mri][a-2055][g-moro1289]':4.56,'Kanum {Badi} [i-khd][w-knb][a-1747][g-badi1247]':1.91);
+Bulaka	FAIL	NJ: the distances matrix is too small	
+Jicaquean	FAIL	NJ: too few languages	
+Sign Language Japanese	FAIL	NJ: too few languages	
+Nadahup	SUCCESS	NJ	('Nadeb [i-mbj][w-nad][a-1938][g-nade1244]':21.7,'Hup [i-jup][w-hpd][a-1692][g-hupd1244]':0,'Daw [i-kwa][w-daw][a-1846][g-daww1239]':4.06);
+Nubi	FAIL	NJ: too few languages	
+Kusunda	FAIL	NJ: too few languages	
+Turama-Kikori	FAIL	NJ: too few languages	
+Katukinan	FAIL	NJ: too few languages	
+Koman	FAIL	NJ: too few languages	
+Kuot	FAIL	NJ: too few languages	
+Kituba	FAIL	NJ: too few languages	
+Goilalan	FAIL	NJ: the distances matrix is too small	
+Atacameno	FAIL	NJ: too few languages	
+Sign Language South Korean	FAIL	NJ: too few languages	
+Molala	FAIL	NJ: too few languages	
+Malacca Creole	FAIL	NJ: too few languages	
+East Bird`s Head	FAIL	NJ: the distances matrix is too small	
+Mauritian Creole	FAIL	NJ: too few languages	
+Mailuan	FAIL	NJ: too few languages	
+Teberan	FAIL	NJ: the distances matrix is too small	
+Mombum	FAIL	NJ: too few languages	
+Monumbo	FAIL	NJ: too few languages	
+Naga Pidgin	FAIL	NJ: too few languages	
+Yale	FAIL	NJ: too few languages	
+Norsk Tegnspråk	FAIL	NJ: too few languages	
+Sign Language New Zealand	FAIL	NJ: too few languages	
+Eleman	FAIL	NJ: the distances matrix has too few non-missing data	
+Papiamentu	FAIL	NJ: too few languages	
+Nigerian Pidgin	FAIL	NJ: too few languages	
+Tok Pisin	FAIL	NJ: too few languages	
+Saliban	FAIL	NJ: the distances matrix is too small	
+Sign Language Indo-Pakistani {Karachi}	FAIL	NJ: too few languages	
+Guinea Bissau Crioulo	FAIL	NJ: too few languages	
+Principense	FAIL	NJ: too few languages	
+Sign Language Plains-Indians	FAIL	NJ: too few languages	
+Lingua Gestual Portuguesa	FAIL	NJ: too few languages	
+Puinave	FAIL	NJ: too few languages	
+Anson Bay	FAIL	NJ: the distances matrix is too small	
+Eastern Daly	FAIL	NJ: the distances matrix is too small	
+Kriol {Ngukurr}	FAIL	NJ: too few languages	
+Sign Language Russian	FAIL	NJ: too few languages	
+Shabo	FAIL	NJ: too few languages	
+Seri	FAIL	NJ: too few languages	
+East Strickland	FAIL	NJ: too few languages	
+Saramaccan	FAIL	NJ: too few languages	
+Sranan	FAIL	NJ: too few languages	
+Sign Language Spanish	FAIL	NJ: too few languages	
+Svenska Teckenspråket	FAIL	NJ: too few languages	
+Jebel	FAIL	NJ: too few languages	
+Tikuna-Yuri	FAIL	NJ: too few languages	
+Kayagar	FAIL	NJ: too few languages	
+Broken	FAIL	NJ: too few languages	
+Temein	FAIL	NJ: too few languages	
+Upper Yuat	FAIL	NJ: too few languages	
+Subtiaba-Tlapanec	FAIL	NJ: too few languages	
+Taushiro	FAIL	NJ: too few languages	
+Turk Isaret Dili	FAIL	NJ: too few languages	
+Sign Language Thai	FAIL	NJ: too few languages	
+Sign Language Taiwanese	FAIL	NJ: too few languages	
+Sign Language Tanzania	FAIL	NJ: too few languages	
+Sign Language Ugandan	FAIL	NJ: too few languages	
+Sign Language Urubu	FAIL	NJ: too few languages	
+Western Fly	FAIL	NJ: too few languages	
+Chipaya	FAIL	NJ: the distances matrix is too small	
+Urim	FAIL	NJ: too few languages	
+Berta	FAIL	NJ: too few languages	
+Sign Language Kenyan	FAIL	NJ: too few languages	
+Yaruro	FAIL	NJ: too few languages	
+Yahgan	FAIL	NJ: too few languages	
+Yeli Dnye	FAIL	NJ: too few languages	
+Yareban	FAIL	NJ: too few languages	
+Hoti	FAIL	NJ: too few languages	
+Kara	FAIL	NJ: too few languages	
+Kanoe	FAIL	NJ: too few languages	
+Matanawi	FAIL	NJ: too few languages	
+Oti	FAIL	NJ: too few languages	
+Tiniguan	FAIL	NJ: too few languages	
+Awake	FAIL	NJ: too few languages	
+Caliana	FAIL	NJ: too few languages	
+Taruma	FAIL	NJ: too few languages	
+Yuat	FAIL	NJ: too few languages	
+Left May	FAIL	NJ: the distances matrix is too small	
+Kwomtari	FAIL	NJ: the distances matrix is too small	
+Bangime	FAIL	NJ: too few languages	
+Baibai-Fas	FAIL	NJ: too few languages	
+Leko	FAIL	NJ: too few languages	
+Somahai	FAIL	NJ: too few languages	
