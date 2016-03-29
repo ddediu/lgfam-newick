@@ -10,12 +10,16 @@ The aims of this project are to:
 a) provide several well-known linguistic (genealogical) classifications (currently [WALS](http://wals.info/), [Ethnologue](http://www.ethnologue.com/), [Glottolog](http://glottolog.org/) and [AUTOTYP](http://www.autotyp.uzh.ch/)) in the *de facto* standard [Newick format](https://en.wikipedia.org/wiki/Newick_format), and
 b) offer a set of [`R`](http://www.r-project.org/) `S3` classes and functions for reading, converting, writing and working with language family trees.
 
+Also included is code by [Balthasar Bickel](http://www.linguistik.uzh.ch/en/about/mitglieder/bickel.html) that matches tree nodes to datasets and prunes the trees to keep only the nodes that have matching data (the `./code/MatchTreesToData.R` script).s
+
 ## Accompanying paper, outputs and acknowledging this work
 
 The **accompanying paper** (in the `./paper/` directory) describes in detail the data sources and the conversion process.
 The paper itself is written in [`R Markdown`](http://rmarkdown.rstudio.com/) and can be compiled to PDF (the primary output in the `family-trees-with-brlength.pdf` file) or HTML (the `family-trees-with-brlength.html` file).
 
 The actual Newick trees with branch lengths are in the `./output/` directory and can be used directly (the file formats are described in the **accompanying paper** but briefly they come as **CSV TAB-separated files** and equivalent **Nexus files** that contain the language family trees in the **Newick format**; the file name gives details about the classification, method and parameters used to compute the topology and branch lengths).
+
+**Note**: when using these trees from `R` the best (and recommended) way to read them is with the function `languageclassification()` (in file `FamilyTrees.R`) which returns an `S3` object of type `languageclassification` containing the list of trees and giving access to various useful things such as pretty printing, collapsing and restoring single nodes, etc. (besides, those trees extend the standard `phylo` class so most usual things should work out-of-the-box). Definitely do *not* use `ape`'s `read.tree()` (as it is known to be pretty fussy especially when it comes to single nodes) and if you must please do use instead `phytools`'s `read.newick()` instead!
 
 If you use (parts of) the `R` scripts and/or the generated Newick trees, please do cite this in your work and provide links to this repository ([https://github.com/ddediu/lgfam-newick](https://github.com/ddediu/lgfam-newick))!
 

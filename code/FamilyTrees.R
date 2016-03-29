@@ -96,7 +96,7 @@ nexus.string <- cmpfun(nexus.string);
 
 # For a given qualified name (possibly quoted and with codes [i-][w-][a-][g-]), extract the proper name and the codes:
 # The glottolog.convention concerns the language codes: it gives [glottocode]{[iso]} where {}=optional:
-extract.name.and.codes <- function( full.name, quotes="'", glottolog.convention=FALSE )
+extract.name.and.codes <- function( full.name, quotes="'", glottolog.convention=FALSE, language.name.can.be.empty=FALSE )
 {
   if( !is.na(quotes) )
   {
@@ -113,8 +113,14 @@ extract.name.and.codes <- function( full.name, quotes="'", glottolog.convention=
   name <- str_trim( strsplit( full.name, "[", fixed=TRUE )[[1]][1] );
   if( is.null(name) || name=="" )
   {
-    if( PRINT_DEBUG_MESSAGES ) cat( "Malformed qualified name: the actual name is not specified!\n" );
-    return (NULL);
+    if( !language.name.can.be.empty )
+    {
+      if( PRINT_DEBUG_MESSAGES ) cat( "Malformed qualified name: the actual name is not specified!\n" );
+      return (NULL);
+    } else
+    {
+      name <- "";
+    }
   }
   
   isocode <- walscode <- autotypcode <- glottocode <- "";
@@ -200,6 +206,48 @@ create.name.and.codes <- function(name, iso="", wals="", autotyp="", glottocode=
 }
 create.name.and.codes <- cmpfun(create.name.and.codes);
 
+# Test if two nodes contain the same language info:
+are.nodes.equal <- function( x, y, quotes=NA, are.nodes.parsed=FALSE )
+{
+  if( !are.nodes.parsed )
+  {
+    x <- extract.name.and.codes(x, quotes=quotes, language.name.can.be.empty=TRUE);
+    y <- extract.name.and.codes(y, quotes=quotes, language.name.can.be.empty=TRUE);
+  }
+  
+  # Helper function: any string is equal to NA or "", but if defined they must be identical:
+  .helper.equal <- function( s1, s2 )
+  {
+    if( is.na(s1) || s1 == "" || is.na(s2) || s2 == "" )
+    {
+      return (TRUE); # whatever...
+    } else
+    {
+      return (s1 == s2); # but if defined they must really be equal
+    }
+  }
+  
+  # Helper function: check the equality of two (lists) of codes, taking into account permutations and inclusions:
+  .helper.equal.codes <- function( c1, c2, strictly.equal=FALSE )
+  {
+    if( is.null(c1) || is.na(c1) || c1 == "" || is.null(c2) || is.na(c2) || c2 == "" )
+    {
+      return (TRUE); # whatever...
+    } else
+    {
+      # But if defined they must really be equal
+      return ( ifelse( strictly.equal, setequal(c1,c2), length( intersect(c1,c2) ) > 0 ) ); 
+    }
+  }
+  
+  return ( .helper.equal( x$name, y$name ) && 
+             .helper.equal.codes( x$iso, y$iso ) && 
+             .helper.equal.codes( x$wals, y$wals ) && 
+             .helper.equal.codes( x$autotyp, y$autotyp ) && 
+             .helper.equal.codes( x$glottolog, y$glottolog ) );
+}
+are.nodes.equal <- cmpfun(are.nodes.equal);
+
 # Convert from the glottolog to my convention filling in the extra codes as well:
 .glottolog2mine <- function(name, mapping, quotes="'")
 {
@@ -260,6 +308,12 @@ familytree <- function(text=NULL, tree.name="", file.name="")
   return (p);
 }
 # tree <- familytree("(((Chicomuceltec[i-cob][w-cec][a-1167][g-chic1271]:0.777778)Huastecan[i-][w-][a-][g-huas1241]:0.111111,(((((Chol[i-ctu][w-][a-1196][g-chol1282]:0.333333,(Buena_Vista_Chontal[i-][w-][a-][g-buen1245]:0.222222,Miramar_Chontal[i-][w-][a-][g-mira1253]:0.222222,Tamulté_de_las_Sábanas_Chontal[i-][w-][a-][g-tamu1247]:0.222222)Tabasco_Chontal[i-chf][w-cmy][a-1136][g-taba1266]:0.111111)Chol-Chontal[i-cti][w-col][a-][g-chol1281]:0.111111,(Cholti[i-][w-][a-][g-chol1283]:0.333333,Chorti[i-caa][w-coi][a-1105][g-chor1273]:0.333333)Chorti-Cholti[i-][w-][a-][g-chor1272]:0.111111,Epigraphic_Mayan[i-emy][w-][a-][g-epig1241]:0.444444)Cholan[i-][w-][a-][g-chol1287]:0.111111,((Chanal_Cancuc[i-][w-][a-][g-chan1320]:0.333333,Tenango[i-][w-][a-][g-tena1239]:0.333333)Tzeltal[i-tzh][w-tza-tzt][a-1433-1434-2651-804][g-tzel1254]:0.111111,Tzotzil[i-tzo][w-][a-2652-2654-2655][g-tzot1259]:0.444444)Tzeltalan[i-tzb][w-tze][a-][g-tzel1253]:0.111111)Cholan-Tzeltalan[i-][w-][a-][g-chol1286]:0.111111,((Chuj[i-cac][w-][a-1107][g-chuj1250]:0.444444)Chujean[i-cac][w-chj][a-][g-chuj1249]:0.111111,((Popti`[i-jac][w-jak][a-460][g-popt1235]:0.333333,Q`anjob`al[i-kjb][w-kea][a-1760][g-qanj1241]:0.333333,Western_Kanjobal[i-knj][w-kwe][a-1787][g-west2635]:0.333333)Kanjobal-Jacaltec[i-][w-][a-][g-kanj1263]:0.111111,(Motozintleco[i-][w-][a-][g-moto1243]:0.333333,Tuzanteco[i-][w-][a-][g-tuza1238]:0.333333)Mocho[i-mhc][w-][a-][g-moch1257]:0.111111)Kanjobalan[i-][w-][a-][g-kanj1262]:0.111111)Kanjobalan-Chujean[i-][w-][a-][g-kanj1261]:0.111111,(((Aguacateco[i-agu][w-agu][a-855][g-agua1252]:0.333333,Ixil[i-ixl][w-][a-1665][g-ixil1251]:0.333333)Ixilan[i-ixi][w-ixi][a-][g-ixil1250]:0.111111,(Mam[i-mam][w-][a-2039-2101][g-mamm1241]:0.333333,Tektiteko[i-ttc][w-tec][a-2627][g-tekt1235]:0.333333)Mamean[i-][w-][a-][g-mame1240]:0.111111)Greater_Mamean[i-][w-][a-][g-grea1277]:0.111111,(Kekchi[i-kek][w-kek][a-1730][g-kekc1242]:0.444444,(((Kaqchikel[i-cak][w-][a-][g-kaqc1270]:0.111111,Tz`utujil[i-tzj][w-][a-388][g-tzut1248]:0.111111)Cakchiquel-Tzutujil[i-tzj][w-tzu][a-][g-cakc1244]:0.111111,(Achi[i-acr][w-][a-826][g-achi1256]:0.111111,K`iche`[i-quc][w-qch][a-337][g-kich1262]:0.111111)Quiche-Achi[i-acc][w-aci][a-][g-quic1275]:0.111111,Sacapulteco[i-quv][w-][a-][g-saca1238]:0.222222,Sipacapense[i-qum][w-qum][a-3121][g-sipa1247]:0.222222)Core_Quichean[i-][w-][a-][g-core1251]:0.111111,(Poqomam[i-poc][w-pcm][a-2317-2319][g-poqo1253]:0.222222,Poqomchi`[i-poh][w-][a-2318][g-poqo1254]:0.222222)Pocom[i-pob][w-pkm][a-][g-poco1241]:0.111111)Poqom-Quichean[i-][w-][a-][g-poqo1252]:0.111111,Uspanteco[i-usp][w-][a-][g-uspa1245]:0.444444)Greater_Quichean[i-][w-][a-][g-grea1276]:0.111111)Quichean-Mamean[i-][w-][a-][g-quic1274]:0.111111)Core_Mayan[i-][w-][a-][g-core1254]:0.111111,((Itza[i-itz][w-itz][a-1660][g-itza1241]:0.555556,Mopan_Maya[i-mop][w-mop][a-2058][g-mopa1243]:0.555556)Mopan-Itza[i-][w-][a-][g-mopa1242]:0.111111,((Lacanjá/[i-][w-][a-][g-laca1244]:0.444444,Najá[i-][w-][a-][g-naja1242]:0.444444)Lacandon[i-lac][w-lac][a-1861][g-laca1243]:0.111111,Yucateco[i-yua][w-yct][a-682][g-yuca1254]:0.555556)Yucatec-Lacandon[i-][w-][a-][g-yuca1253]:0.111111)Yucatecan[i-][w-][a-][g-yuca1252]:0.111111)Yucatecan-Core_Mayan[i-][w-][a-][g-yuca1255]:0.111111)Mayan[i-][w-][a-][g-maya1287]:0.111111);", "Mayan");
+
+as.phylo.familytree <- function(tree)
+{
+  class(tree) <- "phylo";
+  tree;
+}
 
 # Get name is generic:
 get.name <- function(x) UseMethod("get.name");
@@ -697,12 +751,27 @@ extract.subtrees.of.level <- function( tree, level=2 )
 }
 extract.subtrees.of.level <- cmpfun(extract.subtrees.of.level);
 
-# Prune a tree by keeping only those languages in the given set
+# Prune a tree by keeping only those languages and internal nodes in the given set:
 prune.family.to.subset <- function( tree, languages.set )
 { 
   if( inherits(tree, "familytree") && !is.null(languages.set) && length(languages.set) > 0 )
   {
-    subtree <- drop.tip(tree, setdiff(tree$tip.label, languages.set));
+    # Are there internal nodes in this list?
+    internal.nodes <- intersect(extract.internal.nodes(tree), languages.set);
+    if( length(internal.nodes) > 0 )
+    {
+      # Extract the paths to all the nodes (internal and terminal):
+      nodes.paths <- lapply(languages.set, function(s) extract.path(tree, s, include.root=TRUE, include.brlen=TRUE)); names(nodes.paths) <- languages.set;
+    
+      # Build a new tree from these paths:
+      subtree <- NULL;
+      for( path in nodes.paths ) subtree <- add.tree.path(subtree, path[-1], brlens=as.numeric(names(path)[-1]));
+    } else
+    {
+      # Standard tip prunning:
+      subtree <- drop.tip(tree, setdiff(tree$tip.label, languages.set));
+    }
+
     return (subtree);
   } else
   {
@@ -711,8 +780,8 @@ prune.family.to.subset <- function( tree, languages.set )
 }
 prune.family.to.subset <- cmpfun(prune.family.to.subset);
 
-# Extract the path from the root to a node (language or internal node) as a vector of strings starting with the root:
-extract.path <- function( tree, node, include.root=TRUE )
+# Extract the path from the root to a node (language or internal node) as a vector of strings starting with the root; if requested, the brlens are included as the names:
+extract.path <- function( tree, node, include.root=TRUE, include.brlen=TRUE )
 { 
   if( inherits(tree, "familytree") && length(node)==1 && !is.null(root <- find.root(tree)) )
   {
@@ -728,10 +797,12 @@ extract.path <- function( tree, node, include.root=TRUE )
     }
     if( cur.node < 0 || cur.node > Nnode(tree, internal.only=FALSE) ) return (NULL);
     # Walk up from the tip to the root:
-    path <- NULL;
+    path <- NULL; prev.node <- (-1);
     while(TRUE)
     {
       path <- c(.get.node.name(tree, cur.node), path);
+      if( include.brlen && !is.null(tree$edge.length) && prev.node != (-1) ) names(path)[2] <- tree$edge.length[ tree$edge[,2] == prev.node & tree$edge[,1] == cur.node ];
+      prev.node <- cur.node;
       cur.node <- .find.parent(tree, cur.node);
       if( cur.node <= 0 || (!include.root && cur.node == root) ) break;
     }
@@ -819,7 +890,7 @@ add.tree.path <- function( tree, path, brlens=NULL, warn.on.duplicated.tip=TRUE 
     if( cur.node <= Ntip(tree) )
     {
       # This is a tip:
-      if( cur.path != path.len ) cat("Path '", paste0(path,collapse=","), "' contains a tip node\n" );
+      if( cur.path != path.len ) warning(paste0("Path '", paste0(path,collapse=","), "' contains a tip node (", .get.node.name(tree,cur.node), ")\n" ));
       return (tree); # nothing to add here!
     } else
     {
@@ -831,7 +902,7 @@ add.tree.path <- function( tree, path, brlens=NULL, warn.on.duplicated.tip=TRUE 
       }
       cur.path <- cur.path+1;
       children <- which(tree$edge[,1] == cur.node);
-      if( length(children) == 0 ){ cat("Malformed tree: internal node without children!\n"); return (NULL); }
+      if( length(children) == 0 ){ warning("Malformed tree: internal node without children!\n"); return (NULL); }
       matching.children <- vapply(children, function(i) .get.node.name(tree,tree$edge[i,2]) == path[cur.path], logical(1));
       if( sum(matching.children,na.rm=TRUE) >= 1 )
       {
