@@ -26,7 +26,7 @@ If you use (parts of) the `R` scripts and/or the generated Newick trees, please 
 
 ## Releases
 
-"Official" releases can be found in the `./relases` directory.
+"Official" releases can be found in the `./releases` directory.
 
 
 ## Running the `R` code
