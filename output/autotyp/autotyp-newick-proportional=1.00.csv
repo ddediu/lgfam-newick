@@ -339,7 +339,7 @@ Mombum	SUCCESS	Path length proportional to the number of splits with atomic bran
 Monumbo	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Monumbo [i-mxk][w-mbo][a-2109][g-nucl1458]':1)'Monumbo [i-][w-][a-][g-]':1);
 Naga Pidgin	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Naga Pidgin [i-nag][w-npn][a-2128][g-naga1394]':1)'Naga Pidgin [i-][w-][a-][g-]':1);
 Yale	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Nagatman [i-nce][w-nag][a-2143][g-yale1246]':1)'Yale [i-][w-][a-][g-]':1);
-Norsk Tegnspråk	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Norsk Tegnspråk [i-nsl][w-nte][a-2205][g-norw1255]':1)'Norsk Tegnspråk [i-][w-][a-][g-]':1);
+Norsk Tegnspr<U+FFFD><U+FFFD>k	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Norsk Tegnspr<c3><a5>k [i-nsl][w-nte][a-2205][g-norw1255]':1)'Norsk Tegnspr<c3><a5>k [i-][w-][a-][g-]':1);
 Sign Language New Zealand	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Sign Language New Zealand [i-nzs][w-nzs][a-2237][g-newz1236]':1)'Sign Language New Zealand [i-][w-][a-][g-]':1);
 Eleman	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Toaripi [i-tqo][w-toa][a-2604][g-toar1246]':1,'Kaki Ae [i-tbd][w-kae][a-2522][g-kaki1249]':1,'Orokolo [i-oro][w-orl][a-2256][g-orok1267]':1)'Eleman [i-][w-][a-][g-]':1);
 Papiamentu	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Papiamentu [i-pap][w-pap][a-2269][g-papi1253]':1)'Papiamentu [i-][w-][a-][g-]':1);
@@ -362,7 +362,7 @@ East Strickland	SUCCESS	Path length proportional to the number of splits with at
 Saramaccan	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Saramaccan [i-srm][w-srm][a-2474][g-sara1340]':1)'Saramaccan [i-][w-][a-][g-]':1);
 Sranan	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Sranan [i-srn][w-sra][a-2475][g-sran1240]':1)'Sranan [i-][w-][a-][g-]':1);
 Sign Language Spanish	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Sign Language Spanish [i-ssp][w-lse][a-2485][g-span1263]':1)'Sign Language Spanish [i-][w-][a-][g-]':1);
-Svenska Teckenspråket	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Svenska Teckenspråket [i-swl][w-svt][a-2503][g-swed1236]':1)'Svenska Teckenspråket [i-][w-][a-][g-]':1);
+Svenska Teckenspr<U+FFFD><U+FFFD>ket	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Svenska Teckenspr<c3><a5>ket [i-swl][w-svt][a-2503][g-swed1236]':1)'Svenska Teckenspr<c3><a5>ket [i-][w-][a-][g-]':1);
 Jebel	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Ingessana [i-tbi][w-igs][a-2525][g-gaam1241]':1)'Jebel [i-][w-][a-][g-]':1);
 Tikuna-Yuri	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Ticuna [i-tca][w-tic][a-2530][g-ticu1245]':1)'Tikuna-Yuri [i-][w-][a-][g-]':1);
 Kayagar	SUCCESS	Path length proportional to the number of splits with atomic branch length = 1	(('Tamagario [i-tcg][w-tmg][a-2533][g-tama1336]':1)'Kayagar [i-][w-][a-][g-]':1);

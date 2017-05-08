@@ -339,7 +339,7 @@ Mombum	SUCCESS	Grafen's (1989) method	(('Mombum [i-mso][w-mom][a-2084][g-nucl145
 Monumbo	SUCCESS	Grafen's (1989) method	(('Monumbo [i-mxk][w-mbo][a-2109][g-nucl1458]':0)'Monumbo [i-][w-][a-][g-]':0);
 Naga Pidgin	SUCCESS	Grafen's (1989) method	(('Naga Pidgin [i-nag][w-npn][a-2128][g-naga1394]':0)'Naga Pidgin [i-][w-][a-][g-]':0);
 Yale	SUCCESS	Grafen's (1989) method	(('Nagatman [i-nce][w-nag][a-2143][g-yale1246]':0)'Yale [i-][w-][a-][g-]':0);
-Norsk Tegnspråk	SUCCESS	Grafen's (1989) method	(('Norsk Tegnspråk [i-nsl][w-nte][a-2205][g-norw1255]':0)'Norsk Tegnspråk [i-][w-][a-][g-]':0);
+Norsk Tegnspr<U+FFFD><U+FFFD>k	SUCCESS	Grafen's (1989) method	(('Norsk Tegnspr<c3><a5>k [i-nsl][w-nte][a-2205][g-norw1255]':0)'Norsk Tegnspr<c3><a5>k [i-][w-][a-][g-]':0);
 Sign Language New Zealand	SUCCESS	Grafen's (1989) method	(('Sign Language New Zealand [i-nzs][w-nzs][a-2237][g-newz1236]':0)'Sign Language New Zealand [i-][w-][a-][g-]':0);
 Eleman	SUCCESS	Grafen's (1989) method	(('Toaripi [i-tqo][w-toa][a-2604][g-toar1246]':2,'Kaki Ae [i-tbd][w-kae][a-2522][g-kaki1249]':2,'Orokolo [i-oro][w-orl][a-2256][g-orok1267]':2)'Eleman [i-][w-][a-][g-]':0);
 Papiamentu	SUCCESS	Grafen's (1989) method	(('Papiamentu [i-pap][w-pap][a-2269][g-papi1253]':0)'Papiamentu [i-][w-][a-][g-]':0);
@@ -362,7 +362,7 @@ East Strickland	SUCCESS	Grafen's (1989) method	(('Nomad [i-smq][w-nmd][a-2451][g
 Saramaccan	SUCCESS	Grafen's (1989) method	(('Saramaccan [i-srm][w-srm][a-2474][g-sara1340]':0)'Saramaccan [i-][w-][a-][g-]':0);
 Sranan	SUCCESS	Grafen's (1989) method	(('Sranan [i-srn][w-sra][a-2475][g-sran1240]':0)'Sranan [i-][w-][a-][g-]':0);
 Sign Language Spanish	SUCCESS	Grafen's (1989) method	(('Sign Language Spanish [i-ssp][w-lse][a-2485][g-span1263]':0)'Sign Language Spanish [i-][w-][a-][g-]':0);
-Svenska Teckenspråket	SUCCESS	Grafen's (1989) method	(('Svenska Teckenspråket [i-swl][w-svt][a-2503][g-swed1236]':0)'Svenska Teckenspråket [i-][w-][a-][g-]':0);
+Svenska Teckenspr<U+FFFD><U+FFFD>ket	SUCCESS	Grafen's (1989) method	(('Svenska Teckenspr<c3><a5>ket [i-swl][w-svt][a-2503][g-swed1236]':0)'Svenska Teckenspr<c3><a5>ket [i-][w-][a-][g-]':0);
 Jebel	SUCCESS	Grafen's (1989) method	(('Ingessana [i-tbi][w-igs][a-2525][g-gaam1241]':0)'Jebel [i-][w-][a-][g-]':0);
 Tikuna-Yuri	SUCCESS	Grafen's (1989) method	(('Ticuna [i-tca][w-tic][a-2530][g-ticu1245]':0)'Tikuna-Yuri [i-][w-][a-][g-]':0);
 Kayagar	SUCCESS	Grafen's (1989) method	(('Tamagario [i-tcg][w-tmg][a-2533][g-tama1336]':0)'Kayagar [i-][w-][a-][g-]':0);

@@ -1,0 +1,1075 @@
+
+\documentclass[a4paper,10pt,onecolumn,twoside]{article}
+
+\title{Language classifications as standardized Newick phylogenetic trees with branch length}
+
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{gensymb}
+\usepackage{enumerate}
+\usepackage{morefloats}
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{draftwatermark}
+\SetWatermarkText{DRAFT}
+\SetWatermarkScale{1}
+\SetWatermarkLightness{0.9}
+\usepackage{color}
+
+
+\author{Dan Dediu\\
+  Language and Genetics,\\
+  Max Planck Institute for Psycholinguistics,\\
+  Nijmegen, The Netherlands\\
+  \href{mailto:Dan.Dediu@mpi.nl}{\texttt{Dan.Dediu@mpi.nl}}}
+\date{\today\\
+      ~\\
+      {\color{blue}\textbf{DRAFT}: please do not distribute without permission}}
+
+
+\begin{document}
+% Sweave options:
+\SweaveOpts{concordance=TRUE, echo=FALSE, split=FALSE}
+\setkeys{Gin}{width=0.5\textwidth}
+% Do the expensive computations?
+<<>>=
+do.expensive.computations <- TRUE; 
+@
+
+% Title:
+\maketitle
+
+% Abstract:
+\begin{abstract}
+One of the best-known types of non-independence between languages is represented by genetic relationships due to descent from a common ancestor.
+While there are several classifications of languages into language families, each with its own advantages and disadvantages, they are relatively difficult to use by computational methods due to a lack of standardization.
+Moreover, certain advanced methods (such as phylogenetics) require not only the topology of the language family tree but also information concerning the amount of evolution that has happened on the tree represented as the branch lengths, and this information is usually missing.
+This paper presents a method that converts the language classifications provided by four widely-used databases (Ethnologue, WALS, AUTOTYP and Glottolog) into the \textit{de facto} Newick standard, aligns the four most used conventions of unique identifiers for linguistic entities (ISO 639-3, WALS, AUTOTYP and Glottocode), and adds branch length information form a variety of sources (the tree's own topology, an externally given numeric constant or a distance matrix).
+The \texttt{R} scripts, input data and resulting Newick trees are provided in the associated Supplementary Materials in the hope that this will promote the use of advanced quantitative methods in answering questions concerning linguistic diversity and its temporal dynamics.
+\end{abstract}
+
+
+% Introduction:
+\section{Introduction}
+\label{Sec:Introduction}
+
+Languages are not independent entities and the proper treatment of the various types of non-independence is crucial to drawing valid inferences (e.g., \citealp{ladd_correlational_2015,roberts_linguistic_2013}).
+One of the best-known type of non-independence is due to shared ancestry \citep{campbell_language_2008}: the daughter languages tend to be more similar than expected due to the inheritance of characteristics from the mother language, similarity that tends to decrease with increasing temporal separation (this is also knwon as ``Galton's problem'' and applies more generally than linguistics; \citealp{mace_comparative_1994}).
+Such related languages descending from a common \emph{proto-language} form a \emph{language family}, the internal structure of which is usually represented as a tree.
+In such a tree, the attested, present-day or recent, languages form the \emph{leaves} (or \emph{terminal nodes}) of the tree and the \emph{internal nodes} represent extinct, mostly unattested, languages\footnote{Of course there are exceptions, such the inclusion of Latin -- a well-attested extinct language -- at the base of the Romance subfamily (e.g., \citealp{chang_ancestry-constrained_2015}).}.
+
+Reliably identifying such \emph{genetic relationships} is a complex problem \citep{campbell_language_2008,bowern_routledge_2014} and many controversies exist, not only in what concerns the so-called ``macro-families'' but also in the composition and internal structure of more accepted language families.
+For example, disagreements might exist in the actual set of languages belonging to the same family, in the internal relationships between these languages (the tree \emph{topology}) and the amount of change (the \emph{branch lengths}); see Figure \ref{Fig:language family trees}.
+
+% draw language trees:
+\setkeys{Gin}{width=3in,height=1in}
+\begin{figure}
+  \begin{center}
+<<lgfamtrees,fig=TRUE,width=3,height=1>>=
+# Draw simple language trees:
+require(ape);
+trees <- list( read.tree(text="((A:1,B:1)P1:1,(C:1,D:1)P2:1)P3:1;"), read.tree(text="((A:1,B:1,C:1)P4:1,D:1)P5:1;"), read.tree(text="((A:0.5,B:0.2,C:0.4)P4:0.1,D:0.8)P5:1;") );
+par(mfrow=c(1,length(trees)), mar=c(0,0,0,1)+0.1);
+for( i in 1:length(trees) )
+{
+  plot(trees[[i]], ty="cladogram", show.node.label=TRUE, root.edge=FALSE, direction="downwards", srt=90, edge.color=grey(0.7), adj=0.5, no.margin=FALSE, cex=1);
+}
+@
+  \end{center}
+  \caption{Three language families composed of the same four languages (\textit{A}, \textit{B}, \textit{C} and \textit{D}) but with different structures (left vs centre) and branch length (centre vs right). Time flows downwards from the proto-language at the top (\textit{P3}, \textit{P5} and \textit{P5} respectively) towards the attested languages at the bottom. For example, in the leftmost tree languages \textit{A} and \textit{B} are more closely related than any is to language \textit{C}. In the rightmost tree, language \textit{B} has changed least since its most recent common ancestor (\textit{P4}) with languages \textit{A} and \textit{B}.}
+  \label{Fig:language family trees}
+\end{figure}
+
+There are three major difficulties facing modern quantitative methods that need to use such language classifications:
+\begin{enumerate}
+  \item the existence of several such classifications,
+  \item the often non-standardized format these classifications are available in, and, 
+  \item specifically for methods (e.g., phylogenetic) that take into account not only the toplogy of the tree but also the amount of change, the general absence of branch length estimates.
+\end{enumerate}
+
+This paper offers a solution to these issues by proposing a standardized representation of language family trees from several classifications using the \textit{de facto} standard \emph{Newick} tree format\footnote{This format is described in \url{http://evolution.genetics.washington.edu/phylip/newicktree.html}.}, with added brach length estimates using multiple methods\footnote{\textit{NB} for a few large families (including Indo-European, Austronesian, Bantu and Uto-Aztecan, with this list continuously growing) high-quality posterior samples of trees with branch length derived from cognacy judgments on the basic vocabulary (and even with calibaration data) using Bayesian phylogenetic methods (e.g. \citealp{bouckaert_mapping_2012,dunn_evolved_2011}) are available, but this is currently not the case for the vast majority of the families.}.
+Here I briefly describe the data sources, methods and output formats, while the accompanying Supplementary Materials contain the actual primary data (wherever possible), the \texttt{R} code and the resulting Newick language family trees with branch length.
+
+
+% Methods:
+\section{Data, methods and outputs}
+\label{Sec:Data, methods and outputs}
+
+The language family topologies are given by the following four widely used language classifications: the Ethnologue (denoted in the following as \textbf{E}; \citealp{lewis_ethnologue_2014}), the World Atlas of Language Structures Online (WALS, \textbf{W}; \citealp{wals2013}), AUTOTYP (\textbf{A}; \citealp{Nicholsetal2013autotyp}) and Glottolog (\textbf{G}; \citealp{glottolog2014}).
+For each of these resources, I downloaded the raw data containing the language classifications and converted them to Newick trees without branch length information.
+
+
+\subsection{Mapping between codes}
+\label{Sec:Mapping between codes}
+
+However, before describing this transformation, it is important to discuss the issue of language \emph{unique identifiers}.
+Currently, there are several methods for allocating unique (and hopefully also persistent) identifiers to linguistic entities (most often existing or recently extinct languages, but also dialects or proto-languages) and this is far from a simple problem.
+Here, four standards are relevant: ISO 639-3 codes (tree letters, denoted in the follwing as \textbf{i}; \url{http://www-01.sil.org/iso639-3}), WALS codes (three letters, \textbf{w}; \url{http://wals.info}), AUTOTYP LIDs (numeric, \textbf{a}; \url{http://www.autotyp.uzh.ch}), and Glottocodes (alphanumeric: four letters followed by four digits, \textbf{g}; \url{http://glottolog.org/glottolog/glottologinformation}).
+As a first step, I mapped these codes for all the linguistic entities present in the four databases, a process made possible by the fact that some of these also give other codes besides their primary one for the linguistic entities therein (Table \ref{Tab:mapping between codes}).
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{r|c|c}
+    Database                & Primary code & Other codes           \\
+    \hline
+    Ethnologue (\textbf{E}) & \textbf{i}   & -                     \\
+    WALS (\textbf{W})       & \textbf{w}   & \textbf{i} \textbf{g} \\
+    AUTOTYP (\textbf{A})    & \textbf{a}   & \textbf{i} \textbf{g} \\
+    Glottolog (\textbf{G})  & \textbf{g}   & \textbf{i}            \\
+  \end{tabular}
+  \caption{Codes present in the databases; most databases also give other codes besides their primary code. Legend for codes: \textbf{i} = ISO 639-3, \textbf{w} = WALS, \textbf{a} = AUTOTYP LID, and \textbf{g} = Glottocode.}
+  \label{Tab:mapping between codes}
+\end{table}
+
+This mapping is contained in the TAB-separated file \texttt{./output/code\_mappings\_iso\_wals\_autotyp\_glottolog.csv} which gives for each unique linguistic entity (the rows) the corresponding ISO 639-3 code (column ``ISO''), WALS code (column ``WALS''), AUTOTYP LID (column ``AUTOTYP''), Glottocode (column ``Glottolog''), the name as given by Ethnologue (column ``Name.ethn''), by WALS (column ``Name.ethn''), by AUTOTYP (column ``Name.autotyp'') and by Glottolog (column ``Name.glottolog''), as well as the geographic coordinates (columns ``Latitude'' and ''Longitude'') in degrees as given by WALS and Glottolog\footnote{When there is a discrepance greater than $1\degree$ between the two, WALS wins.}.
+
+
+\subsection{Building the tree topologies}
+\label{Sec:Building the tree topologies}
+
+A second step is represented by the gathering of the raw data concerning the structure of the language families and exporting them as pure tree topologies in Newick format (without any branch length information).
+Each database poses its own challanges as they tend to use particular representations of the genetic relationships between languages.
+To standardize the process of topology extraction, conversion, exporting to and importing from file, I have written a collection of \texttt{R} \citep{R2014} types and functions (file \texttt{FamilyTrees.R}) which extends the \textit{de facto} standard for representing phylogenetic trees in \texttt{R} as objects of class \texttt{phylo} (package \texttt{ape2004}; \citealp{ape}).
+
+The list below summarizies the format of the raw data and its acquisition:
+\begin{description}
+  \item[Ethnologue \citep{lewis_ethnologue_2014}] as opposed to the other three databases, the language classification data here is not provided in an easily downloadable form; instead, the Ethnologue website provides\footnote{Under a set of conditions contained in the Terms of Use (\url{www.ethnologue.com/terms-use}) which allow ``portions'' of the data to be used for ``research or educational purposes''.} (as of February 2015) a webpage (\url{http://www.ethnologue.com/browse/families}) containing a list with all the language families and links to their respective webpages (e.g., \url{http://www.ethnologue.com/subgroups/afro-asiatic}). These family webpages were further downloaded and parsed in order to extract the tree structure of the family, as well as the group names and the language names and ISO 639-3 codes\footnote{The data used in this paper and included in the supplementary materials was harvested in Feburary 2015.};
+  \item[WALS Online \citep{wals2013}] provides the whole database (including language name, codes, geographic coordinates but also values for more than 130 typological features; \url{http://wals.info/static/download/wals-language.csv.zip}) under a Creative Commons Attribution-NonCommercial-NoDerivs 2.0 Germany (CC BY-NC-ND 2.0 DE; \url{http://creativecommons.org/licenses/by-nc-nd/2.0/de/deed.en}); here the important columns are WALS, ISO 639-3 and Glottolog codes, the language names and its ``genus'' and ``family'', resulting in a rather flat three-levels structure; 
+  \item[AUTOTYP \citep{Nicholsetal2013autotyp}] the AUTOTYP trees are freely available for download (\url{http://www.autotyp.uzh.ch/available.html}), use and distribution provided that its source is clearly cited; the format of the language families is similar to the WALS in the sense that each language (row) contains the language names, the AUTOTYP LID, the Glottolog and the ISO 639-3 codes, as well as the ``stock'', ``mbranch'', ``sbranch'', ``ssbranch'' and ``lsbranch'' names, each denoting more and more superificial levels (i.e., the ``stock'' is highest levels corresponding to the language family), and in some cases such an intermediate level might be missing;
+  \item[Glottolog \citep{glottolog2014}] as opposed to the other three databases, Glottlog provides the family trees already in a standardized Newick format (\url{http://glottolog.org/static/trees/tree-glottolog-newick.txt}) under a Creative Commons Attribution-ShareAlike 3.0 Unported License (CC BY-SA 3.0]; \url{http://creativecommons.org/licenses/by-sa/3.0}) license; here I only expanded the language codes with WALS and AUTOTYP.
+\end{description}
+
+The basic idea behind building the standardized tree topologies from these diverse formats\footnote{Except for Glottolog, which provides a Newick format that requires only very light processing.} is to maintain a forest of (partially) built language family trees to which a new full path from a proto-language to a language is added.
+The algorithm first tries to identify an already present tree that contains the deeper part of the path (i.e., say adding ``Indo-European $\rightarrow$ Germanic $\rightarrow$ North-West Germanic $\rightarrow$ Enligsh'' would identify an already existing partial Indo-European tree) and, if so, adds the new (recent) part of the path to the tree.
+In this manner, the forest of all language families in the database is iteratively built from the ground up (Figure \ref{Fig:build forrest}).
+
+% draw language trees:
+\setkeys{Gin}{width=3in,height=1in}
+\begin{figure}
+  \begin{center}
+<<buildforrest,fig=TRUE,width=3,height=1>>=
+# Draw simple language trees:
+require(ape);
+trees <- list( read.tree(text="((A:1,B:1)P1:1,C:2)P2:1;"), read.tree(text="((A:1,B:1,D:1)P1:1,C:2)P2:1;") );
+par(mfrow=c(1,length(trees)+1), mar=c(0,0,0,1)+0.1);
+plot(trees[[1]], ty="cladogram", show.node.label=TRUE, root.edge=FALSE, direction="downwards", srt=90, edge.color=grey(0.7), adj=0.5, no.margin=FALSE, cex=1);
+plot(0, 0, xlim=c(0,1), ylim=c(0,1), type="n", axes=FALSE);
+segments(0.5, 0.07, 0.5, 1.0, col=grey(0.7)); text( 0.5, 0.05, expression(italic("D")), cex=1.0); text( 0.5, 0.525, expression(italic("P1")), cex=1.0); text( 0.5, 1.0, expression(italic("P2")), cex=1.0);
+text( 0.0, 0.525, "+", cex=2.0 ); text( 1.0, 0.525, "=", cex=2.0 ); 
+plot(trees[[2]], ty="cladogram", show.node.label=TRUE, root.edge=FALSE, direction="downwards", srt=90, edge.color=grey(0.7), adj=0.5, no.margin=FALSE, cex=1);
+@
+  \end{center}
+  \caption{The leftmost partial family tree already exists in the forest when a new language \textit{D} from subfamily \textit{P1} in family \textit{P2} (thus with full path $P2 \rightarrow P1 \rightarrow D$) is added, resulting in the rightmost tree.}
+  \label{Fig:build forrest}
+\end{figure}
+
+Table \ref{Tab:tree topologies} gives various summaries concerning the language family tree topologies successfully converted for each database.
+
+% summaries concerning the output:
+<<summariesfortrees,results=hide>>=
+source("../code/FamilyTrees.R");
+get.summaries.trees <- function( classification, mcd, output.folder="output" )
+{
+  file.name <- paste0( "../", output.folder, "/", classification, "/", classification, "-newick", mcd, ".csv");
+  if( do.expensive.computations && file.exists(file.name) )
+  {   
+    # read the trees:
+    tmp <- read.table( file.name, header=TRUE, sep="\t", quote="" );
+    # parse the trees:
+    trees <- languageclassification( classification, csv.file=file.name );
+    # count languages:
+    no.lgs <- sapply( 1:length(trees), function(i){ count.languages( trees[[i]] ) } ); names(no.lgs) <- get.family.names(trees);
+    # count depth:
+    no.levels <- sapply( 1:length(trees), function(i){ count.levels( trees[[i]] ) } ); names(no.levels) <- get.family.names(trees);
+    return (list("no.trees.success"=sum(tmp$Success == "SUCCESS"),
+                 "no.trees.total"=nrow(tmp),
+                 "no.lgs"=no.lgs,
+                 "no.levels"=no.levels));
+  } else
+  {
+    return (list("no.trees.success"=0,
+                 "no.trees.total"=0,
+                 "no.lgs"=0,
+                 "no.levels"=0));
+  }
+}
+# "normal" GA:
+summariesE <- get.summaries.trees( classification="ethnologue", mcd="" );
+summariesW <- get.summaries.trees( classification="wals"      , mcd="" );
+summariesA <- get.summaries.trees( classification="autotyp"   , mcd="" );
+summariesG <- get.summaries.trees( classification="glottolog" , mcd="" );
+## "fast" GA:
+#summariesE.fast <- get.summaries.trees( classification="ethnologue", mcd="", output.folder="output-smallGA" );
+#summariesW.fast <- get.summaries.trees( classification="wals"      , mcd="", output.folder="output-smallGA" );
+#summariesA.fast <- get.summaries.trees( classification="autotyp"   , mcd="", output.folder="output-smallGA" );
+#summariesG.fast <- get.summaries.trees( classification="glottolog" , mcd="", output.folder="output-smallGA" );
+# "slow" GA:
+summariesE.slow <- get.summaries.trees( classification="ethnologue", mcd="", output.folder="output-slowGA" );
+summariesW.slow <- get.summaries.trees( classification="wals"      , mcd="", output.folder="output-slowGA" );
+summariesA.slow <- get.summaries.trees( classification="autotyp"   , mcd="", output.folder="output-slowGA" );
+summariesG.slow <- get.summaries.trees( classification="glottolog" , mcd="", output.folder="output-slowGA" );
+@
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{r|c|c|c|c}
+    Measure          & \textbf{E} & \textbf{W} & \textbf{A} & \textbf{G} \\
+    \hline
+    \# trees         & \Sexpr{summariesE$no.trees.total}       
+                     & \Sexpr{summariesW$no.trees.total}        
+                     & \Sexpr{summariesA$no.trees.total}       
+                     & \Sexpr{summariesG$no.trees.total}                 \\
+    \# leaves total     & \Sexpr{sum(summariesE$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{sum(summariesW$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{sum(summariesA$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{sum(summariesG$no.lgs,na.rm=TRUE)}      \\
+    Avg leaves          & \Sexpr{sprintf("%.1f",mean(summariesE$no.lgs,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesW$no.lgs,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesA$no.lgs,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesG$no.lgs,na.rm=TRUE))}      \\
+%     Min leaves          & \Sexpr{min(summariesE$no.lgs,na.rm=TRUE)}       
+%                      & \Sexpr{min(summariesW$no.lgs,na.rm=TRUE)}       
+%                      & \Sexpr{min(summariesA$no.lgs,na.rm=TRUE)}       
+%                      & \Sexpr{min(summariesG$no.lgs,na.rm=TRUE)}      \\
+    Max leaves          & \Sexpr{max(summariesE$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesW$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesA$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesG$no.lgs,na.rm=TRUE)}      \\
+%     \# levels total  & \Sexpr{sum(summariesE$no.levels,na.rm=TRUE)}       
+%                      & \Sexpr{sum(summariesW$no.levels,na.rm=TRUE)}       
+%                      & \Sexpr{sum(summariesA$no.levels,na.rm=TRUE)}       
+%                      & \Sexpr{sum(summariesG$no.levels,na.rm=TRUE)}      \\
+    Avg levels       & \Sexpr{sprintf("%.1f",mean(summariesE$no.levels,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesW$no.levels,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesA$no.levels,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesG$no.levels,na.rm=TRUE))}      \\
+    Min levels       & \Sexpr{min(summariesE$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{min(summariesW$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{min(summariesA$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{min(summariesG$no.levels,na.rm=TRUE)}      \\
+    Max levels       & \Sexpr{max(summariesE$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesW$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesA$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesG$no.levels,na.rm=TRUE)}      \\
+  \end{tabular}
+  \caption{Various summaries concerning the topologies (no branch length) of the language family trees extracted from the four databases ("normal" GA); \textbf{E} = Ethnologue, \textbf{W} = WALS, \textbf{A} = AUTOTYP, and \textbf{G} = Glottolog; ``\#'' stands for ``number of...''; the leaves (or non-internal nodes) are various types of lects (most often languages).}
+  \label{Tab:tree topologies}
+\end{table}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{r|c|c|c|c}
+    Measure          & \textbf{E} & \textbf{W} & \textbf{A} & \textbf{G} \\
+    \hline
+    \# trees         & \Sexpr{summariesE.slow$no.trees.total}       
+                     & \Sexpr{summariesW.slow$no.trees.total}        
+                     & \Sexpr{summariesA.slow$no.trees.total}       
+                     & \Sexpr{summariesG.slow$no.trees.total}                 \\
+    \# leaves total     & \Sexpr{sum(summariesE.slow$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{sum(summariesW.slow$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{sum(summariesA.slow$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{sum(summariesG.slow$no.lgs,na.rm=TRUE)}      \\
+    Avg leaves          & \Sexpr{sprintf("%.1f",mean(summariesE.slow$no.lgs,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesW.slow$no.lgs,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesA.slow$no.lgs,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesG.slow$no.lgs,na.rm=TRUE))}      \\
+%     Min leaves          & \Sexpr{min(summariesE.slow$no.lgs,na.rm=TRUE)}       
+%                      & \Sexpr{min(summariesW.slow$no.lgs,na.rm=TRUE)}       
+%                      & \Sexpr{min(summariesA.slow$no.lgs,na.rm=TRUE)}       
+%                      & \Sexpr{min(summariesG.slow$no.lgs,na.rm=TRUE)}      \\
+    Max leaves          & \Sexpr{max(summariesE.slow$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesW.slow$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesA.slow$no.lgs,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesG.slow$no.lgs,na.rm=TRUE)}      \\
+%     \# levels total  & \Sexpr{sum(summariesE.slow$no.levels,na.rm=TRUE)}       
+%                      & \Sexpr{sum(summariesW.slow$no.levels,na.rm=TRUE)}       
+%                      & \Sexpr{sum(summariesA.slow$no.levels,na.rm=TRUE)}       
+%                      & \Sexpr{sum(summariesG.slow$no.levels,na.rm=TRUE)}      \\
+    Avg levels       & \Sexpr{sprintf("%.1f",mean(summariesE.slow$no.levels,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesW.slow$no.levels,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesA.slow$no.levels,na.rm=TRUE))}       
+                     & \Sexpr{sprintf("%.1f",mean(summariesG.slow$no.levels,na.rm=TRUE))}      \\
+    Min levels       & \Sexpr{min(summariesE.slow$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{min(summariesW.slow$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{min(summariesA.slow$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{min(summariesG.slow$no.levels,na.rm=TRUE)}      \\
+    Max levels       & \Sexpr{max(summariesE.slow$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesW.slow$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesA.slow$no.levels,na.rm=TRUE)}       
+                     & \Sexpr{max(summariesG.slow$no.levels,na.rm=TRUE)}      \\
+  \end{tabular}
+  \caption{Various summaries concerning the topologies (no branch length) of the language family trees extracted from the four databases ("slow" GA); \textbf{E} = Ethnologue, \textbf{W} = WALS, \textbf{A} = AUTOTYP, and \textbf{G} = Glottolog; ``\#'' stands for ``number of...''; the leaves (or non-internal nodes) are various types of lects (most often languages).}
+  \label{Tab:tree topologies}
+\end{table}
+
+
+\subsection{The Newick trees and the naming convention}
+\label{Sec:The Newick trees and the naming convention}
+
+An interesting question concerns the format in which these tree topologies (and later, branch lengths) should be exported.
+I opted for the \textit{de facto} standard Newick tree format\footnote{See \url{http://evolution.genetics.washington.edu/phylip/newicktree.html} and \url{http://en.wikipedia.org/wiki/Newick_format} for details on the actual format.} widely used in evolutionary biology, read and exported by many software packages and libraries, and able to represent rooted and unrooted trees, with our without leaf and internal node names, and with or without branch lengths.
+The basic idea is that subtrees are enclosed within parentheses ``()'' and the branch length is given as a number immediately following the branch and separated from it by ``:''.
+For example, the leftmost tree in Figure \ref{Fig:build forrest} can be represented as (language = leaf, proto-languages or groups = internal nodes, for simplicity all branches have the same length of 1):
+
+\begin{center}
+  \begin{tabular}{c|p{3cm}}
+    Representation                                                        & Comments           \\
+    \hline
+    ((,),);                                                               & just the structure \\
+    ((\textit{A},\textit{B}),\textit{C});                                 & with leaf names    \\
+    ((\textit{A},\textit{B})\textit{P1},\textit{C})\textit{P2};           & with group names   \\
+    ((\textit{A}:1,\textit{B}:1),\textit{C}:1);                           & with branch length \\
+    ((\textit{A}:1,\textit{B}:1)\textit{P1}:1,\textit{C}:2)\textit{P2}:1; & with everything    \\
+  \end{tabular}
+\end{center}
+
+The language and group/proto-language names must include not only the actual name as given by the particular classification (which could very well differ between classifications; as a trivial example, Ethnologue calls the language with code ISO 639-3 ``English'' while Glottolog calls it ``Standard English'', but there are much more dramatic differences between the databases), but also the various unique identifiers this linguistic entity might have.
+Therefore, I opted for a standardized node name that follows the convention:
+\begin{center}
+`NAME [i-I][w-W][a-A][g-G]'
+\end{center}
+where CAPITAL LETTERS denote variables.
+NAME is the entity name as given by the classification\footnote{Given that some characters have a special meaning in the Newick format, I have enforced the following character substitutions: ,$\rightarrow$. '$\rightarrow$` ($\rightarrow$\{ )$\rightarrow$\} TAB$\rightarrow$SPACE :$\rightarrow$| ;$\rightarrow$| and characters with diacritics into their plain form (e.g., \'{a}$\rightarrow$a and \~{a}$\rightarrow$a) while leaving unaltered the other characters.}, followed by a SPACE and the four unique codes I (ISO 639-3), W (WALS), A (AUTOTYP) and G (Glottocode), where each and all can be missing or can have multiple values (in which case the values are separated by ``-'').
+A few examples are (WALS classification, Indo-European family): 
+\begin{center}
+  'German \{Zurich\} [i-gsw][w-gzu][a-1305-1306-1307-1308-1309-1310][g-swis1247]' \\
+  'Urdu [i-urd][w-urd][a-2671][g-urdu1245]' \\
+  'Romani \{Sepecides\} [i-][w-rse][a-][g-]' \\
+  'Germanic [i-][w-][a-][g-]'.
+\end{center}
+
+
+\subsection{The branch length methods}
+\label{Sec:The branch length methods}
+
+The methods I used to add branch lengths to the tree topologies can be divided into:
+\begin{enumerate}[a)]
+  \item methods that depend only on the topology: (1) constant, (2) proportional and (3) grafen,
+  \item methods that generate the branch length and topology from a distance matrix: (4) nj, and
+  \item methods that map a given distance matrix onto the topology: (5) nnls and (6) ga.
+\end{enumerate}
+
+% The R code to illustrate these methods:
+<<brlenghmethods,results=hide>>=
+tree <- familytree( "((A,B)P1,C)P2;", "example" ); # a simple topology
+d <- matrix( c( 0.0, 2.1, 3.9, 2.1, 0.0, 4.2, 3.9, 4.2, 0.0 ), ncol=3, byrow=TRUE ); # the distances matrix
+d.diag <- matrix( c( 3.0, 2.1, 3.9, 2.1, 1.3, 4.2, 3.9, 4.2, 2.0 ), ncol=3, byrow=TRUE ); # not a distances matrix: diagnomal
+d.nega <- matrix( c( 0.0, -2.1, 3.9, -2.1, 0.0, 4.2, 3.9, 4.2, 0.0 ), ncol=3, byrow=TRUE ); # not a distances matrix: negative entries
+d.asym <- matrix( c( 0.0, 2.1, 3.9, 3.3, 0.0, 4.2, 3.9, 1.3, 0.0 ), ncol=3, byrow=TRUE ); # not a distances matrix: asymmetric
+d.tria <- matrix( c( 0.0, 5.1, 1.9, 5.1, 0.0, 2.2, 1.9, 2.2, 0.0 ), ncol=3, byrow=TRUE ); # not a distances matrix: trangle inequality
+d.allc <- matrix( c( 3.1, -5.1, 1.9, 5.1, 0.0, 2.6, 1.9, 2.2, 0.0 ), ncol=3, byrow=TRUE ); # not a distances matrix: all conditions
+tree.1  <- compute.brlen( tree, method="constant",     constant=1.0, distmatrix=NULL ); 
+tree.2  <- compute.brlen( tree, method="proportional", constant=1.0, distmatrix=NULL ); 
+tree.3  <- compute.brlen( tree, method="grafen",       constant=NA, distmatrix=NULL ); 
+tree.4  <- compute.brlen( tree, method="nj",           constant=NA, distmatrix=d ); 
+tree.4.diag  <- compute.brlen( tree, method="nj",      constant=NA, distmatrix=d.diag ); # rubustness against non-0 diagonal
+tree.4.nega  <- compute.brlen( tree, method="nj",      constant=NA, distmatrix=d.nega ); # rubustness against negative entries
+tree.4.asym  <- compute.brlen( tree, method="nj",      constant=NA, distmatrix=d.asym ); # rubustness against violating symmetry
+tree.4.tria  <- compute.brlen( tree, method="nj",      constant=NA, distmatrix=d.tria ); # rubustness against violating traingle inequality
+tree.4.allc  <- compute.brlen( tree, method="nj",      constant=NA, distmatrix=d.allc ); # rubustness against all conditions
+tree.5  <- compute.brlen( tree, method="nnls",         constant=NA, distmatrix=d ); 
+tree.5.diag  <- compute.brlen( tree, method="nnls",    constant=NA, distmatrix=d.diag ); # rubustness against non-0 diagonal
+tree.5.nega  <- compute.brlen( tree, method="nnls",    constant=NA, distmatrix=d.nega ); # rubustness against negative entries
+tree.5.asym  <- compute.brlen( tree, method="nnls",    constant=NA, distmatrix=d.asym ); # rubustness against violating symmetry
+tree.5.tria  <- compute.brlen( tree, method="nnls",    constant=NA, distmatrix=d.tria ); # rubustness against violating traingle inequality
+tree.5.allc  <- compute.brlen( tree, method="nnls",    constant=NA, distmatrix=d.allc ); # rubustness against all conditions
+tree.6a <- compute.brlen( tree, method="ga",           constant=NA, distmatrix=d ); 
+tree.6b <- compute.brlen( tree, method="ga",           constant=NA, distmatrix=d ); 
+tree.6c <- compute.brlen( tree, method="ga",           constant=NA, distmatrix=d ); 
+tree.6.diag  <- compute.brlen( tree, method="ga",      constant=NA, distmatrix=d.diag ); # rubustness against non-0 diagonal
+tree.6.nega  <- compute.brlen( tree, method="ga",      constant=NA, distmatrix=d.nega ); # rubustness against negative entries
+tree.6.asym  <- compute.brlen( tree, method="ga",      constant=NA, distmatrix=d.asym ); # rubustness against violating symmetry
+tree.6.tria  <- compute.brlen( tree, method="ga",      constant=NA, distmatrix=d.tria ); # rubustness against violating traingle inequality
+tree.6.allc  <- compute.brlen( tree, method="ga",      constant=NA, distmatrix=d.allc ); # rubustness against all conditions
+@
+
+The methods of type (a) only need a tree topology $T$ (and possibly a numeric constant $k > 0$).
+Method (1) computes branch lengths such that the sum of the branch lengths for every \textit{root} $\rightarrow$ \textit{leaf} path in the tree is equal to the constant $k$, meaning that the same amount of evolution $k$ has happened on all branches.
+For example, for the leftmost tree in Figure \ref{Fig:build forrest} and $k=1.0$, the resulting tree is
+\[\Sexpr{as.character(tree.1$tree)}\]
+Method (2) simply gives each branch the same length $k$ such that the amount of evolution on a path is proportional to the number of splits on that path; here the result is 
+\[\Sexpr{as.character(tree.2$tree)}\]
+Method (3) is a reimplementation of \citet{grafen_phylogenetic_1989} whereby first each node is given a `height' defined as the number of leaves of its subtree minus 1 (0 for the leaves), after which branch lengths are computed as the difference between the height of the lower and the upper nodes of the branch; our tree is then:
+\[\Sexpr{as.character(tree.3$tree)}\]
+
+Method (4) is the only one of type (b) used here and is a clasic method in phylogenetics, the so-called ``Neighbor-Joining'' (or NJ) alorithm \citep{saitou_neighbor-joining_1987}, essentially a clustering method that iteratively joins taxa into higher groupings (see \url{en.wikipedia.org/wiki/Neighbor_joining} for a good explanation).
+Given a language family topology $T$ and a distance matrix between a set of languages $D$, I extract the languages in $T$ and the submatrix of distances between them $D_{T}$ (\textit{NB} it is possible that not for all pairs of languages there is a distance defined in $D$, resulting in a submatrix $D_{T}$ with missing data for those pairs of languages), and then use NJ (as implemented by \texttt{R}'s function \texttt{njs()} in package \texttt{ape} version 3.2; \citealp{ape2004}) to construct the corresponding phylogenetic tree.
+Thus, this method does not consider the actual topology in $T$ but only the set of languages and the distances between them.
+For our example and the distance matrix (please note that the distances are given only between the languages -- the leaves -- and do not concern the proto-languages -- the internal nodes)
+\[
+D = \bordermatrix{~ & A & B & C \cr
+                  A & \Sexpr{d[1,1]} & \Sexpr{d[1,2]} & \Sexpr{d[1,3]} \cr
+                  B & \Sexpr{d[2,1]} & \Sexpr{d[2,2]} & \Sexpr{d[2,3]} \cr
+                  C & \Sexpr{d[3,1]} & \Sexpr{d[3,2]} & \Sexpr{d[3,3]} \cr}
+\]
+which approximates the distances between the tree languages in the right-most tree of Figure \ref{Fig:build forrest} assuming method (1) with $k = 2.0$, we have the NJ tree
+\[\Sexpr{as.character(tree.4$tree)}\]
+It is important to note that NJ does not know about the internal structure of the original family tree (in this case the \textit{P1} internal node) and it might produce very different topologies from the ones given by the actual classifications.
+
+Methods (5) and (6) try to use both the given language family's tree topology $T$ and the information contained in the inter-language distance matrix $D$ by computing branch lengths that best approximate the original distances in $D$ (i.e., if one creates a new distance matrix between the languages $D^\prime$ by adding up the total branch lengths one needs to travel in the tree from one language to the other, then $D^\prime \approx D$).
+Method (5) computes the branch lengths by using a non-negative least squares approach as implemented by \texttt{R}'s function \texttt{nnls.tree()} in package \texttt{phangorn} version 1.99 \citep{phangorn2011}, resulting in this case in
+\[\Sexpr{as.character(tree.5$tree)}\]
+Finally, method (6) estimates the branch lengths using a standard genetic algorithm (as implemented by \texttt{R}'s function \texttt{ga()} in package \texttt{GA} version 2.2 \citealp{GA2013}).
+Given a topology $T$ with $n$ branches, I need to compute $n$ real positive numbers, each representing the length of a branch in $T$ such that the resulting distance matrix $D^\prime$ is a good approximation of the original distances $D$.
+In this genetic algorithms approach, I defined the ``genome'' as composed of $n$ real-valued ``genes'', and the ``fitness function'' for a particular such genome $G = (g_{1}, g_{2}, ..., g_{n})$ computes the SSE (sum of squared errors) between the original distances $D$ and the current distances $D^\prime(G)$ between languages if the topology $T$ had the branch lengths $g_{1}$, $g_{2}$, ... $g_{n}$.
+The genetic algorithm finds the best solution $G^* = (g^*_{1}, g^*_{2}, ..., g^*_{n})$ that minimizes the fitness function (the SSE) using a population size of 100 individuals for at most 10,000 iterations (or when the fitness does not change for 100 iterations).
+For our example, some possible trees could be
+\[\Sexpr{as.character(tree.6a$tree)}\]
+\[\Sexpr{as.character(tree.6b$tree)}\]
+\[\Sexpr{as.character(tree.6c$tree)}\]
+Please note that due to the random nature of the genetic algorithm and possibly the non-uniqueness of the solution (multiple optima), the best solution might vary between runs.
+Methods (5) and (6) have similar goals and produce very similar results, but approach them in very different ways; method (5) is less robust than method (6) (it fails for certain topologies and distance matrices), while method (6) is much slower, especially for very large trees, and might produce non-unique solutions.
+
+
+\subsection{The distance matrices}
+\label{Sec:The distance matrices}
+
+There are many potentially meaningful distances between languages, and while the framework and \texttt{R} code introduced here can accomodate new ones, I have used in this paper the following:
+\begin{enumerate}[a)]
+  \item distances based on vocabulary: (1) ASJP16,
+  \item distances based on geography: (2) great-circle,
+  \item distances based on WALS: (3) gower and (4) euclidean, with and without missing data imputation,
+  \item distance based on AUTOTYP: (5) gower with missing data using only the variables with a single datapoint per language (this distance was computed by Balthasar Bickel), and
+  \item distances based on the tree topology: \citet{maurits_tracing_2014}'s ``genetic method'' applied to the WALS (6), Ethnologue (7), Glottolog (8) and AUTOTYP (9) classifications.
+\end{enumerate}
+
+<<distances,results=hide>>=
+# The WALS data:
+wals.data <- read.table( "../input/wals/language.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE ); # actual WALS data
+wals.data <- wals.data[,grep("^X",names(wals.data))]; # keep only the features
+@
+
+<<echo=FALSE,results=hide>>=
+load( "../input/distances/ASJP/asjp16-dists.RData" ); # asjp16.dm
+@
+Method (1) uses the distances between languages provided by The Automated Similarity Judgment Program version 16 (ASJP16; \citealp{wichmann_asjp_2013}) and the ASJP software (version 2.1), freely available under a Creative Commons Attribution 3.0 (CC BY 3.0, \url{http://creativecommons.org/licenses/by/3.0}) license from the authors' website \url{http://asjp.clld.org}.
+These distances are computed on the basis of standardized short wordlists transcribed in a reduced set of symbols using a normalized Levenstein distance (for details see \citealp{bakker_adding_2009}).
+I further processed and converted this database into a distance matrix between languages using ISO 639-3 codes as language identifiers\footnote{This conversion required limited manual editing including the replacement of some non-ASCII characters in the language descriptors and some of the 26-character language identifiers exported by the ASJP v2.1 software.}, resulting in a $\Sexpr{nrow(asjp16.dm)} \times \Sexpr{ncol(asjp16.dm)}$ matrix with no missing data.
+<<echo=FALSE,results=hide>>=
+rm(asjp16.dm); # free up space
+@
+
+<<echo=FALSE,results=hide>>=
+load( file="../input/distances/geo-great-circle-ellipsoid-dists.RData" ); # geo.dm 
+@
+Method (2) computes the geographic (great circle) distances between the languages' geographic coordinates using \texttt{R}'s function \texttt{distm()} in package \texttt{geosphere} version 1.3 \citep{geosphere2014}, resulting in a $\Sexpr{nrow(geo.dm)} \times \Sexpr{ncol(geo.dm)}$ matrix with no missing data.
+<<echo=FALSE,results=hide>>=
+rm(geo.dm); # free up space
+@
+
+Methods (3) and (4) use the WALS typological database to compute distances between languages using their feature values.
+I used the methods implemented by \texttt{R}'s function \texttt{daisy()} in package \texttt{cluster} version 2.0.1 \citep{cluster2015}, namely ``gower'' (method 3; \citealp{gower_general_1971}) which standardizes each feature to the $[0,1]$ interval, and ``euclidean'' (method 4) which computes the standard Euclidean distance in an $n$-dimensional real space.
+Given the enormously high proportion of missing data in the WALS database ($\Sexpr{sprintf("%.1f",sum(wals.data == "")/(nrow(wals.data)*ncol(wals.data))*100)}\%$ cells), I have computed these distances also doing a simple missing data imputation whereby the missing data was replaced by the mode (i.e., the most frequent value) of the corresponding typological variable.
+With these, I obtained the follwing distance matrices: 
+<<echo=FALSE,results=hide>>=
+load( "../input/distances/WALS/wals-gower-dm.RData" ); wals.gower.dm <- as.matrix(wals.gower.dm); # wals.gower.dm (with missing data)
+load( "../input/distances/WALS/wals-gower-mode-dm.RData" ); wals.gower.mode.dm <- as.matrix(wals.gower.mode.dm); # wals.gower.mode.dm (with mode imputation for missing data)
+@
+gower with missing data ($\Sexpr{nrow(wals.gower.dm)} \times \Sexpr{ncol(wals.gower.dm)}$, $\Sexpr{sprintf("%.1f",sum(is.na(wals.gower.dm))/(nrow(wals.gower.dm)*ncol(wals.gower.dm))*100)}\%$ missing data cells), 
+gower with missing data imputation ($\Sexpr{nrow(wals.gower.mode.dm)} \times \Sexpr{ncol(wals.gower.mode.dm)}$, no missing data), 
+<<echo=FALSE,results=hide>>=
+rm(wals.gower.dm,wals.gower.mode.dm); # free up space
+@
+<<echo=FALSE,results=hide>>=
+load( "../input/distances/WALS/wals-euclidean-dm.RData" ); wals.euclidean.dm <- as.matrix(wals.euclidean.dm); # wals.euclidean.dm (with missing data)
+load( "../input/distances/WALS/wals-euclidean-mode-dm.RData" ); wals.euclidean.mode.dm <- as.matrix(wals.euclidean.mode.dm); # wals.euclidean.mode.dm (with mode imputation for missing data)
+@
+euclidean with missing data ($\Sexpr{nrow(wals.euclidean.dm)} \times \Sexpr{ncol(wals.euclidean.dm)}$, $\Sexpr{sprintf("%.1f",sum(is.na(wals.euclidean.dm))/(nrow(wals.euclidean.dm)*ncol(wals.euclidean.dm))*100)}\%$ missing data cells), 
+and euclidean with missing data imputation ($\Sexpr{nrow(wals.euclidean.mode.dm)} \times \Sexpr{ncol(wals.euclidean.mode.dm)}$, no missing data).
+<<echo=FALSE,results=hide>>=
+rm(wals.euclidean.dm,wals.euclidean.mode.dm); # free up space
+@
+
+<<echo=FALSE,results=hide>>=
+load("../input/distances/AUTOTYP/autotyp-dist.RData"); # autotyp.dm (with missing data, using ony features with single values per language, courtesy of Balthasar Bickel)
+@
+Method (5) uses the AUTOTYP typological database to compute distances between languages using their feature values.
+This method also uses \texttt{R}'s function \texttt{daisy()} in package \texttt{cluster} version 2.0.1 \citep{cluster2015} with argument ``gower'' \citep{gower_general_1971}, without missing data imputation, resulting in a $\Sexpr{nrow(autotyp.dm)} \times \Sexpr{ncol(autotyp.dm)}$ distance matrix with $\Sexpr{sprintf("%.1f",sum(is.na(autotyp.dm))/(nrow(autotyp.dm)*ncol(autotyp.dm))*100)}\%$ missing data cells.
+<<echo=FALSE,results=hide>>=
+rm(autotyp.dm); # free up space
+@
+
+<<echo=FALSE,results=hide>>=
+# The MG2015 [Maurits, L. & Griffiths, T.L. (2015) PNAS 111 (37):13576--13581] distances:
+.change.row.col.names.to.codes <- function(m, code=c("iso","wals","autotyp","glottolog"))
+{
+  if( is.null(m) || !inherits(m,"matrix") || nrow(m) != ncol(m) || any(rownames(m) != colnames(m)) )
+  { 
+    stop("Problems with the distance matrix!\n"); 
+    return (NULL); 
+  } else
+  {
+    # Change the row and column names to the WALS codes:
+    new.names <- vapply(rownames(m), function(s)
+      { 
+        tmp <- extract.name.and.codes(s); 
+        if( is.null(tmp[[code]]) || length(tmp[[code]]) != 1 || tmp[[code]]=="" )
+        { 
+          warning(paste0("Language ",s," must have a single ", code, " code\n")); 
+          return (s); 
+        } else 
+        {
+          return(tmp[[code]]); 
+        }
+      }, character(1));
+    return (new.names);
+  }
+}
+@
+Methods (6) -- (9) use the ``genetic method'' introduced in \citet{maurits_tracing_2014} whereby branch lengths are assign based on the topology of the family tree in such a way that languages that share $k$ intermediate nodes on their paths from the root are separated by the distance $d = M - \sum_{i=1}^{n}{\alpha^{i}}$ (with $M$ being the maximum possible diatance and $\alpha$ empirically fixed at $0.69$); it is important to note that by defintion these distances are not defined for pairs of languages that belog to different families and are defined for any pair of languages that belogn to the same family (therefore the percent of missing data is uninformative in this case).
+I reimplemented this method in \texttt{R}\footnote{Many thanks to Luke Maurits for helping to clarify the inner workings of the method.} and applied it to each of the four classifications, resulting in the follwing distance matrices: 
+<<echo=FALSE,results=hide>>=
+load("../input/distances/MG2015/MG2015-wals-alpha=0.69.RData"); rownames(MG2015.WALS) <- colnames(MG2015.WALS) <-.change.row.col.names.to.codes(MG2015.WALS, "wals");  # MG2015.WALS
+@
+MG2015 using the WALS classification ($\Sexpr{nrow(MG2015.WALS)} \times \Sexpr{ncol(MG2015.WALS)}$), 
+<<echo=FALSE,results=hide>>=
+rm(MG2015.WALS); # free up space
+@
+<<echo=FALSE,results=hide>>=
+load("../input/distances/MG2015/MG2015-ethnologue-alpha=0.69.RData"); rownames(MG2015.Ethnologue) <- colnames(MG2015.Ethnologue) <-.change.row.col.names.to.codes(MG2015.Ethnologue, "iso");  # MG2015.Ethnologue
+@
+the Ethnologue classification ($\Sexpr{nrow(MG2015.Ethnologue)} \times \Sexpr{ncol(MG2015.Ethnologue)}$), 
+<<echo=FALSE,results=hide>>=
+rm(MG2015.Ethnologue); # free up space
+@
+<<echo=FALSE,results=hide>>=
+load("../input/distances/MG2015/MG2015-glottolog-alpha=0.69.RData"); rownames(MG2015.Glottolog) <- colnames(MG2015.Glottolog) <-.change.row.col.names.to.codes(MG2015.Glottolog, "glottolog");  # MG2015.Glottolog
+@
+the Glottolog classification ($\Sexpr{nrow(MG2015.Glottolog)} \times \Sexpr{ncol(MG2015.Glottolog)}$), and
+<<echo=FALSE,results=hide>>=
+rm(MG2015.Glottolog); # free up space
+@
+<<echo=FALSE,results=hide>>=
+load("../input/distances/MG2015/MG2015-autotyp-alpha=0.69.RData"); rownames(MG2015.AUTOTYP) <- colnames(MG2015.AUTOTYP) <-.change.row.col.names.to.codes(MG2015.AUTOTYP, "autotyp");  # MG2015.AUTOTYP
+@
+the AUTOTYP classification ($\Sexpr{nrow(MG2015.AUTOTYP)} \times \Sexpr{ncol(MG2015.AUTOTYP)}$).
+<<echo=FALSE,results=hide>>=
+rm(MG2015.Glottolog); # free up space
+@
+
+
+\subsection{The family trees with branch length}
+\label{Sec:The family trees with branch length}
+
+Thus, for each combination of \emph{classification} (Ethnologue, WALS, AUTOTYP, Glottolog) by \emph{method} (no branch length, constant, proportional, grafen, nj, nnls, ga) and, for the last three methods, also by \emph{distance} matrix (asjp16, great-circle, wals-gower, wals-gower+imputation, wals-euclidean, wals-euclidean+imputation, autotyp-gower, mg2015+wals, mg2015+ethnologue, mg2015+glottolog, mg2015+autotyp), I produced a set of phylogenetic trees in Newick format as described above.
+Each of these sets was saved in two formats: a TAB-separated CSV file, and a Nexus file, containing essentially the same information but easier to load into various phylogenetic software packages.
+
+The first format is a standard TAB-separated CSV file with a standardized name of the form \texttt{CLASSIFICATION-newick-METHOD\&PARAMETERS.csv} (e.g., \texttt{autotyp-newick-nj+autotyp.csv} and \texttt{glottolog-newick-nnls+wals(gower,mode).csv}) in the \texttt{./output/CLASSIFICATION/} directory.
+It contains the language families (one per row, except the first row which is the header), and for each family it gives the family name (as defined by the classification), the success or failure of the method, some relevant comments (for examply, why the methods has failed), and the actual tree in Newick format (or an empty string `' if the method has failed).
+
+The second format is a standard Nexus file \citep{maddison_nexus_1997} with a standardized name of the form \texttt{CLASSIFICATION-nexus-METHOD\&PARAMETERS.nex} (e.g., \texttt{autotyp-nexus-nj+autotyp.nex} and \texttt{glottolog-nexus-nnls+wals(gower,mode).nex}) in the \texttt{./output/CLASSIFICATION/} directory.
+These Nexus files contain only the \texttt{trees} block with the \texttt{translate} list\footnote{The \texttt{R} script is capable to generate or not the \texttt{translate} list, by default it does in order to increase human readablity and make the files importable by some phylogenetic software.} and the named trees (the language family names as given by the classification) in Newick format.
+
+Summaries about these trees are given in Appendix A.
+
+% Comparisons between methods:
+<<compare-brlen,results=hide,eval=FALSE>>=
+tree.comparisons <- read.table( "../output/tree_comparisons_between_methods.csv", sep="\t", quote="", header=TRUE, stringsAsFactors=FALSE );
+# Keep only those that were successfully computed:
+tree.comparisons <- tree.comparisons[ !is.na(tree.comparisons$d.PH85) & !is.na(tree.comparisons$d.score) & tree.comparisons$d.PH85 >= 0 & tree.comparisons$d.score >= 0, ];
+# To simply selection, replace NA by "":
+tree.comparisons[ is.na(tree.comparisons) ] <- "";
+# Summarize a pair of methods:
+summaries.tree.comparisons <- function( classif="all", method1="all", const1="", dist1="", method2="all", const2="", dist2="" )
+{
+  if( classif == "all" && method1 == "all" && method2 == "all" )
+  {
+    s <- rep(TRUE, nrow(tree.comparisons));
+  } else
+  {
+    s <- ifelse(classif == "all", rep(TRUE,nrow(tree.comparisons)), tree.comparisons$Classification == classif ) & 
+          tree.comparisons$Method1 == method1 & 
+          tree.comparisons$Constant1 == const1 & 
+          tree.comparisons$Distance1 == dist1 &
+          tree.comparisons$Method2 == method2 & 
+          tree.comparisons$Constant2 == const2 & 
+          tree.comparisons$Distance2 == dist2;
+  }
+  
+  if( sum(s,na.rm=TRUE) == 0 )
+  {
+    ret.val <- list("n"=0, 
+                    "d.PH85"=list("min"="-",
+                                  "max"="-",
+                                  "mean"="-",
+                                  "median"="-",
+                                  "sd"="-",
+                                  "values"=NULL),
+                    "d.score"=list("min"="-",
+                                  "max"="-",
+                                  "mean"="-",
+                                  "median"="-",
+                                  "sd"="-",
+                                  "values"=NULL) );
+  } else
+  {
+    ret.val <- list("n"=sum(s,na.rm=TRUE), 
+                    "d.PH85"=list("min"=sprintf("%.2f",min(tree.comparisons$d.PH85[s],na.rm=TRUE)),
+                                  "max"=sprintf("%.2f",max(tree.comparisons$d.PH85[s],na.rm=TRUE)),
+                                  "mean"=sprintf("%.2f",mean(tree.comparisons$d.PH85[s],na.rm=TRUE)),
+                                  "median"=sprintf("%.2f",median(tree.comparisons$d.PH85[s],na.rm=TRUE)),
+                                  "sd"=sprintf("%.2f",sd(tree.comparisons$d.PH85[s],na.rm=TRUE)),
+                                  "values"=tree.comparisons$d.PH85[s]),
+                    "d.score"=list("min"=sprintf("%.2f",min(tree.comparisons$d.score[s],na.rm=TRUE)),
+                                  "max"=sprintf("%.2f",max(tree.comparisons$d.score[s],na.rm=TRUE)),
+                                  "mean"=sprintf("%.2f",mean(tree.comparisons$d.score[s],na.rm=TRUE)),
+                                  "median"=sprintf("%.2f",median(tree.comparisons$d.score[s],na.rm=TRUE)),
+                                  "sd"=sprintf("%.2f",sd(tree.comparisons$d.score[s],na.rm=TRUE)),
+                                  "values"=tree.comparisons$d.score[s]) );
+  }
+  
+  return (ret.val);
+}
+
+overall.dists <- summaries.tree.comparisons();
+@
+To explore the (dis)agreement between the trees produced by these methods, for each language family (within a given classification as families do not generally mean the same thing across classifications) and pair of methods, I computed two distances\footnote{As implemented by \texttt{R}'s function \texttt{dist.topo()} in package \texttt{ape} v.3.2 \citep{ape2004}.} between these corresponding trees: one that considers only how similar they are in their topology (``PH85'', \citealp{penny_use_1985,rzhetsky_simple_1992}) and another that also takes into account the branch length (``score'', \citealp{kuhner_simulation_1994}).
+For details please see Appendix B.
+
+
+\subsection{A note on robustness}
+\label{Sec:A note on robustness}
+
+An important question concerns the robustness of these branch-length inference methods against violations of the conditions on the distances matrix $d$.
+A matrix must meet four conditions for it to be a true distance matrix:
+\begin{enumerate}
+  \item the diagonal is zero: $d_{ii} = 0$ for all $1 < i < N$;
+  \item the off-diagonal is positive: $d_{ij} \geq 0$ for all $1 < i \neq j < N$;
+  \item the matrix is symmetric: $d_{ij} = d_{ji}$ for all $1 < i,j < N$;
+  \item the triangle inequality is satisfied: $d_{ij} \leq d_{ik} + d_{kj}$ for all $1 < i,j,k < N$.
+\end{enumerate}
+
+We have generated a set of matrices (bases on our test distances matrix $D$) that violate each of the conditions individually (and all of them), as follows
+
+The original test distances matrix:
+\[
+D = \bordermatrix{~ & A & B & C \cr
+                  A & \Sexpr{d[1,1]} & \Sexpr{d[1,2]} & \Sexpr{d[1,3]} \cr
+                  B & \Sexpr{d[2,1]} & \Sexpr{d[2,2]} & \Sexpr{d[2,3]} \cr
+                  C & \Sexpr{d[3,1]} & \Sexpr{d[3,2]} & \Sexpr{d[3,3]} \cr}
+\]
+
+Violating (1): non-zero elements on the diagonal:
+\[
+D_{d} = \bordermatrix{~ & A & B & C \cr
+                      A & \Sexpr{d.diag[1,1]} & \Sexpr{d.diag[1,2]} & \Sexpr{d.diag[1,3]} \cr
+                      B & \Sexpr{d.diag[2,1]} & \Sexpr{d.diag[2,2]} & \Sexpr{d.diag[2,3]} \cr
+                      C & \Sexpr{d.diag[3,1]} & \Sexpr{d.diag[3,2]} & \Sexpr{d.diag[3,3]} \cr}
+\]
+
+Violating (2): off-diagonal negative elements:
+\[
+D_{n} = \bordermatrix{~ & A & B & C \cr
+                      A & \Sexpr{d.nega[1,1]} & \Sexpr{d.nega[1,2]} & \Sexpr{d.nega[1,3]} \cr
+                      B & \Sexpr{d.nega[2,1]} & \Sexpr{d.nega[2,2]} & \Sexpr{d.nega[2,3]} \cr
+                      C & \Sexpr{d.nega[3,1]} & \Sexpr{d.nega[3,2]} & \Sexpr{d.nega[3,3]} \cr}
+\]
+
+Violating (3): asymmetric matrix:
+\[
+D_{s} = \bordermatrix{~ & A & B & C \cr
+                      A & \Sexpr{d.asym[1,1]} & \Sexpr{d.asym[1,2]} & \Sexpr{d.asym[1,3]} \cr
+                      B & \Sexpr{d.asym[2,1]} & \Sexpr{d.asym[2,2]} & \Sexpr{d.asym[2,3]} \cr
+                      C & \Sexpr{d.asym[3,1]} & \Sexpr{d.asym[3,2]} & \Sexpr{d.asym[3,3]} \cr}
+\]
+
+Violating (4): the triangle inequality:
+\[
+D_{t} = \bordermatrix{~ & A & B & C \cr
+                      A & \Sexpr{d.tria[1,1]} & \Sexpr{d.tria[1,2]} & \Sexpr{d.tria[1,3]} \cr
+                      B & \Sexpr{d.tria[2,1]} & \Sexpr{d.tria[2,2]} & \Sexpr{d.tria[2,3]} \cr
+                      C & \Sexpr{d.tria[3,1]} & \Sexpr{d.tria[3,2]} & \Sexpr{d.tria[3,3]} \cr}
+\]
+
+Violating all conditions (1)-(4) simultaneously:
+\[
+D_{a} = \bordermatrix{~ & A & B & C \cr
+                      A & \Sexpr{d.allc[1,1]} & \Sexpr{d.allc[1,2]} & \Sexpr{d.allc[1,3]} \cr
+                      B & \Sexpr{d.allc[2,1]} & \Sexpr{d.allc[2,2]} & \Sexpr{d.allc[2,3]} \cr
+                      C & \Sexpr{d.allc[3,1]} & \Sexpr{d.allc[3,2]} & \Sexpr{d.allc[3,3]} \cr}
+\]
+
+For each of the three methods (4, 5 and 6) that take a distances matrix as a parameter, we first tested if the method crashes when fed one of these ``bad'' distances matrix and second, how close to the true branch lengths the estimated trees are.
+
+\subsubsection{Robustness of nj}
+
+The trees are (in the order: original $D$, $D_{d}$, $D_{n}$, $D_{s}$, $D_{t}$, and $D_{a}$):
+\[D: \Sexpr{as.character(tree.4$tree)}\]
+\[D_d: \Sexpr{as.character(tree.4.diag$tree)}\]
+\[D_n: \Sexpr{as.character(tree.4.nega$tree)}\]
+\[D_s: \Sexpr{as.character(tree.4.asym$tree)}\]
+\[D_t: \Sexpr{as.character(tree.4.tria$tree)}\]
+\[D_a: \Sexpr{as.character(tree.4.allc$tree)}\]
+
+\subsubsection{Robustness of nnls}
+
+The trees are (in the order: original $D$, $D_{d}$, $D_{n}$, $D_{s}$, $D_{t}$, and $D_{a}$):
+\[D: \Sexpr{as.character(tree.5$tree)}\]
+\[D_d: \Sexpr{as.character(tree.5.diag$tree)}\]
+\[D_n: \Sexpr{as.character(tree.5.nega$tree)}\]
+\[D_s: \Sexpr{as.character(tree.5.asym$tree)}\]
+\[D_t: \Sexpr{as.character(tree.5.tria$tree)}\]
+\[D_a: \Sexpr{as.character(tree.5.allc$tree)}\]
+
+\subsubsection{Robustness of ga}
+
+The trees are (in the order: original $D$, $D_{d}$, $D_{n}$, $D_{s}$, $D_{t}$, and $D_{a}$):
+\[D: \Sexpr{as.character(tree.6a$tree)}\]
+\[D: \Sexpr{as.character(tree.6b$tree)}\]
+\[D: \Sexpr{as.character(tree.6c$tree)}\]
+\[D_d: \Sexpr{as.character(tree.6.diag$tree)}\]
+\[D_n: \Sexpr{as.character(tree.6.nega$tree)}\]
+\[D_s: \Sexpr{as.character(tree.6.asym$tree)}\]
+\[D_t: \Sexpr{as.character(tree.6.tria$tree)}\]
+\[D_a: \Sexpr{as.character(tree.6.allc$tree)}\]
+
+\subsubsection{Robustness: conclusions}
+
+In conclusions, all three methods can deal with violations of the distance matrix conditions gracefully, neither of them crashes and the trees produced still seem meaningful.
+
+
+\subsection{The influence of GA parameters on the branch length}
+\label{Sec:GA params}
+
+The parameters of the GA (\texttt{GA.MAXITER} = the maximum number of iterations to run, \texttt{GGA.POPSIZE} = the population size, and \texttt{GGA.CONSTANTRUN} = the number of consecutive generations with the same fitness needed to stop the search prematurely) may in theory have an important impact on the solution found (i.e., branch length) and certainly on the computational costs necessary for this solution to be found.
+Therefore, I ran two conditions, as follows:
+\begin{description}
+  %\item[fast:]   \texttt{GA.MAXITER} = 100, \texttt{GGA.POPSIZE} = 10, and \texttt{GGA.CONSTANTRUN} = 10;
+  \item[normal:] \texttt{GA.MAXITER} = 10000, \texttt{GGA.POPSIZE} = 100, and \texttt{GGA.CONSTANTRUN} = 100; and
+  \item[slow:]   \texttt{GA.MAXITER} = 50000, \texttt{GGA.POPSIZE} = 150, and \texttt{GGA.CONSTANTRUN} = 200.
+\end{description}
+
+The computational costs are very different, and, for comparison, I ran the three conditions on the same compute cluster node using a dedicated CPU for each classification, and the reported times are wall clock (i.e., real) times: 
+%'fast' took about 5 days, 
+'normal' required about 10 days, 
+while 'slow' was forcefully stopped after 52 days (when all trees converged except for glottolog+mg2015).
+
+How do the estimated branch lengths compare?
+% Comparisons between GA params:
+<<compare-brlen,results=hide>>=
+# Read all GA trees for each classification and GA parameters:
+GA.comparisons <- do.call(rbind, mclapply(c("autotyp", "ethnologue", "glottolog", "wals"), function(classification)
+  {
+    do.call(rbind, lapply(c("asjp16", "autotyp", "geo", "mg2015(autotyp)", "wals(euclidean)", "wals(euclidean,mode)", "wals(gower)", "wals(gower,mode)"), function(mcd)
+    {
+      # Read the three sets of GA trees:
+      trees.fast <- trees.normal <- trees.slow <- NULL;
+      file.name <- paste0( "../output-smallGA/", classification, "/", classification, "-newick-ga+", mcd, ".csv");
+      if( file.exists(file.name) )
+      {   
+        # extract the fitness values:
+        tmp <- read.table(file.name, sep="\t", quote="", header=TRUE, stringsAsFactors=FALSE);
+        fitness.fast <- data.frame("Family"=tmp$Family,
+                                   "Fitness"=vapply(tmp$Comments,function(x) ifelse(!startsWith(x,"GA: converged after"),NA,as.numeric(strsplit(x,"SSE error ",fixed=TRUE)[[1]][2])), numeric(1)),
+                                   "Generations"=vapply(tmp$Comments,function(x) ifelse(!startsWith(x,"GA: converged after"),NA,as.numeric(strsplit(strsplit(x,"after ",fixed=TRUE)[[1]][2]," iterations",fixed=TRUE)[[1]][1])), numeric(1)));
+        # parse the trees:
+        trees.fast <- languageclassification( classification, csv.file=file.name );
+      }
+      file.name <- paste0( "../output/", classification, "/", classification, "-newick-ga+", mcd, ".csv");
+      if( file.exists(file.name) )
+      {   
+        # extract the fitness values:
+        tmp <- read.table(file.name, sep="\t", quote="", header=TRUE, stringsAsFactors=FALSE);
+        fitness.normal <- data.frame("Family"=tmp$Family,
+                                   "Fitness"=vapply(tmp$Comments,function(x) ifelse(!startsWith(x,"GA: converged after"),NA,as.numeric(strsplit(x,"SSE error ",fixed=TRUE)[[1]][2])), numeric(1)),
+                                   "Generations"=vapply(tmp$Comments,function(x) ifelse(!startsWith(x,"GA: converged after"),NA,as.numeric(strsplit(strsplit(x,"after ",fixed=TRUE)[[1]][2]," iterations",fixed=TRUE)[[1]][1])), numeric(1)));
+        # parse the trees:
+        trees.normal <- languageclassification( classification, csv.file=file.name );
+      }
+      file.name <- paste0( "../output-slowGA/", classification, "/", classification, "-newick-ga+", mcd, ".csv");
+      if( file.exists(file.name) )
+      {   
+        # extract the fitness values:
+        tmp <- read.table(file.name, sep="\t", quote="", header=TRUE, stringsAsFactors=FALSE);
+        fitness.slow <- data.frame("Family"=tmp$Family,
+                                   "Fitness"=vapply(tmp$Comments,function(x) ifelse(!startsWith(x,"GA: converged after"),NA,as.numeric(strsplit(x,"SSE error ",fixed=TRUE)[[1]][2])), numeric(1)),
+                                   "Generations"=vapply(tmp$Comments,function(x) ifelse(!startsWith(x,"GA: converged after"),NA,as.numeric(strsplit(strsplit(x,"after ",fixed=TRUE)[[1]][2]," iterations",fixed=TRUE)[[1]][1])), numeric(1)));
+        # parse the trees:
+        trees.slow <- languageclassification( classification, csv.file=file.name );
+      }
+      
+      # Compare the corresponding family trees in terms of branch length:
+      lg.fams <- NULL;
+      if( !is.null(trees.fast) ) lg.fams <- union(lg.fams, get.family.names(trees.fast));
+      if( !is.null(trees.normal) )  lg.fams <- union(lg.fams, get.family.names(trees.normal)); 
+      if( !is.null(trees.slow) )  lg.fams <- union(lg.fams, get.family.names(trees.slow)); 
+      
+      tmp <- do.call(rbind, lapply(lg.fams, function(tree.name) 
+      {
+        #cat(tree.name," ");
+        tree.fast <- tree.normal <- tree.slow <- NULL;
+        if( !is.null(trees.fast) )   tree.fast   <- find.language.family( trees.fast, tree.name );
+        if( !is.null(trees.normal) ) tree.normal <- find.language.family( trees.normal, tree.name );
+        if( !is.null(trees.slow) )   tree.slow   <- find.language.family( trees.slow, tree.name );
+        
+        ret.val <- data.frame("classification"=classification,
+                   "distance"=mcd,
+                   "family"=tree.name,
+                   "branch.lengths.fast"  =ifelse(is.null(tree.fast),NA,length(tree.fast$edge.length)), 
+                   "branch.lengths.normal"=ifelse(is.null(tree.normal),NA,length(tree.normal$edge.length)), 
+                   "branch.lengths.slow"  =ifelse(is.null(tree.slow),NA,length(tree.slow$edge.length)),
+                   "fitness.fast"=ifelse(is.null(tree.fast),NA,fitness.fast$Fitness[fitness.fast$Family==tree.name]),
+                   "generations.fast"=ifelse(is.null(tree.fast),NA,fitness.fast$Generations[fitness.fast$Family==tree.name]),
+                   "fitness.normal"=ifelse(is.null(tree.normal),NA,fitness.normal$Fitness[fitness.normal$Family==tree.name]),
+                   "generations.normal"=ifelse(is.null(tree.normal),NA,fitness.normal$Generations[fitness.normal$Family==tree.name]),
+                   "fitness.slow"=ifelse(is.null(tree.slow),NA,fitness.slow$Fitness[fitness.slow$Family==tree.name]),
+                   "generations.slow"=ifelse(is.null(tree.slow),NA,fitness.slow$Generations[fitness.slow$Family==tree.name]),
+                   "error"="",
+                   "fast.normal.r"=NA, "fast.normal.r.p"=NA, "fast.normal.t"=NA, "fast.normal.t.df"=NA, "fast.normal.t.p"=NA, "fast.normal.dist"=NA, 
+                   "fast.slow.r"=NA, "fast.slow.r.p"=NA, "fast.slow.t"=NA, "fast.slow.t.df"=NA, "fast.slow.t.p"=NA, "fast.slow.dist"=NA, 
+                   "slow.normal.r"=NA, "slow.normal.r.p"=NA, "slow.normal.t"=NA, "slow.normal.t.df"=NA, "slow.normal.t.p"=NA, "slow.normal.dist"=NA); 
+        
+        if( !is.null(tree.fast) && !is.null(tree.normal) )
+        {
+          if( length(tree.fast$edge.length) != length(tree.normal$edge.length) )
+          {
+            warning(paste0("fast and normal trees have different edge.length: ",length(tree.fast$edge.length)," != ",length(tree.normal$edge.length)," for ",classification,", ",mcd,", ",tree.name,"\n"));
+            ret.val$error <- paste0(ret.val$error, "(fast != normal)");
+          } else
+          {
+            if( length(tree.fast$edge.length) < 3 )
+            {
+              r1 <- list("estimate"=NA, "p.value"=NA);
+            } else
+            {
+              r1 <- cor.test(tree.fast$edge.length, tree.normal$edge.length);
+            }
+            if( length(tree.fast$edge.length) < 2 )
+            {
+              t1 <- list("statistic"=NA, "parameter"=NA, "p.value"=NA);
+            } else
+            {
+              t1 <- t.test(tree.fast$edge.length, tree.normal$edge.length, paired=TRUE);
+            }
+            d1 <- dist(t(matrix(c(tree.fast$edge.length, tree.normal$edge.length),ncol=2)), "euclidean");
+            ret.val$fast.normal.r <- r1$estimate; ret.val$fast.normal.r.p <- r1$p.value;
+            ret.val$fast.normal.t <- t1$statistic; ret.val$fast.normal.t.df <- t1$parameter; ret.val$fast.normal.t.p <- t1$p.value;
+            ret.val$fast.normal.dist <- d1;
+          }
+        }
+        if( !is.null(tree.fast) && !is.null(tree.slow) )
+        {
+          if( length(tree.fast$edge.length) != length(tree.slow$edge.length) )
+          {
+            warning(paste0("fast and slow trees have different edge.length: ",length(tree.fast$edge.length)," != ",length(tree.slow$edge.length)," for ",classification,", ",mcd,", ",tree.name,"\n"));
+            ret.val$error <- paste0(ret.val$error, "(fast != slow)");
+          } else
+          {
+            if( length(tree.fast$edge.length) < 3 )
+            {
+              r1 <- list("estimate"=NA, "p.value"=NA);
+            } else
+            {
+              r1 <- cor.test(tree.fast$edge.length, tree.slow$edge.length);
+            }
+            if( length(tree.fast$edge.length) < 2 )
+            {
+              t1 <- list("statistic"=NA, "parameter"=NA, "p.value"=NA);
+            } else
+            {
+              t1 <- t.test(tree.fast$edge.length, tree.slow$edge.length, paired=TRUE);
+            }
+            d1 <- dist(t(matrix(c(tree.fast$edge.length, tree.slow$edge.length),ncol=2)), "euclidean");
+            ret.val$fast.slow.r <- r1$estimate; ret.val$fast.slow.r.p <- r1$p.value;
+            ret.val$fast.slow.t <- t1$statistic; ret.val$fast.slow.t.df <- t1$parameter; ret.val$fast.slow.t.p <- t1$p.value;
+            ret.val$fast.slow.dist <- d1;
+          }
+        }
+        if( !is.null(tree.slow) && !is.null(tree.normal) )
+        {
+          if( length(tree.slow$edge.length) != length(tree.normal$edge.length) )
+          {
+            warning(paste0("slow and normal trees have different edge.length: ",length(tree.slow$edge.length)," != ",length(tree.normal$edge.length)," for ",classification,", ",mcd,", ",tree.name,"\n"));
+            ret.val$error <- paste0(ret.val$error, "(slow != normal)");
+          } else
+          {
+            if( length(tree.slow$edge.length) < 3 )
+            {
+              r1 <- list("estimate"=NA, "p.value"=NA);
+            } else
+            {
+              r1 <- cor.test(tree.slow$edge.length, tree.normal$edge.length);
+            }
+            if( length(tree.slow$edge.length) < 2 )
+            {
+              t1 <- list("statistic"=NA, "parameter"=NA, "p.value"=NA);
+            } else
+            {
+              t1 <- t.test(tree.slow$edge.length, tree.normal$edge.length, paired=TRUE);
+            }
+            d1 <- dist(t(matrix(c(tree.slow$edge.length, tree.normal$edge.length),ncol=2)), "euclidean");
+            ret.val$slow.normal.r <- r1$estimate; ret.val$slow.normal.r.p <- r1$p.value;
+            ret.val$slow.normal.t <- t1$statistic; ret.val$slow.normal.t.df <- t1$parameter; ret.val$slow.normal.t.p <- t1$p.value;
+            ret.val$slow.normal.dist <- d1;
+          }
+        }
+
+        return (ret.val);
+      }));
+      return (tmp);
+    }))
+  }, mc.cores=2));
+@
+
+We compared `normal' and `slow' by computing the Pearson's $r$, paired t-test, and Euclidean distance between the corresponding branch lengths for each family tree for each classification and distance matrix.
+Pearsons correlations vary between \Sexpr{sprintf("%.2f",min(GA.comparisons$slow.normal.r,na.rm=TRUE))} and \Sexpr{sprintf("%.2f",max(GA.comparisons$slow.normal.r,na.rm=TRUE))}, with mean \Sexpr{sprintf("%.2f",mean(GA.comparisons$slow.normal.r,na.rm=TRUE))} and median \Sexpr{sprintf("%.2f",median(GA.comparisons$slow.normal.r,na.rm=TRUE))}.
+The Euclidean distances vary between \Sexpr{sprintf("%.2f",min(GA.comparisons$slow.normal.dist,na.rm=TRUE))} and \Sexpr{sprintf("%.2f",max(GA.comparisons$slow.normal.dist,na.rm=TRUE))}, with mean \Sexpr{sprintf("%.2f",mean(GA.comparisons$slow.normal.dist,na.rm=TRUE))} and median \Sexpr{sprintf("%.2f",median(GA.comparisons$slow.normal.dist,na.rm=TRUE))}.
+Only \Sexpr{sum(GA.comparisons$slow.normal.t.p < 0.05,na.rm=TRUE)} paired t-tests (out of \Sexpr{sum(!is.na(GA.comparisons$slow.normal.t.p))} successful comparisons) are significant at the 0.05 level.
+
+Interestingly, the Pearson correlation between the fitness values for the `normal' and `slow' is 
+\Sexpr{r1 <- cor.test(GA.comparisons$fitness.normal, GA.comparisons$fitness.slow); sprintf("r = %.2f, p = %.4g",r1$estimate,r1$p.value)}, 
+with the paired t-test not significant: 
+\Sexpr{t1 <- t.test(GA.comparisons$fitness.normal, GA.comparisons$fitness.slow, paired=TRUE); sprintf("t(%.1f) = %.2f, p = %.4g",t1$parameter,t1$statistic,t1$p.value)}.
+Moreover, the number of generations required to reach this fitness optimum are correlated:
+\Sexpr{r1 <- cor.test(GA.comparisons$generations.normal, GA.comparisons$generations.slow); sprintf("r = %.2f, p = %.4g",r1$estimate,r1$p.value)},
+but `slow' requires significantly more generations than `normal' as shown by the paired t-tests:
+\Sexpr{t1 <- t.test(GA.comparisons$generations.normal, GA.comparisons$generations.slow, paired=TRUE); sprintf("mean diff. normal - slow = %.2f, t(%.1f) = %.2f, p = %.4g",t1$estimate,t1$parameter,t1$statistic,t1$p.value)}.
+
+Thus, it seems that the much higher computational costs required by `slow' are not justified in terms of better fit, and the resulting branch lengths are very similar.
+Therefore, the `normal' parameters \texttt{GA.MAXITER} = 10000, \texttt{GGA.POPSIZE} = 100, and \texttt{GGA.CONSTANTRUN} = 100, are enough for our purposes.
+
+
+\section{Conclusions}
+
+This paper describes a flexible method for producing standardized language family trees in the Newick format with branch length using a variety of linguistic classifications, methods and distances between languages.
+Accompanying this paper as Supplementary Online Materials is an archive (tar.xz) containing (where possible given the licensing terms) the input data, the \texttt{R} code, the output files, and the source of this paper (written using \texttt{Sweave} \citealp{lmucs-papers_Leisch_2002}), as well as short descriptions (\texttt{ReadMe.txt} files) and license terms.
+My own \texttt{R} code is released under a GPL v2 license, is relatively well-commented and tested, and is free to use and modify as long as the terms of the license are respected and this paper is cited\footnote{Why not an \texttt{R} package, you migth ask? I feel this application is very specific and the code is mainly intended to be changed and adapted (or just serve as inspiration) for other specific problems the users might have, instead of being used as it is.}.
+Especially the high-level functions in \texttt{./code/FamilyTrees.R} might be useful for manipulating such trees and applying new distance matrices to family tree topologies; the file \texttt{./code/StandardizedTrees.r} can be consulted as an example of using them and it also contains useful functions.
+
+
+\section*{Acknowledgments}
+Many thanks to the authors of the databases used here for making their data freely available, to Balthasar Bickel for computing the AUTOTYP distance and agreeing to making it freely available with this paper, to Luke Maurits for clariying their ``genetic method'', and to Harald Hammarstr\"{o}m and Se\'{a}n Roberts for discussions and feedback.
+During this project I was funded by an NWO (Netherlands Organisation for Scientific Research) VIDI grant number 016.124.315.
+
+
+% References:
+\bibliographystyle{apa}
+\bibliography{family-trees-with-brlength}
+
+
+%\clearpage
+\section*{Appendix A: Family trees summaries}
+\label{Appendix A: Family trees summaries}
+
+This Appendix contains summaries concerning the language family trees generated using the classifications, methods and distances discussed in this paper, using the same conventions as in Table \ref{Tab:tree topologies}.
+
+<<echo=FALSE,results=hide>>=
+# Generic function for generating the summaries table for a given MCD:
+.summary.table.for.mcd <- function(mcd, param.name="Parameter", param.value="-", caption=mcd, show.header=TRUE, show.footer=TRUE)
+{
+  # Compute the summaries:
+  summariesE <- get.summaries.trees( classification="ethnologue", mcd=paste0("-",mcd) );
+  summariesW <- get.summaries.trees( classification="wals"      , mcd=paste0("-",mcd) );
+  summariesA <- get.summaries.trees( classification="autotyp"   , mcd=paste0("-",mcd) );
+  summariesG <- get.summaries.trees( classification="glottolog" , mcd=paste0("-",mcd) );
+  
+  # Write a LaTeX table:
+  # The header:
+  x <- "";
+  if( show.header )
+  {
+  x <- paste0("\\begin{center}\n",
+              "  \\begin{longtable}{c|r|c|c|c|c}\n",
+              "    \\textbf{", param.name, "} & \\textbf{Measure}          & \\textbf{E} & \\textbf{W} & \\textbf{A} & \\textbf{G} \\\\\n",
+              "    \\hline\n",
+              "    \\endhead % all the lines above this will be repeated on every page\n");
+  }
+  # The body:
+  x <- paste0(x,"  \\textit{",param.value,"} & \\# trees",
+              "                     & ", summariesE$no.trees.total, "\n",
+              "                     & ", summariesW$no.trees.total, "\n",
+              "                     & ", summariesA$no.trees.total, "\n",
+              "                     & ", summariesG$no.trees.total, "\\\\\n",
+              "                  & \\# trees success",
+              "                     & ", summariesE$no.trees.success, "\n",
+              "                     & ", summariesW$no.trees.success, "\n",
+              "                     & ", summariesA$no.trees.success, "\n",
+              "                     & ", summariesG$no.trees.success, "\\\\\n",
+              "                  & \\# leaves total",
+              "                     & ", sum(summariesE$no.lgs,na.rm=TRUE), "\n",
+              "                     & ", sum(summariesW$no.lgs,na.rm=TRUE), "\n",
+              "                     & ", sum(summariesA$no.lgs,na.rm=TRUE), "\n",
+              "                     & ", sum(summariesG$no.lgs,na.rm=TRUE), "\\\\\n",
+              "                  & Avg leaves",
+              "                     & ", sprintf("%.1f",mean(summariesE$no.lgs,na.rm=TRUE)), "\n",
+              "                     & ", sprintf("%.1f",mean(summariesW$no.lgs,na.rm=TRUE)), "\n",
+              "                     & ", sprintf("%.1f",mean(summariesA$no.lgs,na.rm=TRUE)), "\n",
+              "                     & ", sprintf("%.1f",mean(summariesG$no.lgs,na.rm=TRUE)), "\\\\\n",
+              "                  & Max leaves",
+              "                     & ", max(summariesE$no.lgs,na.rm=TRUE), "\n",
+              "                     & ", max(summariesW$no.lgs,na.rm=TRUE), "\n",
+              "                     & ", max(summariesA$no.lgs,na.rm=TRUE), "\n",
+              "                     & ", max(summariesG$no.lgs,na.rm=TRUE), "\\\\\n",
+              "                  & Avg levels",
+              "                     & ", sprintf("%.1f",mean(summariesE$no.levels,na.rm=TRUE)), "\n",
+              "                     & ", sprintf("%.1f",mean(summariesW$no.levels,na.rm=TRUE)), "\n",
+              "                     & ", sprintf("%.1f",mean(summariesA$no.levels,na.rm=TRUE)), "\n",
+              "                     & ", sprintf("%.1f",mean(summariesG$no.levels,na.rm=TRUE)), "\\\\\n",
+              "                  & Min levels",
+              "                     & ", min(summariesE$no.levels,na.rm=TRUE), "\n",
+              "                     & ", min(summariesW$no.levels,na.rm=TRUE), "\n",
+              "                     & ", min(summariesA$no.levels,na.rm=TRUE), "\n",
+              "                     & ", min(summariesG$no.levels,na.rm=TRUE), "\\\\\n",
+              "                  & Max levels",
+              "                     & ", max(summariesE$no.levels,na.rm=TRUE), "\n",
+              "                     & ", max(summariesW$no.levels,na.rm=TRUE), "\n",
+              "                     & ", max(summariesA$no.levels,na.rm=TRUE), "\n",
+              "                     & ", max(summariesG$no.levels,na.rm=TRUE), "\\\\\n",
+              "    \\hline\n");
+  # The footer:
+  if( show.footer )
+  {
+  x <- paste0(x,"  \\caption{Summaries for ", caption, ".}\n",
+              "    \\label{Tab:tree topologies ", caption, "}\n",
+              "  \\end{longtable}\n",
+              "\\end{center}\n");
+  }
+  return (x);
+}
+@
+
+% constant
+Table \ref{Tab:tree topologies constant=1.00} gives the summaries for the \emph{constant} method with $k=1.00$.
+<<constant,results=tex>>=
+cat(.summary.table.for.mcd("constant=1.00", param.value="k=1.00"), "\n\n");
+@
+
+% proportional
+Table \ref{Tab:tree topologies proportional=1.00} gives the summaries for the \emph{proportional} method with $k=1.00$.
+<<proportional,results=tex>>=
+cat(.summary.table.for.mcd("proportional=1.00", param.value="k=1.00"), "\n\n");
+@
+
+% grafen
+Table \ref{Tab:tree topologies grafen} gives the summaries for the \emph{grafen} method.
+<<grafen,results=tex>>=
+cat(.summary.table.for.mcd("grafen", param.value="-"), "\n\n");
+@
+
+% nj
+Table \ref{Tab:tree topologies nj} gives the summaries for the \emph{nj} method with the various distance matrices.
+<<nj,results=tex>>=
+for( d in c("asjp16", "geo", "wals(gower)", "wals(euclidean)", "wals(gower,mode)", "wals(euclidean,mode)", "autotyp", "mg2015(wals)", "mg2015(ethnologue)", "mg2015(glottolog)", "mg2015(autotyp)") )
+  cat(.summary.table.for.mcd(paste0("nj+",d), param.value=d, caption="nj", show.header=(d=="asjp16"), show.footer=(d=="mg2015(autotyp)")), "\n\n");
+@
+
+% nnls
+Table \ref{Tab:tree topologies nnls} gives the summaries for the \emph{nnls} method with the various distance matrices.
+<<nnls,results=tex>>=
+for( d in c("asjp16", "geo", "wals(gower)", "wals(euclidean)", "wals(gower,mode)", "wals(euclidean,mode)", "autotyp", "mg2015(wals)", "mg2015(ethnologue)", "mg2015(glottolog)", "mg2015(autotyp)") )
+  cat(.summary.table.for.mcd(paste0("nnls+",d), caption="nnls", param.value=d, show.header=(d=="asjp16"), show.footer=(d=="mg2015(autotyp)")), "\n\n");
+@
+
+% ga
+Table \ref{Tab:tree topologies ga} gives the summaries for the \emph{ga} method with the various distance matrices.
+<<ga,results=tex>>=
+for( d in c("asjp16", "geo", "wals(gower)", "wals(euclidean)", "wals(gower,mode)", "wals(euclidean,mode)", "autotyp", "mg2015(wals)", "mg2015(ethnologue)", "mg2015(glottolog)", "mg2015(autotyp)") )
+  cat(.summary.table.for.mcd(paste0("ga+",d), caption="ga", param.value=d, show.header=(d=="asjp16"), show.footer=(d=="mg2015(autotyp)")), "\n\n");
+@
+
+\clearpage
+
+
+\end{document}
+

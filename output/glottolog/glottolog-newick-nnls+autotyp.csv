@@ -2,16 +2,16 @@ Family	Success	Comments	Tree
 Umbugarla	FAIL	NNLS: too few languages	
 Deaf Sign Language	FAIL	NNLS: the distances matrix is too small	
 Pidgin Sign Language	FAIL	NNLS: too few languages	
-Sign Languages	FAIL	NNLS: error in nnls.tree()	
-Timor-Alor-Pantar	FAIL	NNLS: error in nnls.tree()	
+Sign Languages	FAIL	NNLS: too few languages with non-missing data	
+Timor-Alor-Pantar	FAIL	NNLS: too few languages with non-missing data	
 Unclassified	FAIL	NNLS: the distances matrix is too small	
-Village Sign Language	FAIL	NNLS: error in nnls.tree()	
+Village Sign Language	FAIL	NNLS: too few languages with non-missing data	
 Ramanos	FAIL	NNLS: too few languages	
-Nilotic	SUCCESS	NNLS: 	('Nandi [i-niq][w-nan][a-299][g-nand1266]':0.103,(('Luwo [i-lwo][w-jlu][a-1924][g-luwo1239]':0.0379,'Pari [i-lkr][w-par][a-1894][g-pari1256]':0.0379,'Shilluk [i-shk][w-shl][a-2423][g-shil1265]':0.0379)'Northern Lwoo [i-][w-][a-][g-nort2814]':0.0357,('Luo {Kenya and Tanzania} [i-luo][w-luo][a-1919][g-luok1236]':0.0671,'Lango {Uganda} [i-laj][w-lan][a-159][g-lang1324]':0.0671)'Southern Lwoo [i-][w-][a-][g-sout2831]':0.00644)'Luo-Burun [i-][w-][a-][g-luob1235]':0.0295)'Nilotic [i-][w-][a-][g-nilo1247]';
-Austronesian	FAIL	NNLS: error in nnls.tree()	
-Eskimo-Aleut	FAIL	NNLS: error in nnls.tree()	
+Nilotic	SUCCESS	NNLS	('Nandi [i-niq][w-nan][a-299][g-nand1266]':0.103,(('Luwo [i-lwo][w-jlu][a-1924][g-luwo1239]':0.0379,'Pari [i-lkr][w-par][a-1894][g-pari1256]':0.0379,'Shilluk [i-shk][w-shl][a-2423][g-shil1265]':0.0379)'Northern Lwoo [i-][w-][a-][g-nort2814]':0.0357,('Luo {Kenya and Tanzania} [i-luo][w-luo][a-1919][g-luok1236]':0.0671,'Lango {Uganda} [i-laj][w-lan][a-159][g-lang1324]':0.0671)'Southern Lwoo [i-][w-][a-][g-sout2831]':0.00644)'Luo-Burun [i-][w-][a-][g-luob1235]':0.0295)'Nilotic [i-][w-][a-][g-nilo1247]';
+Austronesian	SUCCESS	NNLS	('Saaroa [i-sxr][w-][a-2970][g-saar1237]':0.114,(('Samoan [i-smo][w-sam][a-346][g-samo1305]':0.11,'Rapanui [i-rap][w-rap][a-564][g-rapa1244]':0.11)'Nuclear Polynesian [i-][w-][a-][g-nucl1485]':0.00361,'Yapese [i-yap][w-yap][a-2786][g-yape1248]':0.114)'Oceanic [i-][w-][a-][g-ocea1241]':1.39e-17)'Nuclear Austronesian [i-][w-][a-][g-nucl1752]';
+Eskimo-Aleut	FAIL	NNLS: too few languages with non-missing data	
 Kiwaian	FAIL	NNLS: the distances matrix is too small	
-Central Sudanic	SUCCESS	NNLS: 	('Ngiti [i-niy][w-nti][a-561][g-ngit1239]':0,('Baka {Sudan} [i-bdh][w-bka][a-986][g-baka1274]':0,('Kara {Central African Republic} [i-kah][w-kar][a-1697][g-kara1482]':0,('Gula {Chad} [i-glu][w-gul][a-1551][g-gula1269]':0,'Mango [i-mge][w-mgq][a-3160][g-mang1398]':0,'Furu [i-fuu][w-bgr][a-1510][g-furu1242]':0)'Saraic [i-][w-][a-][g-sara1349]':0)'Nuclear SBB Occidental [i-][w-][a-][g-nucl1719]':0)'Sara-Bongo-Bagirmi [i-][w-][a-][g-sara1341]':0)'Central Sudanic [i-][w-][a-][g-cent2225]';
+Central Sudanic	SUCCESS	NNLS	('Ngiti [i-niy][w-nti][a-561][g-ngit1239]':0.304,('Baka {Sudan} [i-bdh][w-bka][a-986][g-baka1274]':0.059,('Kara {Central African Republic} [i-kah][w-kar][a-1697][g-kara1482]':0.059,('Gula {Chad} [i-glu][w-gul][a-1551][g-gula1269]':0.0147,'Furu [i-fuu][w-bgr][a-1510][g-furu1242]':0.0147)'Saraic [i-][w-][a-][g-sara1349]':0.0443)'Nuclear SBB Occidental [i-][w-][a-][g-nucl1719]':0)'Sara-Bongo-Bagirmi [i-][w-][a-][g-sara1341]':0.245)'Central Sudanic [i-][w-][a-][g-cent2225]';
 Huarpean	FAIL	NNLS: the distances matrix is too small	
 Muniche	FAIL	NNLS: too few languages	
 Yamana	FAIL	NNLS: too few languages	
@@ -56,14 +56,14 @@ Karankawa	FAIL	NNLS: too few languages
 Kol {Papua New Guinea}	FAIL	NNLS: the distances matrix is too small	
 Tuu	FAIL	NNLS: the distances matrix is too small	
 Arafundi	FAIL	NNLS: the distances matrix is too small	
-Kuliak	FAIL	NNLS: error in nnls.tree()	
-Suki-Gogodala	SUCCESS	NNLS: 	('Gogodala [i-ggw][w-gog][a-1557][g-gogo1265]':0,'Suki [i-sui][w-suk][a-2494][g-suki1245]':0)'Suki-Gogodala [i-][w-][a-][g-suki1244]';
-Angan	SUCCESS	NNLS: 	('Angaataha [i-agm][w-ant][a-851][g-anga1290]':0.111,'Menya [i-mcr][w-mey][a-1954][g-meny1245]':0.111,('Akoye [i-miw][w-][a-3052][g-akoy1238]':0.111,'Tainae [i-ago][w-][a-3053][g-tain1253]':0.111)'Tainae-Akoye [i-][w-][a-][g-tain1255]':0)'Angan [i-][w-][a-][g-anga1289]';
+Kuliak	SUCCESS	NNLS	('Ik [i-ikx][w-ik][a-111][g-ikkk1242]':0.17,'Nyang`i [i-nyp][w-nyg][a-2230][g-nyan1313]':0.17)'Kuliak [i-][w-][a-][g-kuli1252]';
+Suki-Gogodala	SUCCESS	NNLS	('Gogodala [i-ggw][w-gog][a-1557][g-gogo1265]':0,'Suki [i-sui][w-suk][a-2494][g-suki1245]':0)'Suki-Gogodala [i-][w-][a-][g-suki1244]';
+Angan	SUCCESS	NNLS	('Angaataha [i-agm][w-ant][a-851][g-anga1290]':0.111,'Menya [i-mcr][w-mey][a-1954][g-meny1245]':0.111,('Akoye [i-miw][w-][a-3052][g-akoy1238]':0.111,'Tainae [i-ago][w-][a-3053][g-tain1253]':0.111)'Tainae-Akoye [i-][w-][a-][g-tain1255]':0)'Angan [i-][w-][a-][g-anga1289]';
 Cahuapanan	FAIL	NNLS: the distances matrix is too small	
-Baining	FAIL	NNLS: error in nnls.tree()	
-Maningrida	SUCCESS	NNLS: 	(('Guragone [i-gge][w-grg][a-1536][g-gura1252]':0.0333,'Nakara [i-nck][w-nkk][a-198][g-naka1260]':0.0333)'Burera-Nakara [i-][w-][a-][g-bure1237]':0.0905,'Djeebbana [i-djj][w-ndj][a-661][g-djee1236]':0.124)'Maningrida [i-][w-][a-][g-mani1293]';
+Baining	FAIL	NNLS: too few languages with non-missing data	
+Maningrida	SUCCESS	NNLS	(('Guragone [i-gge][w-grg][a-1536][g-gura1252]':0.0333,'Nakara [i-nck][w-nkk][a-198][g-naka1260]':0.0333)'Burera-Nakara [i-][w-][a-][g-bure1237]':0.0905,'Djeebbana [i-djj][w-ndj][a-661][g-djee1236]':0.124)'Maningrida [i-][w-][a-][g-mani1293]';
 Bororoan	FAIL	NNLS: the distances matrix is too small	
-Kolopom	SUCCESS	NNLS: 	('Kimaama [i-kig][w-kim][a-131][g-kima1246]':0,'Riantana [i-ran][w-ria][a-2362][g-rian1263]':0)'Kimaama-Riantana [i-][w-][a-][g-kima1245]';
+Kolopom	SUCCESS	NNLS	('Kimaama [i-kig][w-kim][a-131][g-kima1246]':0,'Riantana [i-ran][w-ria][a-2362][g-rian1263]':0)'Kimaama-Riantana [i-][w-][a-][g-kima1245]';
 South Bird`s Head Family	FAIL	NNLS: the distances matrix is too small	
 Nuclear Eleman	FAIL	NNLS: the distances matrix is too small	
 Mairasi	FAIL	NNLS: the distances matrix is too small	
@@ -74,108 +74,108 @@ Chukotko-Kamchatkan	FAIL	NNLS: the distances matrix is too small
 North Bougainville	FAIL	NNLS: the distances matrix is too small	
 Aymara	FAIL	NNLS: the distances matrix is too small	
 Limilngan	FAIL	NNLS: the distances matrix is too small	
-Pomoan	SUCCESS	NNLS: 	(('Eastern Pomo [i-peb][w-pme][a-72][g-east2545]':0.0714,'Kashaya [i-kju][w-ksh][a-1766][g-kash1280]':0.0714)'Russian River and Eastern [i-][w-][a-][g-russ1265]':0,'Southeastern Pomo [i-pom][w-pso][a-568][g-sout2982]':0.0714)'Pomoan [i-][w-][a-][g-pomo1273]';
-Chumashan	SUCCESS	NNLS: 	('Barbareno [i-boi][w-cba][a-1048][g-barb1263]':0.125,'Ineseno [i-inz][w-cin][a-113][g-ines1240]':0.125,'Purisimeno [i-puy][w-][a-2959][g-puri1259]':0.125)'Central Chumashan [i-][w-][a-][g-cent2139]';
+Pomoan	SUCCESS	NNLS	(('Eastern Pomo [i-peb][w-pme][a-72][g-east2545]':0.0714,'Kashaya [i-kju][w-ksh][a-1766][g-kash1280]':0.0714)'Russian River and Eastern [i-][w-][a-][g-russ1265]':0,'Southeastern Pomo [i-pom][w-pso][a-568][g-sout2982]':0.0714)'Pomoan [i-][w-][a-][g-pomo1273]';
+Chumashan	SUCCESS	NNLS	('Barbareno [i-boi][w-cba][a-1048][g-barb1263]':0,'Ineseno [i-inz][w-cin][a-113][g-ines1240]':0)'Central Chumashan [i-][w-][a-][g-cent2139]';
 Southern Daly	FAIL	NNLS: the distances matrix is too small	
 Dagan	FAIL	NNLS: the distances matrix is too small	
 Eastern Trans-Fly	FAIL	NNLS: the distances matrix is too small	
 Puri	FAIL	NNLS: the distances matrix is too small	
-Nimboran	FAIL	NNLS: error in nnls.tree()	
+Nimboran	FAIL	NNLS: too few languages with non-missing data	
 Awin-Pa	FAIL	NNLS: the distances matrix is too small	
 Mongol-Langam	FAIL	NNLS: the distances matrix is too small	
-West Bomberai	FAIL	NNLS: error in nnls.tree()	
-South Omotic	FAIL	NNLS: error in nnls.tree()	
+West Bomberai	FAIL	NNLS: too few languages with non-missing data	
+South Omotic	SUCCESS	NNLS	('Aari [i-aiw][w-aar][a-865][g-aari1239]':0.0652,'Dime [i-dim][w-dim][a-1323][g-dime1235]':0.0652)'South Omotic [i-][w-][a-][g-sout2845]';
 Goilalan	FAIL	NNLS: the distances matrix is too small	
 Keresan	FAIL	NNLS: the distances matrix is too small	
 Bayono-Awbono	FAIL	NNLS: the distances matrix is too small	
-Saliban	SUCCESS	NNLS: 	('Piaroa [i-pid][w-pia][a-2293][g-piar1243]':0,'Saliba {Colombia} [i-slc][w-sba][a-2442][g-sali1298]':0)'Saliban [i-][w-][a-][g-sali1297]';
+Saliban	SUCCESS	NNLS	('Piaroa [i-pid][w-pia][a-2293][g-piar1243]':0,'Saliba {Colombia} [i-slc][w-sba][a-2442][g-sali1298]':0)'Saliban [i-][w-][a-][g-sali1297]';
 Giimbiyu	FAIL	NNLS: the distances matrix is too small	
 Saharan	FAIL	NNLS: the distances matrix is too small	
-Cochimi-Yuman	SUCCESS	NNLS: 	(('Cocopa [i-coc][w-ccp][a-616][g-coco1261]':0,('Maricopa [i-mrc][w-mar][a-465][g-mari1440]':0,'Mohave [i-mov][w-moj][a-2060][g-moha1256]':0,'Quechan [i-yum][w-que][a-2794][g-quec1382]':0)'River Yuman [i-][w-][a-][g-rive1260]':0)'General Yuman [i-][w-][a-][g-gene1244]':0,'Kiliwa [i-klb][w-klw][a-1773][g-kili1268]':0)'Yuman [i-][w-][a-][g-yuma1250]';
+Cochimi-Yuman	SUCCESS	NNLS	(('Cocopa [i-coc][w-ccp][a-616][g-coco1261]':0.0367,('Maricopa [i-mrc][w-mar][a-465][g-mari1440]':0.0367,'Mohave [i-mov][w-moj][a-2060][g-moha1256]':0.0367)'River Yuman [i-][w-][a-][g-rive1260]':0)'General Yuman [i-][w-][a-][g-gene1244]':0.0892,'Kiliwa [i-klb][w-klw][a-1773][g-kili1268]':0.126)'Yuman [i-][w-][a-][g-yuma1250]';
 Heiban	FAIL	NNLS: the distances matrix is too small	
-Chonan	SUCCESS	NNLS: 	('Tehuelche [i-teh][w-teh][a-2545][g-tehu1242]':0.125,'Ona [i-ona][w-sel][a-565][g-onaa1245]':0.125)'Chonan [i-][w-][a-][g-chon1288]';
+Chonan	SUCCESS	NNLS	('Tehuelche [i-teh][w-teh][a-2545][g-tehu1242]':0.125,'Ona [i-ona][w-sel][a-565][g-onaa1245]':0.125)'Chonan [i-][w-][a-][g-chon1288]';
 Zamucoan	FAIL	NNLS: the distances matrix is too small	
 Yuat-Maramba	FAIL	NNLS: the distances matrix is too small	
 Tarascan	FAIL	NNLS: the distances matrix is too small	
-Matacoan	SUCCESS	NNLS: 	('Maca [i-mca][w-mca][a-477][g-maca1260]':0,('Iyojwa`ja Chorote [i-crt][w-][a-1185][g-iyoj1235]':0,'Wichi Lhamtes Guisnay [i-mzh][w-wch][a-2124][g-wich1264]':0)'Mataguayo II [i-][w-][a-][g-mata1291]':0)'Matacoan [i-][w-][a-][g-mata1289]';
-Totonacan	SUCCESS	NNLS: 	('Huehuetla Tepehua [i-tee][w-tee][a-372][g-hueh1236]':0.35,(('Filomena Mata-Coahuitlan Totonac [i-tlp][w-][a-2843][g-filo1235]':0,'Highland Totonac [i-tos][w-tos][a-2601][g-high1243]':0,'Papantla Totonac [i-top][w-tpa][a-509][g-papa1238]':0)'Lowland-Sierra Central Totonacan [i-][w-][a-][g-lowl1243]':0,'Yecuatla Totonac [i-tlc][w-tot][a-668][g-yecu1235]':0)'Totonac [i-][w-][a-][g-toto1252]':0.35)'Totonacan [i-][w-][a-][g-toto1251]';
-South Bougainville	FAIL	NNLS: error in nnls.tree()	
+Matacoan	SUCCESS	NNLS	('Maca [i-mca][w-mca][a-477][g-maca1260]':0,('Iyojwa`ja Chorote [i-crt][w-][a-1185][g-iyoj1235]':0,'Wichi Lhamtes Guisnay [i-mzh][w-wch][a-2124][g-wich1264]':0)'Mataguayo II [i-][w-][a-][g-mata1291]':0)'Matacoan [i-][w-][a-][g-mata1289]';
+Totonacan	SUCCESS	NNLS	('Huehuetla Tepehua [i-tee][w-tee][a-372][g-hueh1236]':0.35,('Papantla Totonac [i-top][w-tpa][a-509][g-papa1238]':0,'Yecuatla Totonac [i-tlc][w-tot][a-668][g-yecu1235]':0)'Totonac [i-][w-][a-][g-toto1252]':0.35)'Totonacan [i-][w-][a-][g-toto1251]';
+South Bougainville	FAIL	NNLS: too few languages with non-missing data	
 Tama	FAIL	NNLS: the distances matrix is too small	
-Eastern Daly	SUCCESS	NNLS: 	(('Kamu [i-xmu][w-kmw][a-2356][g-kamu1258]':0.179,'Madngele [i-zml][w-mdl][a-2810][g-madn1237]':0.179)'Eastern Daly [i-][w-][a-][g-east2374]':1);
+Eastern Daly	SUCCESS	NNLS	(('Kamu [i-xmu][w-kmw][a-2356][g-kamu1258]':0.179,'Madngele [i-zml][w-mdl][a-2810][g-madn1237]':0.179)'Eastern Daly [i-][w-][a-][g-east2374]':1);
 Ijoid	FAIL	NNLS: the distances matrix is too small	
 Maybrat	FAIL	NNLS: the distances matrix is too small	
 Katla-Tima	FAIL	NNLS: the distances matrix is too small	
 Eastern Jebel	FAIL	NNLS: the distances matrix is too small	
 Hibito-Cholon	FAIL	NNLS: the distances matrix is too small	
-Khoe-Kwadi	SUCCESS	NNLS: 	('Korana [i-kqz][w-krn][a-739][g-kora1292]':0.154,'//Ani [i-hnh][w-ani][a-651][g-anii1246]':0.154)'Khoe [i-][w-][a-][g-khoe1241]';
-Jarrakan	FAIL	NNLS: error in nnls.tree()	
+Khoe-Kwadi	SUCCESS	NNLS	('Korana [i-kqz][w-krn][a-739][g-kora1292]':0.154,'//Ani [i-hnh][w-ani][a-651][g-anii1246]':0.154)'Khoe [i-][w-][a-][g-khoe1241]';
+Jarrakan	FAIL	NNLS: too few languages with non-missing data	
 Piawi	FAIL	NNLS: the distances matrix is too small	
-Tequistlatecan	FAIL	NNLS: error in nnls.tree()	
-Sahaptian	FAIL	NNLS: error in nnls.tree()	
-Surmic	SUCCESS	NNLS: 	('Majang [i-mpe][w-maj][a-2063][g-maja1242]':0.137,('Mursi [i-muz][w-mur][a-2098][g-murs1242]':0.135,('Didinga [i-did][w-did][a-1321][g-didi1258]':0.0795,'Tennet [i-tex][w-ten][a-2554][g-tenn1246]':0.0795)'Didinga-Murle [i-][w-][a-][g-didi1256]':0.0551)'South Surmic [i-][w-][a-][g-sout2836]':0.00233)'Surmic [i-][w-][a-][g-surm1244]';
+Tequistlatecan	FAIL	NNLS: too few languages with non-missing data	
+Sahaptian	SUCCESS	NNLS	('Nez Perce [i-nez][w-nez][a-208][g-nezp1238]':0.172,('Walla Walla [i-waa][w-][a-2697][g-wall1238]':0,'Tenino [i-tqn][w-][a-342][g-teni1238]':0)'Sahaptin [i-][w-][a-][g-saha1240]':0.172)'Sahaptian [i-][w-][a-][g-saha1239]';
+Surmic	SUCCESS	NNLS	('Majang [i-mpe][w-maj][a-2063][g-maja1242]':0.137,('Mursi [i-muz][w-mur][a-2098][g-murs1242]':0.135,('Didinga [i-did][w-did][a-1321][g-didi1258]':0.0795,'Tennet [i-tex][w-ten][a-2554][g-tenn1246]':0.0795)'Didinga-Murle [i-][w-][a-][g-didi1256]':0.0551)'South Surmic [i-][w-][a-][g-sout2836]':0.00233)'Surmic [i-][w-][a-][g-surm1244]';
 Senagi	FAIL	NNLS: the distances matrix is too small	
 Narrow Talodi	FAIL	NNLS: the distances matrix is too small	
 Tsimshian	FAIL	NNLS: the distances matrix is too small	
 Maban	FAIL	NNLS: the distances matrix is too small	
 Mao	FAIL	NNLS: the distances matrix is too small	
-Maiduan	SUCCESS	NNLS: 	('Nisenan [i-nsz][w-nsn][a-2210][g-nise1244]':0.0653,'Northeast Maidu [i-nmu][w-mne][a-168][g-nort2952]':0.0653,'Northwest Maidu [i-mjd][w-knw][a-1927][g-nort2951]':0.0653)'Maiduan [i-][w-][a-][g-maid1262]';
+Maiduan	SUCCESS	NNLS	('Nisenan [i-nsz][w-nsn][a-2210][g-nise1244]':0.0653,'Northeast Maidu [i-nmu][w-mne][a-168][g-nort2952]':0.0653,'Northwest Maidu [i-mjd][w-knw][a-1927][g-nort2951]':0.0653)'Maiduan [i-][w-][a-][g-maid1262]';
 Yawa	FAIL	NNLS: the distances matrix is too small	
-Morehead-Wasur	FAIL	NNLS: error in nnls.tree()	
+Morehead-Wasur	FAIL	NNLS: too few languages with non-missing data	
 East Strickland	FAIL	NNLS: the distances matrix is too small	
-Tungusic	SUCCESS	NNLS: 	('Ulch [i-ulc][w-ulc][a-2663][g-ulch1241]':0,'Jurchen [i-juc][w-jur][a-1690][g-jurc1239]':0)'Tungusic [i-][w-][a-][g-tung1282]';
-Guahibo	SUCCESS	NNLS: 	('Playero [i-gob][w-pla][a-1555][g-play1240]':0,'Guayabero [i-guo][w-gyb][a-1571][g-guay1257]':0,'Macaguan [i-mbn][w-mcg][a-1939][g-maca1259]':0)'Guahibo [i-][w-][a-][g-guah1252]';
+Tungusic	SUCCESS	NNLS	('Ulch [i-ulc][w-ulc][a-2663][g-ulch1241]':0,'Jurchen [i-juc][w-jur][a-1690][g-jurc1239]':0)'Tungusic [i-][w-][a-][g-tung1282]';
+Guahibo	SUCCESS	NNLS	('Playero [i-gob][w-pla][a-1555][g-play1240]':0,'Guayabero [i-guo][w-gyb][a-1571][g-guay1257]':0,'Macaguan [i-mbn][w-mcg][a-1939][g-maca1259]':0)'Guahibo [i-][w-][a-][g-guah1252]';
 Walio	FAIL	NNLS: the distances matrix is too small	
-Guaicuruan	SUCCESS	NNLS: 	(('Abipon [i-axb][w-abi][a-582][g-abip1241]':0.0523,'Mocovi [i-moc][w-mcv][a-2050][g-moco1246]':0.0523)'Guaicuru del Sur [i-][w-][a-][g-guai1250]':0.0104,'Kadiweu [i-kbc][w-kdw][a-1706][g-kadi1248]':0.0627)'Guaicuruan [i-][w-][a-][g-guai1249]';
-Northern Daly	SUCCESS	NNLS: 	(('Mullukmulluk [i-mpb][w-mlk][a-170][g-mull1237]':0.167,'Tyaraity [i-woa][w-tye][a-2730][g-tyar1236]':0.167)'Northern Daly [i-][w-][a-][g-nort1547]':1);
-Uru-Chipaya	FAIL	NNLS: error in nnls.tree()	
+Guaicuruan	SUCCESS	NNLS	(('Abipon [i-axb][w-abi][a-582][g-abip1241]':0.0523,'Mocovi [i-moc][w-mcv][a-2050][g-moco1246]':0.0523)'Guaicuru del Sur [i-][w-][a-][g-guai1250]':0.0104,'Kadiweu [i-kbc][w-kdw][a-1706][g-kadi1248]':0.0627)'Guaicuruan [i-][w-][a-][g-guai1249]';
+Northern Daly	SUCCESS	NNLS	(('Mullukmulluk [i-mpb][w-mlk][a-170][g-mull1237]':0.167,'Tyaraity [i-woa][w-tye][a-2730][g-tyar1236]':0.167)'Northern Daly [i-][w-][a-][g-nort1547]':1);
+Uru-Chipaya	FAIL	NNLS: too few languages with non-missing data	
 Kadugli-Krongo	FAIL	NNLS: the distances matrix is too small	
-Huavean	SUCCESS	NNLS: 	('San Dionisio Del Mar Huave [i-hve][w-][a-106][g-sand1278]':0.0401,'San Francisco Del Mar Huave [i-hue][w-][a-2994][g-sanf1258]':0.0401,'San Mateo Del Mar Huave [i-huv][w-hve][a-1625][g-sanm1287]':0.0401)'Huavean [i-][w-][a-][g-huav1256]';
+Huavean	SUCCESS	NNLS	('San Dionisio Del Mar Huave [i-hve][w-][a-106][g-sand1278]':0.0802,'San Francisco Del Mar Huave [i-hue][w-][a-2994][g-sanf1258]':0.0802)'Huavean [i-][w-][a-][g-huav1256]';
 Amto-Musan	FAIL	NNLS: the distances matrix is too small	
 Kwalean	FAIL	NNLS: the distances matrix is too small	
 Lengua-Mascoy	FAIL	NNLS: the distances matrix is too small	
-Wakashan	FAIL	NNLS: error in nnls.tree()	
+Wakashan	SUCCESS	NNLS	('Kwakiutl [i-kwk][w-kwk][a-152][g-kwak1269]':0.0962,('Makah [i-myh][w-mak][a-555][g-maka1318]':0.0962,'Ditidaht [i-dtd][w-][a-1374][g-diti1235]':0.0962)'Southern Wakashan [i-][w-][a-][g-sout2981]':0)'Wakashan [i-][w-][a-][g-waka1280]';
 Kayagar	FAIL	NNLS: the distances matrix is too small	
-Tacanan	SUCCESS	NNLS: 	('Cavinena [i-cav][w-cav][a-1116][g-cavi1250]':0.225,('Araona [i-aro][w-ana][a-620][g-arao1248]':0.225,'Ese Ejja [i-ese][w-ese][a-1477][g-esee1248]':0.225,('Reyesano [i-rey][w-][a-2997][g-reye1240]':0.225,'Tacana [i-tna][w-tac][a-2590][g-taca1256]':0.225)'Takanik [i-][w-][a-][g-taka1268]':2.78e-17)'Takanik-Chamik [i-][w-][a-][g-taka1267]':0)'Tacanan [i-][w-][a-][g-taca1255]';
+Tacanan	SUCCESS	NNLS	('Cavinena [i-cav][w-cav][a-1116][g-cavi1250]':0.225,('Araona [i-aro][w-ana][a-620][g-arao1248]':0.225,'Ese Ejja [i-ese][w-ese][a-1477][g-esee1248]':0.225,('Reyesano [i-rey][w-][a-2997][g-reye1240]':0.225,'Tacana [i-tna][w-tac][a-2590][g-taca1256]':0.225)'Takanik [i-][w-][a-][g-taka1268]':2.78e-17)'Takanik-Chamik [i-][w-][a-][g-taka1267]':0)'Tacanan [i-][w-][a-][g-taca1255]';
 Kakua-Nukak	FAIL	NNLS: the distances matrix is too small	
-Lakes Plain	SUCCESS	NNLS: 	('Doutai [i-tds][w-dou][a-2542][g-dout1240]':0.167,'Obokuitai [i-afz][w-obk][a-847][g-obok1239]':0.167,'Sikaritai [i-tty][w-skr][a-2632][g-sika1263]':0.167)'East Tariku [i-][w-][a-][g-east2502]';
+Lakes Plain	SUCCESS	NNLS	('Doutai [i-tds][w-dou][a-2542][g-dout1240]':0.167,'Obokuitai [i-afz][w-obk][a-847][g-obok1239]':0.167,'Sikaritai [i-tty][w-skr][a-2632][g-sika1263]':0.167)'East Tariku [i-][w-][a-][g-east2502]';
 Inland Gulf	FAIL	NNLS: the distances matrix is too small	
-Palaihnihan	SUCCESS	NNLS: 	(('Achumawi [i-acv][w-acm][a-828][g-achu1247]':0.167,'Atsugewi [i-atw][w-ats][a-934][g-atsu1245]':0.167)'Palaihnihan [i-][w-][a-][g-pala1350]':1);
+Palaihnihan	SUCCESS	NNLS	(('Achumawi [i-acv][w-acm][a-828][g-achu1247]':0.167,'Atsugewi [i-atw][w-ats][a-934][g-atsu1245]':0.167)'Palaihnihan [i-][w-][a-][g-pala1350]':1);
 Kamakanan	FAIL	NNLS: the distances matrix is too small	
 Pauwasi	FAIL	NNLS: the distances matrix is too small	
-Border	SUCCESS	NNLS: 	('Awyi [i-auw][w-awy][a-939][g-awyi1241]':0.113,('Amanab [i-amn][w-amn][a-480][g-aman1265]':0.113,'Imonda [i-imn][w-imo][a-112][g-imon1245]':0.113,'Manem [i-jet][w-mem][a-1681][g-mane1266]':0.113,'Waris [i-wrs][w-wrs][a-403][g-wari1266]':0.113)'Warisic [i-][w-][a-][g-wari1265]':0)'Border [i-][w-][a-][g-bord1247]';
+Border	SUCCESS	NNLS	('Awyi [i-auw][w-awy][a-939][g-awyi1241]':0.113,('Amanab [i-amn][w-amn][a-480][g-aman1265]':0.113,'Imonda [i-imn][w-imo][a-112][g-imon1245]':0.113,'Manem [i-jet][w-mem][a-1681][g-mane1266]':0.113,'Waris [i-wrs][w-wrs][a-403][g-wari1266]':0.113)'Warisic [i-][w-][a-][g-wari1265]':0)'Border [i-][w-][a-][g-bord1247]';
 Taulil-Butam	FAIL	NNLS: the distances matrix is too small	
 Marind	FAIL	NNLS: the distances matrix is too small	
-Left May	FAIL	NNLS: error in nnls.tree()	
+Left May	FAIL	NNLS: too few languages with non-missing data	
 Inanwatan	FAIL	NNLS: the distances matrix is too small	
-Caddoan	FAIL	NNLS: error in nnls.tree()	
-North Halmahera	SUCCESS	NNLS: 	(('Ternate [i-tft][w-trt][a-2557][g-tern1247]':0.0316,'Tidore [i-tvo][w-tid][a-2643][g-tido1248]':0.0316)'Ternatean [i-][w-][a-][g-tern1246]':0,'West Makian [i-mqs][w-wma][a-2072][g-west2600]':0.0316)'North Halmahera [i-][w-][a-][g-nort2923]';
+Caddoan	FAIL	NNLS: too few languages with non-missing data	
+North Halmahera	SUCCESS	NNLS	(('Ternate [i-tft][w-trt][a-2557][g-tern1247]':0.0316,'Tidore [i-tvo][w-tid][a-2643][g-tido1248]':0.0316)'Ternatean [i-][w-][a-][g-tern1246]':0,'West Makian [i-mqs][w-wma][a-2072][g-west2600]':0.0316)'North Halmahera [i-][w-][a-][g-nort2923]';
 Mailuan	FAIL	NNLS: the distances matrix is too small	
-Nyulnyulan	SUCCESS	NNLS: 	('Warrwa [i-wwr][w-wrw][a-482][g-warr1258]':0.0556,'Nyulnyul [i-nyv][w-nyu][a-485][g-nyul1247]':0.0556)'Nyulnyulan [i-][w-][a-][g-nyul1248]';
-Quechuan	FAIL	NNLS: error in nnls.tree()	
-Tucanoan	SUCCESS	NNLS: 	((('Tatuyo [i-tav][w-tty][a-2520][g-tatu1247]':0.079,(('Carapana [i-cbc][w-crp][a-1119][g-cara1272]':1.39e-17,'Yuruti [i-yui][w-yrt][a-2791][g-yuru1263]':1.39e-17)'Pisamira-Yuruti [i-][w-][a-][g-pisa1246]':0.079,('Kotiria [i-gvc][w-gno][a-1577][g-guan1269]':0.079,'Wa`ikhana [i-pir][w-prt][a-2299][g-pira1254]':0.079)'Wanano-Piratapuyo [i-][w-][a-][g-wana1272]':1.39e-17)'Eastern Eastern Tucanoan II [i-][w-][a-][g-east2708]':0)'Eastern Eastern Tucanoan [i-][w-][a-][g-east2702]':1.39e-17,(('Cubeo [i-cub][w-cub][a-1200][g-cube1242]':0.0333,('Desano [i-des][w-des][a-1276][g-desa1247]':1.39e-17,'Siriano [i-sri][w-sri][a-2472][g-siri1274]':1.39e-17)'Siriano-Desano [i-][w-][a-][g-siri1280]':0.0333)'Cubeo-Desano [i-][w-][a-][g-cube1243]':2.08e-17,'Macuna [i-myy][w-mcn][a-2122][g-macu1260]':0.0333)'Western Eastern Tucanoan [i-][w-][a-][g-west2789]':0.0457)'Eastern Tucanoan [i-][w-][a-][g-east2698]':0.095,('Koreguaje [i-coe][w-kje][a-1169][g-kore1283]':0.16,'Siona [i-snn][w-sin][a-2428][g-sion1247]':0.16)'Northern Western Tucanoan [i-][w-][a-][g-nort2989]':0.0141)'Tucanoan [i-][w-][a-][g-tuca1253]';
+Nyulnyulan	SUCCESS	NNLS	('Warrwa [i-wwr][w-wrw][a-482][g-warr1258]':0.0556,'Nyulnyul [i-nyv][w-nyu][a-485][g-nyul1247]':0.0556)'Nyulnyulan [i-][w-][a-][g-nyul1248]';
+Quechuan	SUCCESS	NNLS	('Huallaga Huanuco Quechua [i-qub][w-][a-104][g-hual1241]':0.142,'Imbabura Highland Quichua [i-qvi][w-qim][a-533][g-imba1240]':0.142)'Quechuan [i-][w-][a-][g-quec1387]';
+Tucanoan	SUCCESS	NNLS	((('Tatuyo [i-tav][w-tty][a-2520][g-tatu1247]':0.079,(('Carapana [i-cbc][w-crp][a-1119][g-cara1272]':1.39e-17,'Yuruti [i-yui][w-yrt][a-2791][g-yuru1263]':1.39e-17)'Pisamira-Yuruti [i-][w-][a-][g-pisa1246]':0.079,('Kotiria [i-gvc][w-gno][a-1577][g-guan1269]':0.079,'Wa`ikhana [i-pir][w-prt][a-2299][g-pira1254]':0.079)'Wanano-Piratapuyo [i-][w-][a-][g-wana1272]':1.39e-17)'Eastern Eastern Tucanoan II [i-][w-][a-][g-east2708]':0)'Eastern Eastern Tucanoan [i-][w-][a-][g-east2702]':1.39e-17,(('Cubeo [i-cub][w-cub][a-1200][g-cube1242]':0.0333,('Desano [i-des][w-des][a-1276][g-desa1247]':1.39e-17,'Siriano [i-sri][w-sri][a-2472][g-siri1274]':1.39e-17)'Siriano-Desano [i-][w-][a-][g-siri1280]':0.0333)'Cubeo-Desano [i-][w-][a-][g-cube1243]':2.08e-17,'Macuna [i-myy][w-mcn][a-2122][g-macu1260]':0.0333)'Western Eastern Tucanoan [i-][w-][a-][g-west2789]':0.0457)'Eastern Tucanoan [i-][w-][a-][g-east2698]':0.095,('Koreguaje [i-coe][w-kje][a-1169][g-kore1283]':0.16,'Siona [i-snn][w-sin][a-2428][g-sion1247]':0.16)'Northern Western Tucanoan [i-][w-][a-][g-nort2989]':0.0141)'Tucanoan [i-][w-][a-][g-tuca1253]';
 Teberan	FAIL	NNLS: the distances matrix is too small	
 Manubaran	FAIL	NNLS: the distances matrix is too small	
 Somahai	FAIL	NNLS: the distances matrix is too small	
 Monumbo	FAIL	NNLS: the distances matrix is too small	
-Yuki-Wappo	SUCCESS	NNLS: 	(('Wappo [i-wao][w-wap][a-398][g-wapp1239]':0,'Yuki [i-yuk][w-yki][a-2792][g-yuki1243]':0)'Yuki-Wappo [i-][w-][a-][g-yuki1242]':1);
+Yuki-Wappo	SUCCESS	NNLS	(('Wappo [i-wao][w-wap][a-398][g-wapp1239]':0,'Yuki [i-yuk][w-yki][a-2792][g-yuki1243]':0)'Yuki-Wappo [i-][w-][a-][g-yuki1242]':1);
 Harakmbut	FAIL	NNLS: the distances matrix is too small	
-Bulaka River	SUCCESS	NNLS: 	(('Maklew [i-mgf][w-mkl][a-1980][g-makl1246]':0.0455,'Yelmek [i-jel][w-ylm][a-1680][g-yelm1242]':0.0455)'Bulaka River [i-][w-][a-][g-bula1259]':1);
+Bulaka River	SUCCESS	NNLS	(('Maklew [i-mgf][w-mkl][a-1980][g-makl1246]':0.0455,'Yelmek [i-jel][w-ylm][a-1680][g-yelm1242]':0.0455)'Bulaka River [i-][w-][a-][g-bula1259]':1);
 Kresh-Aja	FAIL	NNLS: the distances matrix is too small	
 Nyimang	FAIL	NNLS: the distances matrix is too small	
 East Kutubu	FAIL	NNLS: the distances matrix is too small	
-Ndu	FAIL	NNLS: error in nnls.tree()	
+Ndu	FAIL	NNLS: too few languages with non-missing data	
 Jicaquean	FAIL	NNLS: the distances matrix is too small	
-Hmong-Mien	SUCCESS	NNLS: 	('Eastern Qiandong Miao [i-hmq][w-][a-3037][g-east2370]':0,'Hmong Njua [i-hnj][w-][a-500][g-hmon1264]':0)'Nuclear Hmongic [i-][w-][a-][g-nucl1720]';
+Hmong-Mien	SUCCESS	NNLS	('Eastern Qiandong Miao [i-hmq][w-][a-3037][g-east2370]':0,'Hmong Njua [i-hnj][w-][a-500][g-hmon1264]':0)'Nuclear Hmongic [i-][w-][a-][g-nucl1720]';
 Konda-Yahadian	FAIL	NNLS: the distances matrix is too small	
 Temein	FAIL	NNLS: the distances matrix is too small	
-Haida	SUCCESS	NNLS: 	(('Northern Haida [i-hdn][w-hno][a-1592][g-nort2938]':0.0294,'Southern Haida [i-hax][w-][a-95][g-sout2956]':0.0294)'Haida [i-hai-hdn][w-hai][a-][g-haid1248]':1);
+Haida	SUCCESS	NNLS	(('Northern Haida [i-hdn][w-hno][a-1592][g-nort2938]':0.0294,'Southern Haida [i-hax][w-][a-95][g-sout2956]':0.0294)'Haida [i-hai-hdn][w-hai][a-][g-haid1248]':1);
 Boran	FAIL	NNLS: the distances matrix is too small	
 Mombum	FAIL	NNLS: the distances matrix is too small	
 Furan	FAIL	NNLS: the distances matrix is too small	
 Kwomtari	FAIL	NNLS: the distances matrix is too small	
 Pahoturi	FAIL	NNLS: the distances matrix is too small	
 Baibai-Fas	FAIL	NNLS: the distances matrix is too small	
-Ta-Ne-Omotic	FAIL	NNLS: error in nnls.tree()	
+Ta-Ne-Omotic	SUCCESS	NNLS	('Shekkacho [i-moy][w-moc][a-2061][g-shek1244]':0,'Dawro [i-dwr][w-][a-1303][g-dawr1236]':0)'Ta-Ne-Omotic [i-][w-][a-][g-gong1255]';
 Dizoid	FAIL	NNLS: the distances matrix is too small	
 Mawes	FAIL	NNLS: too few languages	
 Hruso	FAIL	NNLS: the distances matrix is too small	
@@ -320,117 +320,117 @@ Iberian	FAIL	NNLS: too few languages
 Kujarge	FAIL	NNLS: too few languages	
 Kariri	FAIL	NNLS: the distances matrix is too small	
 Jalaa	FAIL	NNLS: too few languages	
-Barbacoan	SUCCESS	NNLS: 	(('Chachi [i-cbi][w-cay][a-1123][g-chac1249]':0.0395,'Colorado [i-cof][w-tsf][a-471][g-colo1256]':0.0395)'Cayapa-Colorado [i-][w-][a-][g-caya1244]':0.124,'Guambiano [i-gum][w-gmb][a-1570][g-guam1248]':0.163,'Awa-Cuaiquer [i-kwi][w-awp][a-469][g-awac1239]':0.163)'Barbacoan [i-][w-][a-][g-barb1265]';
+Barbacoan	SUCCESS	NNLS	(('Chachi [i-cbi][w-cay][a-1123][g-chac1249]':0.0395,'Colorado [i-cof][w-tsf][a-471][g-colo1256]':0.0395)'Cayapa-Colorado [i-][w-][a-][g-caya1244]':0.124,'Guambiano [i-gum][w-gmb][a-1570][g-guam1248]':0.163,'Awa-Cuaiquer [i-kwi][w-awp][a-469][g-awac1239]':0.163)'Barbacoan [i-][w-][a-][g-barb1265]';
 Hatam-Mansim	FAIL	NNLS: the distances matrix is too small	
-Zaparoan	FAIL	NNLS: error in nnls.tree()	
+Zaparoan	FAIL	NNLS: too few languages with non-missing data	
 Mirndi	FAIL	NNLS: the distances matrix is too small	
-Nakh-Daghestanian	SUCCESS	NNLS: 	(((('Tindi [i-tin][w-tnd][a-2572][g-tind1238]':0,'Ghodoberi [i-gdo][w-god][a-1531][g-ghod1238]':0)'Andic [i-][w-][a-][g-andi1254]':0.0915,('Hunzib [i-huz][w-hzb][a-530][g-hunz1247]':0.0385,'Hinuq [i-gin][w-hnk][a-1542][g-hinu1240]':0.0385)'Tsezic [i-][w-][a-][g-tsez1239]':0.053)'Avar-Andic-Tsezic [i-][w-][a-][g-avar1255]':0,'Khinalugh [i-kjj][w-khi][a-413][g-khin1240]':0.0915,'Archi [i-aqc][w-arc][a-917][g-arch1244]':0.0915)'Daghestanian [i-][w-][a-][g-dagh1238]':0.0188,('Bats [i-bbl][w-ttu][a-970][g-bats1242]':0.0913,'Ingush [i-inh][w-ing][a-114][g-ingu1240]':0.0913)'Nakh [i-][w-][a-][g-nakh1246]':0.0189)'Nakh-Daghestanian [i-][w-][a-][g-nakh1245]';
-Uralic	SUCCESS	NNLS: 	(('Erzya [i-myv][w-moe][a-2120][g-erzy1239]':0,'Moksha [i-mdf][w-mmo][a-1957][g-moks1248]':0)'Mordvin [i-][w-][a-][g-mord1256]':0.337,((('Akkala Sami [i-sia][w-][a-708][g-akka1237]':0.104,'Inari Sami [i-smn][w-][a-706][g-inar1241]':0.104)'Mainland Eastern Saami [i-][w-][a-][g-main1280]':0,('Kildin Sami [i-sjd][w-ski][a-709][g-kild1236]':0.104,'Ter Sami [i-sjt][w-][a-707][g-ters1235]':0.104)'Peninsular Eastern Saami [i-][w-][a-][g-peni1240]':0)'Eastern Saami [i-][w-][a-][g-east2324]':0,(('Lule Sami [i-smj][w-][a-702][g-lule1254]':0,'Pite Sami [i-sje][w-][a-703][g-pite1240]':0)'Central Western Saami [i-][w-][a-][g-cent2240]':0.1,('Southern Sami [i-sma][w-scs][a-701][g-sout2674]':0.1,'Ume Sami [i-sju][w-][a-704][g-umes1235]':0.1)'Southwestern Saami [i-][w-][a-][g-sout3150]':0)'Western Saami [i-][w-][a-][g-west2390]':0.00417)'Saami [i-][w-][a-][g-saam1281]':0.233,('Forest Enets [i-enf][w-][a-713][g-fore1265]':0,'Tundra Enets [i-enh][w-][a-3005][g-tund1254]':0)'Enets [i-enf][w-ene][a-][g-enet1250]':0.337)'Uralic [i-][w-][a-][g-ural1272]';
+Nakh-Daghestanian	SUCCESS	NNLS	(((('Tindi [i-tin][w-tnd][a-2572][g-tind1238]':0,'Ghodoberi [i-gdo][w-god][a-1531][g-ghod1238]':0)'Andic [i-][w-][a-][g-andi1254]':0.0915,('Hunzib [i-huz][w-hzb][a-530][g-hunz1247]':0.0385,'Hinuq [i-gin][w-hnk][a-1542][g-hinu1240]':0.0385)'Tsezic [i-][w-][a-][g-tsez1239]':0.053)'Avar-Andic-Tsezic [i-][w-][a-][g-avar1255]':0,'Khinalugh [i-kjj][w-khi][a-413][g-khin1240]':0.0915,'Archi [i-aqc][w-arc][a-917][g-arch1244]':0.0915)'Daghestanian [i-][w-][a-][g-dagh1238]':0.0188,('Bats [i-bbl][w-ttu][a-970][g-bats1242]':0.0913,'Ingush [i-inh][w-ing][a-114][g-ingu1240]':0.0913)'Nakh [i-][w-][a-][g-nakh1246]':0.0189)'Nakh-Daghestanian [i-][w-][a-][g-nakh1245]';
+Uralic	SUCCESS	NNLS	(('Erzya [i-myv][w-moe][a-2120][g-erzy1239]':0,'Moksha [i-mdf][w-mmo][a-1957][g-moks1248]':0)'Mordvin [i-][w-][a-][g-mord1256]':0.337,((('Akkala Sami [i-sia][w-][a-708][g-akka1237]':0.104,'Inari Sami [i-smn][w-][a-706][g-inar1241]':0.104)'Mainland Eastern Saami [i-][w-][a-][g-main1280]':0,('Kildin Sami [i-sjd][w-ski][a-709][g-kild1236]':0.104,'Ter Sami [i-sjt][w-][a-707][g-ters1235]':0.104)'Peninsular Eastern Saami [i-][w-][a-][g-peni1240]':0)'Eastern Saami [i-][w-][a-][g-east2324]':0,(('Lule Sami [i-smj][w-][a-702][g-lule1254]':0,'Pite Sami [i-sje][w-][a-703][g-pite1240]':0)'Central Western Saami [i-][w-][a-][g-cent2240]':0.1,('Southern Sami [i-sma][w-scs][a-701][g-sout2674]':0.1,'Ume Sami [i-sju][w-][a-704][g-umes1235]':0.1)'Southwestern Saami [i-][w-][a-][g-sout3150]':0)'Western Saami [i-][w-][a-][g-west2390]':0.00417)'Saami [i-][w-][a-][g-saam1281]':0.233,('Forest Enets [i-enf][w-][a-713][g-fore1265]':0,'Tundra Enets [i-enh][w-][a-3005][g-tund1254]':0)'Enets [i-enf][w-ene][a-][g-enet1250]':0.337)'Uralic [i-][w-][a-][g-ural1272]';
 Chinookan	FAIL	NNLS: the distances matrix is too small	
 Yanomam	FAIL	NNLS: the distances matrix is too small	
 Bogaya	FAIL	NNLS: too few languages	
-Jivaroan	SUCCESS	NNLS: 	(('Aguaruna [i-agr][w-agr][a-853][g-agua1253]':0.0549,('Achuar-Shiwiar [i-acu][w-acu][a-832][g-achu1248]':0.0549,'Huambisa [i-hub][w-hmb][a-1620][g-huam1247]':0.0549,'Shuar [i-jiv][w-jiv][a-352][g-shua1257]':0.0549)'Shuaric [i-][w-][a-][g-shua1256]':6.94e-18)'Jivaroan [i-][w-][a-][g-jiva1245]':1);
+Jivaroan	SUCCESS	NNLS	(('Aguaruna [i-agr][w-agr][a-853][g-agua1253]':0.0549,('Achuar-Shiwiar [i-acu][w-acu][a-832][g-achu1248]':0.0549,'Huambisa [i-hub][w-hmb][a-1620][g-huam1247]':0.0549,'Shuar [i-jiv][w-jiv][a-352][g-shua1257]':0.0549)'Shuaric [i-][w-][a-][g-shua1256]':6.94e-18)'Jivaroan [i-][w-][a-][g-jiva1245]':1);
 Purari	FAIL	NNLS: too few languages	
 Coosan	FAIL	NNLS: the distances matrix is too small	
 Laragia	FAIL	NNLS: too few languages	
 Mimi-Gaudefroy	FAIL	NNLS: too few languages	
 Daju	FAIL	NNLS: the distances matrix is too small	
 Western Tasmanian	FAIL	NNLS: the distances matrix is too small	
-Kiowa-Tanoan	SUCCESS	NNLS: 	('Kiowa [i-kio][w-kio][a-132][g-kiow1266]':0.115,'Jemez [i-tow][w-jem][a-2603][g-jeme1245]':0.115,'Piro [i-pie][w-][a-623][g-piro1248]':0.115)'Kiowa-Tanoan [i-][w-][a-][g-kiow1265]';
-Salishan	SUCCESS	NNLS: 	('Bella Coola [i-blc][w-bco][a-995][g-bell1243]':0.109,('Clallam [i-clm][w-cla][a-1162][g-clal1241]':0.109,'Squamish [i-squ][w-squ][a-357][g-squa1248]':0.109)'Central Salish [i-][w-][a-][g-cent2129]':0,(('Lillooet [i-lil][w-lil][a-1887][g-lill1248]':0.0385,'Thompson [i-thp][w-tho][a-2564][g-thom1243]':0.0385)'Northern Interior Salish [i-][w-][a-][g-nort2948]':0.0282,('Coeur d`Alene [i-crd][w-coe][a-1178][g-coeu1236]':0,'Spokane [i-spo][w-spo][a-2466][g-spok1245]':0)'Southern Interior Salish [i-][w-][a-][g-sout1559]':0.0667)'Interior Salish [i-][w-][a-][g-inte1241]':0.0425,'Tillamook [i-til][w-til][a-2571-2751][g-till1254]':0.109,'Upper Chehalis [i-cjh][w-chl][a-1148][g-uppe1439]':0.109)'Salishan [i-][w-][a-][g-sali1255]';
+Kiowa-Tanoan	SUCCESS	NNLS	('Kiowa [i-kio][w-kio][a-132][g-kiow1266]':0.115,'Jemez [i-tow][w-jem][a-2603][g-jeme1245]':0.115,'Piro [i-pie][w-][a-623][g-piro1248]':0.115)'Kiowa-Tanoan [i-][w-][a-][g-kiow1265]';
+Salishan	SUCCESS	NNLS	('Bella Coola [i-blc][w-bco][a-995][g-bell1243]':0.109,('Clallam [i-clm][w-cla][a-1162][g-clal1241]':0.109,'Squamish [i-squ][w-squ][a-357][g-squa1248]':0.109)'Central Salish [i-][w-][a-][g-cent2129]':0,(('Lillooet [i-lil][w-lil][a-1887][g-lill1248]':0.0385,'Thompson [i-thp][w-tho][a-2564][g-thom1243]':0.0385)'Northern Interior Salish [i-][w-][a-][g-nort2948]':0.0282,('Coeur d`Alene [i-crd][w-coe][a-1178][g-coeu1236]':0,'Spokane [i-spo][w-spo][a-2466][g-spok1245]':0)'Southern Interior Salish [i-][w-][a-][g-sout1559]':0.0667)'Interior Salish [i-][w-][a-][g-inte1241]':0.0425,'Tillamook [i-til][w-til][a-2571-2751][g-till1254]':0.109,'Upper Chehalis [i-cjh][w-chl][a-1148][g-uppe1439]':0.109)'Salishan [i-][w-][a-][g-sali1255]';
 Koiarian	FAIL	NNLS: the distances matrix is too small	
-Turkic	FAIL	NNLS: error in nnls.tree()	
-Chibchan	SUCCESS	NNLS: 	((('Border Kuna [i-kvn][w-kun][a-1833][g-bord1248]':0,('Boruca [i-brn][w-brc][a-1066][g-boru1252]':0,'Teribe [i-tfr][w-trb][a-2556][g-teri1250]':0)'Western Isthmic [i-][w-][a-][g-west2641]':0)'Isthmic [i-][w-][a-][g-isth1243]':0,((('Cogui [i-kog][w-cog][a-1792][g-cogu1240]':0,('Arhuaco [i-arh][w-ika][a-532][g-arhu1242]':0,'Malayo [i-mbp][w-dam][a-1940][g-mala1522]':0)'Eastern-Southern Arhuacic [i-][w-][a-][g-east2571]':0)'Arhuacic [i-][w-][a-][g-arhu1241]':0,'Chimila [i-cbg][w-cma][a-1122][g-chim1309]':0)'Northern Magdalenic [i-][w-][a-][g-nort3000]':0,('Bari {Chibchan} [i-mot][w-mti][a-2059][g-bari1297]':0,'Chibcha [i-chb][w-msc][a-1121][g-chib1270]':0,'Central Tunebo [i-tuf][w-][a-2592][g-cent2150]':0)'Southern Magdalenic [i-][w-][a-][g-sout3015]':0)'Magdalenic [i-][w-][a-][g-magd1236]':0,'Rama [i-rma][w-ram][a-454][g-rama1270]':0)'Core Chibchan [i-][w-][a-][g-core1252]':0,'Pech [i-pay][w-pec][a-2272][g-pech1241]':0)'Chibchan [i-][w-][a-][g-chib1249]';
+Turkic	SUCCESS	NNLS	('Bolgarian [i-xbo][w-][a-2859][g-bolg1250]':0.5,('Dolgan [i-dlg][w-dol][a-1351][g-dolg1241]':0.2,'Yakut [i-sah][w-ykt][a-2662][g-yaku1245]':0.2)'North Siberian Turkic [i-][w-][a-][g-nort2688]':0.3)'Turkic [i-][w-][a-][g-turk1311]';
+Chibchan	SUCCESS	NNLS	(('Border Kuna [i-kvn][w-kun][a-1833][g-bord1248]':0.141,('Boruca [i-brn][w-brc][a-1066][g-boru1252]':0.141,'Teribe [i-tfr][w-trb][a-2556][g-teri1250]':0.141)'Western Isthmic [i-][w-][a-][g-west2641]':0)'Isthmic [i-][w-][a-][g-isth1243]':2.78e-17,((('Cogui [i-kog][w-cog][a-1792][g-cogu1240]':0.141,('Arhuaco [i-arh][w-ika][a-532][g-arhu1242]':0.141,'Malayo [i-mbp][w-dam][a-1940][g-mala1522]':0.141)'Eastern-Southern Arhuacic [i-][w-][a-][g-east2571]':5.55e-17)'Arhuacic [i-][w-][a-][g-arhu1241]':5.55e-17,'Chimila [i-cbg][w-cma][a-1122][g-chim1309]':0.141)'Northern Magdalenic [i-][w-][a-][g-nort3000]':5.55e-17,('Bari {Chibchan} [i-mot][w-mti][a-2059][g-bari1297]':5.55e-17,'Central Tunebo [i-tuf][w-][a-2592][g-cent2150]':5.55e-17)'Southern Magdalenic [i-][w-][a-][g-sout3015]':0.141)'Magdalenic [i-][w-][a-][g-magd1236]':5.55e-17,'Rama [i-rma][w-ram][a-454][g-rama1270]':0.141)'Core Chibchan [i-][w-][a-][g-core1252]';
 Koman	FAIL	NNLS: the distances matrix is too small	
-Huitotoan	SUCCESS	NNLS: 	('Minica Huitoto [i-hto][w-hmi-htt][a-1619][g-mini1256]':0,'Nupode Huitoto [i-hux][w-hmu][a-1626][g-nupo1240]':0)'Nuclear Witoto [i-][w-][a-][g-nucl1659]';
+Huitotoan	SUCCESS	NNLS	('Minica Huitoto [i-hto][w-hmi-htt][a-1619][g-mini1256]':0,'Nupode Huitoto [i-hux][w-hmu][a-1626][g-nupo1240]':0)'Nuclear Witoto [i-][w-][a-][g-nucl1659]';
 Songhay	FAIL	NNLS: the distances matrix is too small	
 Arawan	FAIL	NNLS: the distances matrix is too small	
-Muskogean	SUCCESS	NNLS: 	(('Alabama [i-akz][w-abm][a-618][g-alab1237]':0.0302,'Koasati [i-cku][w-koa][a-135][g-koas1236]':0.0302)'Alabaman-Koasati [i-][w-][a-][g-alab1247]':0.0139,('Chickasaw [i-cic][w-cck][a-1143][g-chic1270]':0.00877,'Choctaw [i-cho][w-cct][a-54][g-choc1276]':0.00877)'Western Muskogean [i-][w-][a-][g-west2614]':0.0353)'Muskogean [i-][w-][a-][g-musk1252]';
+Muskogean	SUCCESS	NNLS	(('Alabama [i-akz][w-abm][a-618][g-alab1237]':0.0302,'Koasati [i-cku][w-koa][a-135][g-koas1236]':0.0302)'Alabaman-Koasati [i-][w-][a-][g-alab1247]':0.0139,('Chickasaw [i-cic][w-cck][a-1143][g-chic1270]':0.00877,'Choctaw [i-cho][w-cct][a-54][g-choc1276]':0.00877)'Western Muskogean [i-][w-][a-][g-west2614]':0.0353)'Muskogean [i-][w-][a-][g-musk1252]';
 Worrorran	FAIL	NNLS: the distances matrix is too small	
-Nadahup	SUCCESS	NNLS: 	(('Daw [i-kwa][w-daw][a-1846][g-daww1239]':0,'Yuhup [i-yab][w-][a-785][g-yuhu1238]':0)'Eastern Nadahup [i-][w-][a-][g-east2549]':0.132,'Nadeb [i-mbj][w-nad][a-1938][g-nade1244]':0.132)'Nadahup [i-][w-][a-][g-nada1235]';
+Nadahup	SUCCESS	NNLS	('Daw [i-kwa][w-daw][a-1846][g-daww1239]':0,'Yuhup [i-yab][w-][a-785][g-yuhu1238]':0)'Eastern Nadahup [i-][w-][a-][g-east2549]';
 Namla-Tofanma	FAIL	NNLS: the distances matrix is too small	
 Mongolic	FAIL	NNLS: the distances matrix is too small	
-Nubian	FAIL	NNLS: error in nnls.tree()	
-Austroasiatic	FAIL	NNLS: error in nnls.tree()	
+Nubian	FAIL	NNLS: too few languages with non-missing data	
+Austroasiatic	SUCCESS	NNLS	('Semelai [i-sza][w-sml][a-566][g-seme1247]':0,'Halang [i-hal][w-hln][a-1594][g-hala1252]':0)'Austroasiatic [i-][w-][a-][g-aust1305]';
 Kwerbic	FAIL	NNLS: the distances matrix is too small	
 Charruan	FAIL	NNLS: the distances matrix is too small	
-Bunaban	SUCCESS	NNLS: 	(('Bunaba [i-bck][w-bnb][a-976][g-buna1275]':0.0781,'Gooniyandi [i-gni][w-goo][a-149][g-goon1238]':0.0781)'Bunaban [i-][w-][a-][g-buna1274]':1);
+Bunaban	SUCCESS	NNLS	(('Bunaba [i-bck][w-bnb][a-976][g-buna1275]':0.0781,'Gooniyandi [i-gni][w-goo][a-149][g-goon1238]':0.0781)'Bunaban [i-][w-][a-][g-buna1274]':1);
 Yareban	FAIL	NNLS: the distances matrix is too small	
 Katukinan	FAIL	NNLS: the distances matrix is too small	
 Peba-Yagua	FAIL	NNLS: the distances matrix is too small	
 Geelvink Bay	FAIL	NNLS: the distances matrix is too small	
 Turama-Kikori	FAIL	NNLS: the distances matrix is too small	
-Yukaghir	SUCCESS	NNLS: 	('Northern Yukaghir [i-ykg][w-ytu][a-423][g-nort2745]':0.0387,'Southern Yukaghir [i-yux][w-yko][a-2797][g-sout2750]':0.0387)'Yukaghir [i-][w-][a-][g-yuka1259]';
+Yukaghir	SUCCESS	NNLS	('Northern Yukaghir [i-ykg][w-ytu][a-423][g-nort2745]':0.0387,'Southern Yukaghir [i-yux][w-yko][a-2797][g-sout2750]':0.0387)'Yukaghir [i-][w-][a-][g-yuka1259]';
 Japonic	FAIL	NNLS: the distances matrix is too small	
 Xincan	FAIL	NNLS: the distances matrix is too small	
 Shastan	FAIL	NNLS: the distances matrix is too small	
 Kawesqar	FAIL	NNLS: the distances matrix is too small	
-Siouan	SUCCESS	NNLS: 	('Catawba [i-chc][w-ctw][a-1135][g-cata1286]':0.0454,('Mandan [i-mhq][w-mdn][a-1993][g-mand1446]':0.0454,('Assiniboine [i-asb][w-][a-2897][g-assi1247]':0.0454,'Osage [i-osa][w-osa][a-2259][g-osag1243]':0.0454)'Mississippi Valley [i-][w-][a-][g-miss1254]':1.39e-17,('Crow [i-cro][w-cro][a-1184][g-crow1244]':0,'Hidatsa [i-hid][w-hid][a-1606][g-hida1246]':0)'Missouri River Siouan [i-][w-][a-][g-miss1252]':0.0454,('Biloxi [i-bll][w-blx][a-1038][g-bilo1248]':0.0454,'Tutelo [i-tta][w-tte][a-2626][g-tute1247]':0.0454)'Southeastern Siouan [i-][w-][a-][g-sout2988]':0)'Core Siouan [i-][w-][a-][g-core1249]':0)'Siouan [i-][w-][a-][g-siou1252]';
+Siouan	SUCCESS	NNLS	('Catawba [i-chc][w-ctw][a-1135][g-cata1286]':0.0454,('Mandan [i-mhq][w-mdn][a-1993][g-mand1446]':0.0454,('Assiniboine [i-asb][w-][a-2897][g-assi1247]':0.0454,'Osage [i-osa][w-osa][a-2259][g-osag1243]':0.0454)'Mississippi Valley [i-][w-][a-][g-miss1254]':1.39e-17,('Crow [i-cro][w-cro][a-1184][g-crow1244]':0,'Hidatsa [i-hid][w-hid][a-1606][g-hida1246]':0)'Missouri River Siouan [i-][w-][a-][g-miss1252]':0.0454,('Biloxi [i-bll][w-blx][a-1038][g-bilo1248]':0.0454,'Tutelo [i-tta][w-tte][a-2626][g-tute1247]':0.0454)'Southeastern Siouan [i-][w-][a-][g-sout2988]':0)'Core Siouan [i-][w-][a-][g-core1249]':0)'Siouan [i-][w-][a-][g-siou1252]';
 Bosavi	FAIL	NNLS: the distances matrix is too small	
 Araucanian	FAIL	NNLS: the distances matrix is too small	
 Yokutsan	FAIL	NNLS: the distances matrix is too small	
 Abkhaz-Adyge	FAIL	NNLS: the distances matrix is too small	
-Iroquoian	SUCCESS	NNLS: 	('Cayuga [i-cay][w-cyg][a-1118][g-cayu1261]':0.142,('Mohawk [i-moh][w-moh][a-2054][g-moha1258]':0.0511,'Oneida [i-one][w-ond][a-461][g-onei1249]':0.0511)'Mohawk-Oneida [i-][w-][a-][g-moha1257]':0.0913,'Onondaga [i-ono][w-onn][a-2252][g-onon1246]':0.142,'Seneca [i-see][w-snc][a-349][g-sene1264]':0.142,'Tuscarora [i-tus][w-tus][a-2639][g-tusc1257]':0.142)'Northern Iroquoian [i-][w-][a-][g-nort2947]';
-Western Daly	FAIL	NNLS: error in nnls.tree()	
-Great Andamanese	SUCCESS	NNLS: 	((('A-Pucikwar [i-apq][w-apk-gan][a-912][g-apuc1241]':0,'Aka-Kede [i-akx][w-akk][a-873][g-akak1252]':0)'Middle Great Andamanese [i-][w-][a-][g-midd1323]':0,'Aka-Cari [i-aci][w-akc][a-829][g-akac1240]':0)'Central Great Andamanese [i-][w-][a-][g-cent1986]':0,'Aka-Bea [i-abj][w-akb][a-827][g-akab1249]':0)'Great Andamanese [i-gac][w-][a-1][g-grea1241]';
-Miwok-Costanoan	SUCCESS	NNLS: 	(('Plains Miwok [i-pmw][w-mwp][a-2313][g-plai1259]':0.0317,('Northern Sierra Miwok [i-nsq][w-mwn][a-2209][g-nort2968]':0.0317,'Southern Sierra Miwok [i-skd][w-mss][a-356][g-sout2985]':0.0317)'Sierra [i-][w-][a-][g-sier1249]':0)'Eastern Miwokan [i-][w-][a-][g-east2546]':1.39e-17,'Lake Miwok [i-lmw][w-mwl][a-1902][g-lake1258]':0.0317)'Miwokan [i-][w-][a-][g-miwo1275]';
-East Bird`s Head	FAIL	NNLS: error in nnls.tree()	
-Yeniseian	SUCCESS	NNLS: 	(('Ket [i-ket][w-ket][a-129][g-kett1243]':0,'Yugh [i-yuu][w-yug][a-2796][g-yugh1239]':0)'Northern Yeniseian [i-][w-][a-][g-nort2746]':0.125,'Kott [i-zko][w-ktt][a-777][g-kott1239]':0.125)'Yeniseian [i-][w-][a-][g-yeni1252]';
+Iroquoian	SUCCESS	NNLS	('Cayuga [i-cay][w-cyg][a-1118][g-cayu1261]':0.261,('Mohawk [i-moh][w-moh][a-2054][g-moha1258]':0.0511,'Oneida [i-one][w-ond][a-461][g-onei1249]':0.0511)'Mohawk-Oneida [i-][w-][a-][g-moha1257]':0.21,'Seneca [i-see][w-snc][a-349][g-sene1264]':0.261)'Northern Iroquoian [i-][w-][a-][g-nort2947]';
+Western Daly	FAIL	NNLS: too few languages with non-missing data	
+Great Andamanese	SUCCESS	NNLS	((('A-Pucikwar [i-apq][w-apk-gan][a-912][g-apuc1241]':0,'Aka-Kede [i-akx][w-akk][a-873][g-akak1252]':0)'Middle Great Andamanese [i-][w-][a-][g-midd1323]':0,'Aka-Cari [i-aci][w-akc][a-829][g-akac1240]':0)'Central Great Andamanese [i-][w-][a-][g-cent1986]':0,'Aka-Bea [i-abj][w-akb][a-827][g-akab1249]':0)'Great Andamanese [i-gac][w-][a-1][g-grea1241]';
+Miwok-Costanoan	SUCCESS	NNLS	(('Plains Miwok [i-pmw][w-mwp][a-2313][g-plai1259]':0.0317,('Northern Sierra Miwok [i-nsq][w-mwn][a-2209][g-nort2968]':0.0317,'Southern Sierra Miwok [i-skd][w-mss][a-356][g-sout2985]':0.0317)'Sierra [i-][w-][a-][g-sier1249]':0)'Eastern Miwokan [i-][w-][a-][g-east2546]':1.39e-17,'Lake Miwok [i-lmw][w-mwl][a-1902][g-lake1258]':0.0317)'Miwokan [i-][w-][a-][g-miwo1275]';
+East Bird`s Head	SUCCESS	NNLS	('Manikion [i-mnx][w-sgb][a-2048][g-mani1235]':0,'Meyah [i-mej][w-mea][a-1967][g-meya1236]':0)'East Bird`s Head [i-][w-][a-][g-east1459]';
+Yeniseian	SUCCESS	NNLS	('Ket [i-ket][w-ket][a-129][g-kett1243]':0,'Yugh [i-yuu][w-yug][a-2796][g-yugh1239]':0)'Northern Yeniseian [i-][w-][a-][g-nort2746]';
 Elamite	FAIL	NNLS: too few languages	
-Tupian	FAIL	NNLS: error in nnls.tree()	
-Cariban	FAIL	NNLS: error in nnls.tree()	
+Tupian	SUCCESS	NNLS	('Karitiana [i-ktn][w-kna][a-1827][g-kari1311]':0.183,'Munduruku [i-myu][w-muu][a-2119][g-mund1330]':0.183,('Kamayura [i-kay][w-kma][a-1704][g-kama1373]':0.183,'Tapiete [i-tpj][w-tpt][a-2514][g-tapi1253]':0.183,'Siriono [i-srq][w-srn][a-2476][g-siri1273]':0.183,'Tocantins Asurini [i-asu][w-asu][a-932][g-toca1235]':0.183,'Urubu-Kaapor [i-urb][w-urk][a-574][g-urub1250]':0.183)'Tupi-Guarani [i-][w-][a-][g-tupi1276]':0)'Tupian [i-][w-][a-][g-tupi1275]';
+Cariban	SUCCESS	NNLS	('Apalai [i-apy][w-apl][a-905][g-apal1257]':0.035,'Carijona [i-cbd][w-guq-crj-hia-umu][a-1120-1245-1246-769][g-cari1279]':0.035,'Hixkaryana [i-hix][w-hix][a-101][g-hixk1239]':0.035)'Cariban [i-][w-][a-][g-cari1283]';
 Kartvelian	FAIL	NNLS: the distances matrix is too small	
-Arawakan	FAIL	NNLS: error in nnls.tree()	
-Atlantic-Congo	FAIL	NNLS: error in nnls.tree()	
-Chocoan	SUCCESS	NNLS: 	((('Embera-Catio [i-cto][w-cat][a-1197][g-embe1260]':0,'Northern Embera [i-emp][w-emb][a-1472][g-nort2972]':0)'Atrato [i-][w-][a-][g-atra1235]':0,'Embera-Chami [i-cmi][w-emc][a-1164][g-embe1262]':0)'Embera [i-][w-][a-][g-embe1258]':0.00893,'Woun Meu [i-noa][w-wau][a-2192][g-woun1238]':0.00893)'Chocoan [i-][w-][a-][g-choc1280]';
-Dogon	FAIL	NNLS: error in nnls.tree()	
-Lower Sepik-Ramu	FAIL	NNLS: error in nnls.tree()	
+Arawakan	SUCCESS	NNLS	(('Parecis [i-pab][w-prc][a-2267][g-pare1272]':0.255,'Waura [i-wau][w-wur][a-2703][g-waur1244]':0.255)'Central Maipuran [i-][w-][a-][g-cent2226]':0,'Palikur [i-plu][w-plk][a-2270][g-pali1279]':0.255,('Lokono [i-arw][w-ara][a-927][g-araw1276]':0.186,('Guarequena [i-gae][w-wrk][a-1515][g-guar1293]':0.186,'Tariana [i-tae][w-tar][a-2513][g-tari1256]':0.186)'Inland Northern Maipuran [i-][w-][a-][g-inla1264]':0)'Northern Maipuran [i-][w-][a-][g-nort2990]':0.0688,(('Baure [i-brg][w-baq][a-1063][g-baur1253]':0.125,'Ignaciano [i-ign][w-ign][a-1641][g-igna1246]':0.125)'Bolivia-Parana [i-][w-][a-][g-boli1260]':0.054,('Ashaninka [i-cni][w-cax][a-29][g-asha1243]':0.0909,'Machiguenga [i-mcb][w-mch][a-1945][g-mach1267]':0.0909)'Asha-Ashe-Kak-Matsi-Nan [i-][w-][a-][g-asha1244]':0.0881,'Apurina [i-apu][w-apu][a-512][g-apur1254]':0.179)'Southern Maipuran [i-][w-][a-][g-sout3131]':0.0758,'Yanesha` [i-ame][w-amu][a-885][g-yane1238]':0.255)'Arawakan [i-][w-][a-][g-araw1281]';
+Atlantic-Congo	SUCCESS	NNLS	(('Biafada [i-bif][w-bfd][a-1018][g-biaf1240]':0.0034,('Ndut [i-ndv][w-ndt][a-2150][g-ndut1239]':0.0034,'Palor [i-fap][w-plr][a-1487][g-palo1243]':0.0034)'Palor-Ndut [i-][w-][a-][g-palo1244]':0)'North Atlantic [i-][w-][a-][g-nort3148]':0.204,((('Luvale [i-lue][w-luv][a-553][g-luva1239]':0.162,('Chiga [i-cgg][w-nko][a-562][g-chig1238]':0.162,'Kisi [i-kiz][w-][a-643][g-kisi1243]':0.162)'Northeast Savanna Bantu [i-][w-][a-][g-nort3203]':0)'Narrow Bantu [i-][w-][a-][g-narr1281]':0.00846,'Vengo [i-bav][w-bab][a-488][g-veng1238]':0.17)'Southern Bantoid [i-][w-][a-][g-sout3152]':0.0117,('Sango [i-sag][w-san][a-466][g-sang1328]':0.178,'Southwest Gbaya [i-gso][w-][a-1961][g-sout2785]':0.178,'Southern Dagaare [i-dga][w-dga][a-1293][g-sout2789]':0.178,'Supyire Senoufo [i-spp][w-sup][a-497][g-supy1237]':0.178)'North Volta-Congo [i-][w-][a-][g-nort3149]':0.00387)'Volta-Congo [i-][w-][a-][g-volt1241]':0.0252)'Atlantic-Congo [i-][w-][a-][g-atla1278]';
+Chocoan	SUCCESS	NNLS	('Embera-Catio [i-cto][w-cat][a-1197][g-embe1260]':0,'Northern Embera [i-emp][w-emb][a-1472][g-nort2972]':0)'Atrato [i-][w-][a-][g-atra1235]';
+Dogon	FAIL	NNLS: too few languages with non-missing data	
+Lower Sepik-Ramu	SUCCESS	NNLS	(('Chambri [i-can][w-chb][a-1112][g-cham1313]':0.0506,'Yimas [i-yee][w-yim][a-420][g-yima1243]':0.0506)'Lower Sepik [i-][w-][a-][g-lowe1423]':1.39e-17,(('Kire [i-geb][w-kie][a-1532][g-kire1240]':0,'Aruamu [i-msy][w-mkr][a-2087][g-arua1260]':0)'Kire-Mikarew [i-][w-][a-][g-kire1239]':0,'Kaian [i-kct][w-kai][a-1718][g-kaia1245]':0)'Lower Ramu [i-][w-][a-][g-lowe1439]':0.0506)'Lower Sepik-Ramu [i-][w-][a-][g-lowe1437]';
 Kxa	FAIL	NNLS: the distances matrix is too small	
-Mangarrayi-Maran	SUCCESS	NNLS: 	('Mangarayi [i-mpc][w-myi][a-173][g-mang1381]':0.209,('Alawa [i-alh][w-alw][a-16][g-alaw1244]':0.183,('Mara [i-mec][w-mra][a-1965][g-mara1385]':0.183,'Wandarang [i-wnd][w-wrn][a-405][g-wand1263]':0.183)'Mara-Warndarang [i-][w-][a-][g-mara1415]':0)'Maran [i-][w-][a-][g-mara1414]':0.0264)'Mangarrayi-Maran [i-][w-][a-][g-mang1423]';
-Mayan	FAIL	NNLS: error in nnls.tree()	
+Mangarrayi-Maran	SUCCESS	NNLS	('Mangarayi [i-mpc][w-myi][a-173][g-mang1381]':0.209,('Alawa [i-alh][w-alw][a-16][g-alaw1244]':0.183,('Mara [i-mec][w-mra][a-1965][g-mara1385]':0.183,'Wandarang [i-wnd][w-wrn][a-405][g-wand1263]':0.183)'Mara-Warndarang [i-][w-][a-][g-mara1415]':0)'Maran [i-][w-][a-][g-mara1414]':0.0264)'Mangarrayi-Maran [i-][w-][a-][g-mang1423]';
+Mayan	SUCCESS	NNLS	(('Chicomuceltec [i-cob][w-cec][a-1167][g-chic1271]':5.55e-17,'Huastec [i-hus][w-][a-619][g-huas1242]':5.55e-17)'Huastecan [i-][w-][a-][g-huas1241]':0.189,(('Chol [i-ctu][w-][a-1196][g-chol1282]':0.109,(('Chuj [i-cac][w-][a-1107][g-chuj1250]':5.55e-17,'Tojolabal [i-toj][w-toj][a-2598][g-tojo1241]':5.55e-17)'Chujean [i-cac][w-chj][a-][g-chuj1249]':0.0673,('Popti` [i-jac][w-jak][a-460][g-popt1235]':0.0476,'Q`anjob`al [i-kjb][w-kea][a-1760][g-qanj1241]':0.0476,'Western Kanjobal [i-knj][w-kwe][a-1787][g-west2635]':0.0476)'Kanjobal-Jacaltec [i-][w-][a-][g-kanj1263]':0.0197)'Kanjobalan-Chujean [i-][w-][a-][g-kanj1261]':0.0416,('Ixil [i-ixl][w-][a-1665][g-ixil1251]':0.109,('Kekchi [i-kek][w-kek][a-1730][g-kekc1242]':0.109,('K`iche` [i-quc][w-qch][a-337][g-kich1262]':0.109,'Poqomam [i-poc][w-pcm][a-2317-2319][g-poqo1253]':0.109)'Poqom-Quichean [i-][w-][a-][g-poqo1252]':0)'Greater Quichean [i-][w-][a-][g-grea1276]':5.55e-17)'Quichean-Mamean [i-][w-][a-][g-quic1274]':5.55e-17)'Core Mayan [i-][w-][a-][g-core1254]':5.55e-17,(('Itza [i-itz][w-itz][a-1660][g-itza1241]':5.55e-17,'Mopan Maya [i-mop][w-mop][a-2058][g-mopa1243]':5.55e-17)'Mopan-Itza [i-][w-][a-][g-mopa1242]':5.55e-17,'Yucateco [i-yua][w-yct][a-682][g-yuca1254]':5.55e-17)'Yucatecan [i-][w-][a-][g-yuca1252]':0.109)'Yucatecan-Core Mayan [i-][w-][a-][g-yuca1255]':0.0803)'Mayan [i-][w-][a-][g-maya1287]';
 Misumalpan	FAIL	NNLS: the distances matrix is too small	
-Mixe-Zoque	FAIL	NNLS: error in nnls.tree()	
+Mixe-Zoque	SUCCESS	NNLS	('Tlahuitoltepec Mixe [i-mxp][w-mth][a-2110][g-tlah1239]':0.5,'Sayula Popoluca [i-pos][w-say][a-2323][g-sayu1241]':0.5)'Mixe [i-mixe][w-][a-185][g-mixe1286]';
 Nambiquaran	FAIL	NNLS: the distances matrix is too small	
-Nuclear-Macro-Je	FAIL	NNLS: error in nnls.tree()	
-Otomanguean	FAIL	NNLS: error in nnls.tree()	
-Panoan	SUCCESS	NNLS: 	(('Chacobo [i-cao][w-cbo][a-1113][g-chac1251]':0.176,('Cashinahua [i-cbs][w-csh][a-45][g-cash1254]':0,'Remo [i-rem][w-][a-1005][g-remo1248]':0)'Headwaters [i-][w-][a-][g-head1239]':0.176)'Pano Nawa [i-][w-][a-][g-pano1257]':0,('Matis [i-mpq][w-mts][a-2067][g-mati1255]':0.0682,'Matses [i-mcf][w-myr][a-1947][g-mats1244]':0.0682)'Mayo Group [i-][w-][a-][g-mayo1269]':0.108)'Panoan [i-][w-][a-][g-pano1256]';
-Sepik	FAIL	NNLS: error in nnls.tree()	
-Tai-Kadai	FAIL	NNLS: error in nnls.tree()	
+Nuclear-Macro-Je	FAIL	NNLS: too few languages with non-missing data	
+Otomanguean	SUCCESS	NNLS	(('Guerrero Amuzgo [i-amu][w-amz][a-890][g-guer1243]':0.112,'Chiquihuitlan Mazatec [i-maq][w-mzc][a-1930][g-chiq1250]':0.112)'Eastern Otomanguean [i-][w-][a-][g-east2557]':0,'Lealao Chinantec [i-cle][w-cle][a-551][g-leal1235]':0.112)'Otomanguean [i-][w-][a-][g-otom1299]';
+Panoan	SUCCESS	NNLS	(('Chacobo [i-cao][w-cbo][a-1113][g-chac1251]':0.176,('Cashinahua [i-cbs][w-csh][a-45][g-cash1254]':0,'Remo [i-rem][w-][a-1005][g-remo1248]':0)'Headwaters [i-][w-][a-][g-head1239]':0.176)'Pano Nawa [i-][w-][a-][g-pano1257]':0,('Matis [i-mpq][w-mts][a-2067][g-mati1255]':0.0682,'Matses [i-mcf][w-myr][a-1947][g-mats1244]':0.0682)'Mayo Group [i-][w-][a-][g-mayo1269]':0.108)'Panoan [i-][w-][a-][g-pano1256]';
+Sepik	SUCCESS	NNLS	('Abau [i-aau][w-aba][a-820][g-abau1245]':0.0926,'Wogamusin [i-wog][w-wog][a-2733][g-woga1249]':0.0926,'Awtuw [i-kmn][w-awt][a-28][g-awtu1239]':0.0926,'Namia [i-nnm][w-nam][a-2190][g-nami1256]':0.0926)'Sepik [i-][w-][a-][g-sepi1257]';
+Tai-Kadai	FAIL	NNLS: too few languages with non-missing data	
 Chapacuran	FAIL	NNLS: the distances matrix is too small	
 Auxiliary Sign Systems	FAIL	NNLS: the distances matrix is too small	
 North-Eastern Tasmanian	FAIL	NNLS: the distances matrix is too small	
 Lencan	FAIL	NNLS: the distances matrix is too small	
-Sko	SUCCESS	NNLS: 	('Krisa [i-ksi][w-isa][a-307][g-kris1246]':0,(('Rawo {Papua New Guinea} [i-rwa][w-pok][a-2390][g-rawo1244]':0,'Womo-Sumararu [i-wmx][w-wom][a-812][g-womo1238]':0)'Rawo-Main Serra [i-][w-][a-][g-rawo1243]':0,('Nuclear Skou [i-skv][w-sko][a-2440-2849][g-nucl1634]':0,'Vanimo [i-vam][w-dum][a-395][g-vani1248]':0)'Skou [i-][w-][a-][g-skou1239]':0,'Warapu [i-wra][w-brp][a-3198][g-wara1302]':0)'Skou-Serra-Piore [i-][w-][a-][g-skou1238]':0)'Sko [i-][w-][a-][g-skoo1245]';
+Sko	SUCCESS	NNLS	('Krisa [i-ksi][w-isa][a-307][g-kris1246]':0.119,(('Rawo {Papua New Guinea} [i-rwa][w-pok][a-2390][g-rawo1244]':0.119,'Womo-Sumararu [i-wmx][w-wom][a-812][g-womo1238]':0.119)'Rawo-Main Serra [i-][w-][a-][g-rawo1243]':0,('Nuclear Skou [i-skv][w-sko][a-2440-2849][g-nucl1634]':0,'Vanimo [i-vam][w-dum][a-395][g-vani1248]':0)'Skou [i-][w-][a-][g-skou1239]':0.119)'Skou-Serra-Piore [i-][w-][a-][g-skou1238]':0)'Sko [i-][w-][a-][g-skoo1245]';
 Hurro-Urartian	FAIL	NNLS: the distances matrix is too small	
 Ticuna-Yuri	FAIL	NNLS: the distances matrix is too small	
 Wintuan	FAIL	NNLS: the distances matrix is too small	
-Gunwinyguan	SUCCESS	NNLS: 	(((('Ngalakan [i-nig][w-ngl][a-209][g-ngal1293]':0.0608,'Rembarunga [i-rmb][w-rmb][a-473][g-remb1249]':0.0608)'Jala [i-][w-][a-][g-jala1236]':0,'Ngandi [i-nid][w-ngn][a-2169][g-ngan1295]':0.0608)'Eastern Gunwinyguan [i-][w-][a-][g-east2701]':0.125,('Anindilyakwa [i-aoi][w-ann][a-903][g-anin1240]':0.129,'Nunggubuyu [i-nuy][w-nug][a-318][g-nung1290]':0.129)'Wubuy-Anindilyakwa [i-][w-][a-][g-wubu1239]':0.0563)'Gunwinyguan Bak [i-][w-][a-][g-gunw1253]':0.0356,('Ngalkbun [i-ngk][w-nkb][a-2161][g-ngal1292]':0.221,'Kunbarlang [i-wlg][w-gnb][a-2724][g-kunb1251]':0.221)'Marne [i-][w-][a-][g-marn1242]':6.94e-18,'Waray {Australia} [i-wrz][w-wry][a-400][g-wara1290]':0.221)'Gunwinyguan [i-][w-][a-][g-gunw1250]';
+Gunwinyguan	SUCCESS	NNLS	(((('Ngalakan [i-nig][w-ngl][a-209][g-ngal1293]':0.0608,'Rembarunga [i-rmb][w-rmb][a-473][g-remb1249]':0.0608)'Jala [i-][w-][a-][g-jala1236]':0,'Ngandi [i-nid][w-ngn][a-2169][g-ngan1295]':0.0608)'Eastern Gunwinyguan [i-][w-][a-][g-east2701]':0.125,('Anindilyakwa [i-aoi][w-ann][a-903][g-anin1240]':0.129,'Nunggubuyu [i-nuy][w-nug][a-318][g-nung1290]':0.129)'Wubuy-Anindilyakwa [i-][w-][a-][g-wubu1239]':0.0563)'Gunwinyguan Bak [i-][w-][a-][g-gunw1253]':0.0356,('Ngalkbun [i-ngk][w-nkb][a-2161][g-ngal1292]':0.221,'Kunbarlang [i-wlg][w-gnb][a-2724][g-kunb1251]':0.221)'Marne [i-][w-][a-][g-marn1242]':6.94e-18,'Waray {Australia} [i-wrz][w-wry][a-400][g-wara1290]':0.221)'Gunwinyguan [i-][w-][a-][g-gunw1250]';
 Iwaidjic	FAIL	NNLS: the distances matrix is too small	
-Jarawa-Onge	SUCCESS	NNLS: 	(('Jarawa {India} [i-anq][w-jrw][a-899][g-jara1245]':0.0667,'Onge [i-oon][w-ong][a-2][g-onge1236]':0.0667)'Jarawa-Onge [i-][w-][a-][g-jara1244]':1);
+Jarawa-Onge	SUCCESS	NNLS	(('Jarawa {India} [i-anq][w-jrw][a-899][g-jara1245]':0.0667,'Onge [i-oon][w-ong][a-2][g-onge1236]':0.0667)'Jarawa-Onge [i-][w-][a-][g-jara1244]':1);
 Kalapuyan	FAIL	NNLS: the distances matrix is too small	
-Dravidian	FAIL	NNLS: error in nnls.tree()	
-Indo-European	FAIL	NNLS: error in nnls.tree()	
-Afro-Asiatic	FAIL	NNLS: error in nnls.tree()	
+Dravidian	FAIL	NNLS: too few languages with non-missing data	
+Indo-European	SUCCESS	NNLS	('Hittite [i-hit][w-][a-100][g-hitt1242]':0.288,('Old Russian [i-orv][w-][a-2858][g-oldr1238]':0.25,('Slovak [i-slk][w-svk][a-2444][g-slov1269]':0,'Lower Sorbian [i-dsb][w-srl][a-2714][g-lowe1385]':0)'West Slavic [i-][w-][a-][g-west2792]':0.25)'Slavic [i-][w-][a-][g-slav1255]':0.0384,('Cornish [i-cor][w-crn][a-1183][g-corn1251]':0.167,'Manx [i-glv][w-mnx][a-2014][g-manx1243]':0.167)'Insular Celtic [i-][w-][a-][g-insu1254]':0.122,(((('Danish [i-dan][w-dsh][a-1375][g-dani1285]':0,'Jutish [i-jut][w-][a-3001][g-juti1236]':0)'Danic [i-][w-][a-][g-dani1284]':0.288,'Dalecarlian [i-qer][w-][a-734][g-dale1238]':0.288)'East Scandinavian [i-][w-][a-][g-east2302]':0,(('Faroese [i-fao][w-far][a-710][g-faro1244]':0.13,'Icelandic [i-isl][w-ice][a-110][g-icel1247]':0.13)'Icelandic-Faroese [i-][w-][a-][g-icel1246]':0.0981,'Norwegian [i-nor][w-][a-712][g-norw1258]':0.229,'Norwegian Bokm<U+FFFD><U+FFFD>l [i-nob][w-nor][a-711][g-norw1259]':0.229,'Old Norse [i-non][w-][a-2856][g-oldn1244]':0.229)'West Scandinavian [i-nrn][w-][a-714][g-west2805]':0.0599)'North Germanic [i-][w-][a-][g-nort3160]':0,(('Luxembourgish [i-ltz][w-lux][a-1921][g-luxe1241]':0.2,'Berbice Creole Dutch [i-brc][w-bdc][a-1062][g-berb1259]':0.2)'Franconian [i-][w-][a-][g-fran1268]':0,'Old High German [i-goh][w-][a-2854][g-oldh1241]':0.2,(('Plautdietsch [i-pdt][w-][a-2506][g-plau1238]':0,'Old Saxon [i-osx][w-][a-2855][g-olds1250]':0)'Alts<U+FFFD><U+FFFD>chsisch [i-][w-][a-][g-alts1234]':0,('Old English [i-ang][w-][a-2833][g-olde1238]':0,'Old Frisian [i-ofs][w-][a-2857][g-oldf1241]':0)'Anglo-Frisian [i-][w-][a-][g-angl1264]':0)'North Sea Germanic [i-][w-][a-][g-nort3175]':0.2)'West Germanic [i-][w-][a-][g-west2793]':0.0884)'Northwest Germanic [i-][w-][a-][g-nort3152]':0,('Parya [i-paq][w-][a-3002][g-pary1242]':0.27,('Khorasani Kurmanji [i-kur][w-][a-676][g-khor1267]':0.27,'Tajik [i-tgk][w-taj][a-2289][g-taji1245]':0.27)'Western Iranian [i-][w-][a-][g-west2794]':0)'Indo-Iranian [i-][w-][a-][g-indo1320]':0.018,'Galician [i-glg][w-glc][a-1550][g-gali1258]':0.288)'Indo-European [i-][w-][a-][g-indo1319]';
+Afro-Asiatic	SUCCESS	NNLS	('Ghomara [i-gho][w-][a-3039][g-ghom1257]':0.227,('Lele {Chad} [i-lln][w-lel][a-1896][g-lele1276]':0.151,'Mwaghavul [i-sur][w-mup][a-2498][g-mwag1236]':0.151)'Chadic [i-][w-][a-][g-chad1250]':0.0763,'Eastern Oromo [i-hae][w-orh][a-324][g-east2652]':0.227,('Standard Arabic [i-arb][w-ams][a-23][g-stan1318]':0.2,'Amharic [i-amh][w-amh][a-21][g-amha1245]':0.2)'West Semitic [i-][w-][a-][g-west2786]':0.0269)'Afro-Asiatic [i-][w-][a-][g-afro1255]';
 Artificial Language	FAIL	NNLS: the distances matrix is too small	
 Chimakuan	FAIL	NNLS: the distances matrix is too small	
 Chiquitano	FAIL	NNLS: too few languages	
 Garrwan	FAIL	NNLS: the distances matrix is too small	
-Algic	SUCCESS	NNLS: 	(('Arapaho [i-arp][w-aho][a-923][g-arap1274]':0,'Cheyenne [i-chy][w-cyn][a-1142][g-chey1247]':0,'Atikamekw [i-atj][w-ati][a-2551][g-atik1240]':0,(('Munsee [i-umu][w-mse][a-2668][g-muns1251]':0,'Mahican [i-mjy][w-][a-2052][g-mahi1248]':0)'Delawaran [i-][w-][a-][g-dela1253]':0,'Nanticoke [i-nnt][w-nnt][a-2191][g-nant1249]':0,'Powhatan [i-pim][w-pow][a-2295][g-powh1243]':0,'Wampanoag [i-wam][w-mtt][a-2700][g-wamp1249]':0,'Western Abnaki [i-abe][w-abw][a-822][g-west2630]':0)'Eastern Algonquian [i-][w-][a-][g-east2700]':0,('Kickapoo [i-kic][w-kic][a-1754][g-kick1244]':0,((('Central Ojibwa [i-ojc][w-][a-3069][g-cent2136]':0,'Eastern Ojibwa [i-ojg][w-oji][a-2244][g-east2542]':0)'Central-Eastern-Southwestern Ojibwa [i-][w-][a-][g-cent2252]':0,'Western Ojibwa [i-ojw][w-][a-1253][g-west1510]':0)'Nuclear Ojibwe [i-][w-][a-][g-nucl1723]':0,'Potawatomi [i-pot][w-pot][a-2324][g-pota1247]':0)'Ojibwa-Potawatomi [i-][w-][a-][g-ojib1240]':0,'Shawnee [i-sjw][w-shw][a-2435][g-shaw1249]':0)'Eastern Great Lakes Algonquian [i-][w-][a-][g-east2765]':0,'Menominee [i-mez][w-men][a-1973][g-meno1252]':0)'Algonquian [i-][w-][a-][g-algo1256]':0,'Wiyot [i-wiy][w-wiy][a-412][g-wiyo1248]':0,'Yurok [i-yur][w-yur][a-428][g-yuro1248]':0)'Algic [i-][w-][a-][g-algi1248]';
+Algic	SUCCESS	NNLS	(('Arapaho [i-arp][w-aho][a-923][g-arap1274]':0.115,'Cheyenne [i-chy][w-cyn][a-1142][g-chey1247]':0.115,'Atikamekw [i-atj][w-ati][a-2551][g-atik1240]':0.115,'Munsee [i-umu][w-mse][a-2668][g-muns1251]':0.115,('Kickapoo [i-kic][w-kic][a-1754][g-kick1244]':0.1,'Eastern Ojibwa [i-ojg][w-oji][a-2244][g-east2542]':0.1,'Shawnee [i-sjw][w-shw][a-2435][g-shaw1249]':0.1)'Eastern Great Lakes Algonquian [i-][w-][a-][g-east2765]':0.0147,'Menominee [i-mez][w-men][a-1973][g-meno1252]':0.115)'Algonquian [i-][w-][a-][g-algo1256]':0.0539,'Wiyot [i-wiy][w-wiy][a-412][g-wiyo1248]':0.169)'Algic [i-][w-][a-][g-algi1248]';
 Kaure-Narau	FAIL	NNLS: the distances matrix is too small	
 Lepki-Murkim	FAIL	NNLS: the distances matrix is too small	
-Mande	FAIL	NNLS: error in nnls.tree()	
-Mixed Language	FAIL	NNLS: error in nnls.tree()	
-Nuclear Torricelli	SUCCESS	NNLS: 	('Au [i-avt][w-au][a-943][g-auuu1241]':0,('Ningil [i-niz][w-nin][a-2175][g-ning1273]':0,'Yil [i-yll][w-yil][a-2780][g-yill1241]':0)'Ningil-Yil [i-][w-][a-][g-ning1276]':0,'Valman [i-van][w-wal][a-2684][g-valm1241]':0)'Nuclear Torricelli [i-][w-][a-][g-nucl1708]';
-Nuclear Trans New Guinea	FAIL	NNLS: error in nnls.tree()	
-Pama-Nyungan	FAIL	NNLS: error in nnls.tree()	
+Mande	SUCCESS	NNLS	(('Boko {Benin} [i-bqc][w-bok][a-1058][g-boko1266]':0.167,'Beng [i-nhb][w-bnq][a-2165][g-beng1286]':0.167)'Eastern Mande [i-][w-][a-][g-east2697]':0,'Susu [i-sus][w-sus][a-2493][g-susu1250]':0.167)'Mande [i-][w-][a-][g-mand1469]';
+Mixed Language	FAIL	NNLS: too few languages with non-missing data	
+Nuclear Torricelli	SUCCESS	NNLS	('Au [i-avt][w-au][a-943][g-auuu1241]':0.333,('Ningil [i-niz][w-nin][a-2175][g-ning1273]':0.333,'Yil [i-yll][w-yil][a-2780][g-yill1241]':0.333)'Ningil-Yil [i-][w-][a-][g-ning1276]':0)'Nuclear Torricelli [i-][w-][a-][g-nucl1708]';
+Nuclear Trans New Guinea	SUCCESS	NNLS	(('Salt-Yui [i-sll][w-syu][a-345][g-salt1242]':0,'Nii [i-nii][w-][a-3060][g-niii1240]':0)'Central East New Guinea Highlands [i-][w-][a-][g-cent2120]':0.166,(('Wambon [i-wms][w-wbn][a-2727][g-wamb1259]':0.135,'Korowai [i-khe][w-krw][a-656][g-koro1312]':0.135)'Greater Awyu [i-][w-][a-][g-grea1275]':0.0293,'Oksapmin [i-opm][w-oks][a-322][g-oksa1245]':0.165)'Central and South New Guinea [i-][w-][a-][g-cent2116]':0.00123,'Nankina [i-nnk][w-nnk][a-2189][g-nank1250]':0.166,('Suena [i-sue][w-sue][a-358][g-suen1241]':0.135,'Orokaiva [i-okv][w-oro][a-2255][g-orok1269]':0.135)'Binanderean [i-][w-][a-][g-bina1279]':0.0311,('Alekano [i-gah][w-gah][a-1517][g-alek1238]':0.0913,'Agarabi [i-agd][w-aga][a-848][g-agar1252]':0.0913)'Kainantu-Goroka [i-][w-][a-][g-kain1273]':0.0744,(('Bargam [i-mlp][w-mug][a-2031][g-barg1252]':0.0921,'Usan [i-wnu][w-usa][a-393][g-usan1239]':0.0921)'Croisilles [i-][w-][a-][g-croi1234]':0.0724,('Kobon [i-kpw][w-kob][a-136][g-kobo1249]':0.0968,('Anamgura [i-imi][w-amx][a-1645][g-anam1248]':0.0968,'Nend [i-anh][w-nnd][a-894][g-nend1239]':0.0968)'South Adelbert [i-][w-][a-][g-sout3148]':0)'Kalamic-South Adelbert [i-][w-][a-][g-kala1403]':0.0676,'Tauya [i-tya][w-tau][a-367][g-tauy1241]':0.164,'Waskia [i-wsk][w-wsk][a-407][g-wask1241]':0.164)'Madang [i-][w-][a-][g-mada1298]':0.00129,'Una [i-mtg][w-una][a-573][g-unaa1239]':0.166,'West Kewa [i-kew][w-][a-130][g-west2599]':0.166)'Nuclear Trans New Guinea [i-][w-][a-][g-nucl1709]';
+Pama-Nyungan	SUCCESS	NNLS	(('Alyawarr [i-aly][w-aly][a-883][g-alya1239]':0.135,('Adnyamathanha [i-adt][w-adn][a-837][g-adny1235]':0.0625,'Wirangu [i-wiw][w-wir][a-2723][g-wira1260]':0.0625)'Thura-Yura [i-][w-][a-][g-thur1253]':0.0726)'Arandic-Thura-Yura [i-][w-][a-][g-aran1266]':2.78e-17,('Ngaanyatjarra [i-ntj][w-ntj][a-2211-810][g-ngaa1240]':0.0161,'Kokata [i-ktd][w-gug][a-1825][g-koka1244]':0.0161)'Wati [i-][w-][a-][g-wati1241]':0.119,'Kalkutung [i-ktg][w-kgu][a-1826][g-kalk1246]':0.135,'Margany [i-zmc][w-mny][a-2808][g-marg1253]':0.135,('Nyawaygi [i-nyt][w-nya][a-2233][g-nyaw1247]':0.135,'Warrgamay [i-wgy][w-wrg][a-2719][g-warr1255]':0.135)'Herbert River [i-][w-][a-][g-herb1234]':2.78e-17,('Dieri [i-dif][w-diy][a-64][g-dier1241]':0.111,'Pitta Pitta [i-pit][w-ppi][a-2300][g-pitt1247]':0.111)'Karnic [i-][w-][a-][g-karn1253]':0.024,'Yanyuwa [i-jao][w-yny][a-658][g-yany1243]':0.135,(('Kuuku-Ya`u [i-kuy][w-kuu][a-2354][g-kuuk1238]':0.0208,('Kuku-Uwanh [i-uwa][w-knc][a-2679][g-kuku1280]':0.0208,'Wik-Mungkan [i-wim][w-wmu][a-2722][g-wikm1247]':0.0208)'Kuku-Wik [i-][w-][a-][g-kuku1277]':2.08e-17)'Compromise Middle Pama [i-][w-][a-][g-comp1236]':0.114,'Ngawun [i-nxn][w-ngw][a-2225][g-ngaw1240]':0.135,'Alngith [i-aid][w-][a-745][g-alng1239]':0.135)'Paman [i-][w-][a-][g-pama1251]':0,(('Badimaya [i-bia][w-bdm][a-1015][g-badi1246]':0.135,'Wajarri [i-wbv][w-wat][a-2710][g-waja1257]':0.135)'Kartu [i-][w-][a-][g-kart1250]':5.55e-17,'Ngadjunmaya [i-nju][w-mrj-ngj][a-2179][g-ngad1258]':0.135,('Martuyhunira [i-vma][w-mrt][a-179][g-mart1255]':0.0893,'Yindjibarndi [i-yij][w-yin][a-2773][g-yind1247]':0.0893)'Central Ngayarda [i-][w-][a-][g-cent2248]':0.0459)'South-West Pama-Nyungan [i-][w-][a-][g-sout3134]':2.78e-17,('Muruwari [i-zmu][w-mrw][a-2813][g-muru1266]':0.127,'Kumbainggar [i-kgs][w-gum][a-1744][g-kumb1268]':0.127,('Yorta Yorta [i-xyy][w-yyo][a-813-815][g-yort1237]':2.78e-17,'Wathawurrung [i-wth][w-wth][a-808][g-wath1238]':2.78e-17)'Victorian Pama-Nyungan [i-][w-][a-][g-vict1234]':0.127)'Southeastern Pama-Nyungan [i-][w-][a-][g-sout3135]':0.00844,'Guguyimidjir [i-kky][w-guu][a-1772][g-gugu1255]':0.135,'Ritarungo [i-rit][w-rit][a-2371][g-rita1239]':0.135)'Pama-Nyungan [i-][w-][a-][g-pama1250]';
 Pidgin	FAIL	NNLS: the distances matrix is too small	
 Rashad	FAIL	NNLS: the distances matrix is too small	
-Sino-Tibetan	FAIL	NNLS: error in nnls.tree()	
+Sino-Tibetan	SUCCESS	NNLS	(((('Classical Tibetan [i-xct][w-][a-2824][g-clas1254]':0.0619,('Purik [i-prx][w-prk][a-1096][g-puri1258]':0.0619,'Lhomi [i-lhm][w-lho][a-630][g-lhom1239]':0.0619,'Sikkimese [i-sip][w-skk][a-2430][g-sikk1242]':0.0619)'Tibetic [i-][w-][a-][g-tibe1276]':0)'Old-Modern Tibetan [i-][w-][a-][g-oldm1245]':0,'Tshangla [i-tsj][w-tgl][a-2617][g-tsha1245]':0.0619)'Bodish [i-][w-][a-][g-bodi1257]':0.0179,'Chantyal [i-chx][w-chn][a-629][g-chan1310]':0.0798,('Kinnauri [i-kfk][w-knn][a-626][g-kinn1249]':0.0106,'Darmiya [i-drd][w-drm][a-1388][g-darm1243]':0.0106)'Tibeto-Kanauri [i-][w-][a-][g-tibe1275]':0.0691)'Bodic [i-][w-][a-][g-bodi1256]':0.00894,('Kachari [i-xac][w-kac][a-2353][g-kach1279]':0.0513,'Chang Naga [i-nbc][w-chg][a-2137][g-chan1313]':0.0513)'Brahmaputran [i-][w-][a-][g-brah1260]':0.0374,('Bisu [i-bzi][w-][a-1019][g-bisu1244]':0.0887,'Xishanba Lalo [i-ywt][w-lal][a-2774][g-xish1235]':0.0887)'Loloish [i-][w-][a-][g-lolo1267]':0,('Eastern Magar [i-mgp][w-mag][a-729][g-east2352]':0.076,(('Camling [i-rab][w-cml][a-2360][g-caml1239]':0.0467,'Puma [i-pum][w-][a-2863][g-puma1239]':0.0467)'Southern Central Kiranti [i-][w-][a-][g-sout2736]':0.0292,(('Athpariya [i-aph][w-ath][a-908][g-athp1241]':0.0295,'Belhariya [i-byw][w-bel][a-35][g-belh1239]':0.0295)'Athpariyic [i-][w-][a-][g-athp1240]':0.0199,'Chhintange [i-ctn][w-][a-2862][g-chhi1245]':0.0494)'Greater Yakkha [i-][w-][a-][g-grea1285]':0.0266,('Wayu [i-vay][w-hay][a-632][g-wayu1241]':0.076,'Khaling [i-klr][w-khg][a-1778][g-khal1275]':0.076)'Western Kiranti [i-][w-][a-][g-west2424]':0)'Kiranti [i-][w-][a-][g-kira1253]':0)'Mahakiranti [i-][w-][a-][g-maha1306]':0.0127,('Hmar [i-hmr][w-hma][a-1611][g-hmar1241]':0.0887,'Tarao Naga [i-tro][w-tao][a-2609][g-tara1313]':0.0887)'Kuki-Chin [i-][w-][a-][g-kuki1246]':0,('Mising = Padam = Miri [i-mrg][w-mhl-msg][a-2076][g-misi1242]':0.0679,('Apatani [i-apt][w-apt][a-662][g-apat1240]':0.0679,('Galo [i-adl][w-][a-767][g-galo1242]':0.0172,'Nyishi [i-njz][w-][a-1220][g-nyis1236]':0.0172)'Nuclear Western Tani [i-][w-][a-][g-nucl1731]':0.0507)'Western Tani [i-][w-][a-][g-west2797]':0)'Tani [i-][w-][a-][g-tani1259]':0.0208,'Digaro-Mishmi [i-mhu][w-dig][a-221][g-diga1241]':0.0887)'Sino-Tibetan [i-][w-][a-][g-sino1245]';
 Tor-Orya	FAIL	NNLS: the distances matrix is too small	
-Uto-Aztecan	FAIL	NNLS: error in nnls.tree()	
+Uto-Aztecan	SUCCESS	NNLS	(((('Cahuilla [i-chl][w-cah][a-520][g-cahu1264]':0,'Cupeno [i-cup][w-cup][a-1203][g-cupe1243]':0)'Cahuilla-Cupeno [i-][w-][a-][g-cahu1263]':0.131,'Serrano [i-ser][w-srr][a-2414][g-serr1255]':0.131,'Tubatulabal [i-tub][w-tbb][a-2633][g-tuba1278]':0.131)'Californian Uto-Aztecan [i-][w-][a-][g-cali1246]':0.0532,'Hopi [i-hop][w-hop][a-687][g-hopi1249]':0.185,(('Comanche [i-com][w-cmn][a-523][g-coma1245]':0.108,'Panamint [i-par][w-tsh][a-2271][g-pana1305]':0.108)'Central Numic [i-][w-][a-][g-cent2130]':0.0513,'Kawaiisu [i-xaw][w-kws][a-1703][g-kawa1283]':0.16,'Mono {USA} [i-mnr][w-mno][a-2057][g-mono1275]':0.16)'Numic [i-][w-][a-][g-numi1242]':0.0248)'Northern Uto-Aztecan [i-][w-][a-][g-nort2953]':0.00145,('Yaqui [i-yaq][w-yaq][a-503][g-yaqu1251]':0.186,'Tetelcingo Nahuatl [i-nhg][w-nht][a-572][g-tete1251]':0.186,'Central Tarahumara [i-tar][w-tce][a-2519][g-cent2131]':0.186)'Southern Uto-Aztecan [i-][w-][a-][g-sout3136]':0)'Uto-Aztecan [i-][w-][a-][g-utoa1244]';
 South-Eastern Tasmanian	FAIL	NNLS: the distances matrix is too small	
-Athapaskan-Eyak-Tlingit	SUCCESS	NNLS: 	(((('Jicarilla Apache [i-apj][w-apj][a-909][g-jica1244]':0,('Mescalero-Chiricahua Apache [i-apm][w-apc][a-910][g-mesc1238]':0,'Navajo [i-nav][w-nav][a-204][g-nava1243]':0,'Western Apache [i-apw][w-apw][a-914][g-west2615]':0)'Western Southwestern Apachean [i-][w-][a-][g-west2810]':0)'Southwestern Apachean [i-][w-][a-][g-sout3151]':0,('Ahtena [i-aht][w-aht][a-859][g-ahte1237]':0,'Babine [i-bcr][w-][a-2993][g-babi1235]':0,'Beaver [i-bea][w-][a-2839][g-beav1236]':0,'Carrier [i-crx][w-crq][a-1114][g-carr1249]':0,'Chipewyan [i-chp][w-chp][a-1176][g-chip1261]':0,'Degexit`an [i-ing][w-dgx][a-1647][g-dege1248]':0,'Gwich`in [i-gwi][w-kth][a-1834][g-gwic1235]':0,('North Slavey [i-scs][w-][a-354][g-nort2942]':0,'South Slavey [i-xsl][w-slv][a-2441][g-sout2959]':0)'Slave [i-den-scs][w-sla][a-][g-slav1253]':0,'Koyukon [i-koy][w-kyn][a-1798][g-koyu1237]':0,'Lower Tanana [i-taa][w-tnl][a-2510][g-lowe1425]':0,'Sarsi [i-srs][w-src][a-2477][g-sars1236]':0,'Tahltan [i-tht][w-][a-2565][g-tahl1239]':0,'Tanacross [i-tcb][w-tnc][a-2531][g-tana1290]':0,'Tanaina [i-tfn][w-tnj][a-2555][g-tana1289]':0,'Northern Tutchone [i-ttm][w-tut][a-2640][g-nort2941]':0,'Upper Kuskokwim [i-kuu][w-uku][a-1838][g-uppe1438]':0)'Northern Athapaskan [i-][w-][a-][g-nort2940]':0,('Hupa [i-hup][w-hup][a-1621][g-hupa1239]':0,'Kato [i-ktw][w-kto][a-1831][g-kato1244]':0,'Mattole [i-mvb][w-mtl][a-2100][g-matt1238]':0)'California Athapaskan [i-][w-][a-][g-cali1245]':0)'Athapaskan [i-][w-][a-][g-atha1247]':0,'Eyak [i-eya][w-eya][a-76][g-eyak1241]':0)'Athapaskan-Eyak [i-][w-][a-][g-atha1246]':0,'Tlingit [i-tli][w-tli][a-379][g-tlin1245]':0)'Athapaskan-Eyak-Tlingit [i-][w-][a-][g-atha1245]';
+Athapaskan-Eyak-Tlingit	SUCCESS	NNLS	((('Jicarilla Apache [i-apj][w-apj][a-909][g-jica1244]':0.22,('Mescalero-Chiricahua Apache [i-apm][w-apc][a-910][g-mesc1238]':0.22,'Navajo [i-nav][w-nav][a-204][g-nava1243]':0.22,'Western Apache [i-apw][w-apw][a-914][g-west2615]':0.22)'Western Southwestern Apachean [i-][w-][a-][g-west2810]':2.78e-17)'Southwestern Apachean [i-][w-][a-][g-sout3151]':2.78e-17,('Ahtena [i-aht][w-aht][a-859][g-ahte1237]':0.121,'Carrier [i-crx][w-crq][a-1114][g-carr1249]':0.121,'Chipewyan [i-chp][w-chp][a-1176][g-chip1261]':0.121,'Degexit`an [i-ing][w-dgx][a-1647][g-dege1248]':0.121,'Gwich`in [i-gwi][w-kth][a-1834][g-gwic1235]':0.121,('North Slavey [i-scs][w-][a-354][g-nort2942]':2.78e-17,'South Slavey [i-xsl][w-slv][a-2441][g-sout2959]':2.78e-17)'Slave [i-den-scs][w-sla][a-][g-slav1253]':0.121,'Koyukon [i-koy][w-kyn][a-1798][g-koyu1237]':0.121,'Lower Tanana [i-taa][w-tnl][a-2510][g-lowe1425]':0.121,'Tahltan [i-tht][w-][a-2565][g-tahl1239]':0.121,'Tanaina [i-tfn][w-tnj][a-2555][g-tana1289]':0.121,'Northern Tutchone [i-ttm][w-tut][a-2640][g-nort2941]':0.121)'Northern Athapaskan [i-][w-][a-][g-nort2940]':0.0981,'Hupa [i-hup][w-hup][a-1621][g-hupa1239]':0.22)'Athapaskan [i-][w-][a-][g-atha1247]':0,'Eyak [i-eya][w-eya][a-76][g-eyak1241]':0.22)'Athapaskan-Eyak [i-][w-][a-][g-atha1246]';
 Tirio	FAIL	NNLS: the distances matrix is too small	
 Marrku-Wurrugu	FAIL	NNLS: the distances matrix is too small	
 Doso-Turumsa	FAIL	NNLS: the distances matrix is too small	
-Tangkic	SUCCESS	NNLS: 	('Lardil [i-lbz][w-lrd][a-1872][g-lard1243]':0,'Kayardild [i-gyd][w-kay][a-128][g-kaya1319]':0)'Tangkic [i-][w-][a-][g-tang1340]';
+Tangkic	SUCCESS	NNLS	('Lardil [i-lbz][w-lrd][a-1872][g-lard1243]':0,'Kayardild [i-gyd][w-kay][a-128][g-kaya1319]':0)'Tangkic [i-][w-][a-][g-tang1340]';

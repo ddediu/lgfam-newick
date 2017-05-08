@@ -3,7 +3,7 @@
 # Import, process and export in a standardized Newick format various language classifications (currently WALS, Ethnologue, Glottolog and AUTOTYP)
 # and add branch length using a variety or methods (none, constant, proportional, grafen, nnls, ga and nj; see script "TreeHelperFunctions.r" for info)
 #
-# Copyright (C) 2013-2015  Dan Dediu
+# Copyright (C) 2013-2017  Dan Dediu
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -40,10 +40,7 @@ EXPORT_CSV        = TRUE;  # export the trees to a CSV file?
 
 COMPUTE_BRLEN     = TRUE; # apply the various branch length methods to the Newick no branch length trees?
 
-COMPARE_TREES     = TRUE; # compare (compute the distance between) equivalent trees (within classifications/between branch length methods)?
-tree.comparisons  = "../output/tree_comparisons_between_methods.csv"; # file which stores the comparisons
-
-CPU_CORES = 4; # the number of parallel CPU cores to use
+CPU_CORES = 4; # the number of parallel CPU cores to use overall
 
 quotes="'"; # the quotes to use for the node (language and family) names
 
@@ -172,26 +169,29 @@ if( MATCH_CODES )
 # Pre-optimize and cache the distance matrices for on-demand loading only when really needed:
 if( PREOPTIMIZE_DISTS )
 {
+  # Make sure the ../output/preoptimized-distances directory exists:
+  dir.create("../output/preoptimized-distances", showWarnings=FALSE);
+  
   # ASJP16 (the row and column names are the iso codes):
   load( "../input/distances/ASJP/asjp16-dists.RData" ); # asjp16.dm
-  d <- asjp16.dm; save(d, file="../output/preotimized-distances/asjp16-dm.RData", compress="xz"); rm(asjp16.dm,d); # cache it pre-optimized for on-demand loading
+  d <- asjp16.dm; save(d, file="../output/preoptimized-distances/asjp16-dm.RData", compress="xz"); rm(asjp16.dm,d); # cache it pre-optimized for on-demand loading
   
   # WALS (the row and column names are the wals codes); gowler and manhattan are quite similar; using both NAs and imputation of NAs with the mode (per variable):
   load( "../input/distances/WALS/wals-gower-dm.RData" ); wals.gower.dm <- as.matrix(wals.gower.dm); # wals.gower.dm (with missing data)
-  d <- wals.gower.dm; save(d, file="../output/preotimized-distances/wals-gower-dm.RData", compress="xz"); rm(wals.gower.dm,d); # cache it pre-optimized for on-demand loading
+  d <- wals.gower.dm; save(d, file="../output/preoptimized-distances/wals-gower-dm.RData", compress="xz"); rm(wals.gower.dm,d); # cache it pre-optimized for on-demand loading
   
   load( "../input/distances/WALS/wals-gower-mode-dm.RData" ); wals.gower.mode.dm <- as.matrix(wals.gower.mode.dm); # wals.gower.mode.dm (with mode imputation for missing data)
-  d <- wals.gower.mode.dm; save(d, file="../output/preotimized-distances/wals-gower-mode-dm.RData", compress="xz"); rm(wals.gower.mode.dm,d); # cache it pre-optimized for on-demand loading
+  d <- wals.gower.mode.dm; save(d, file="../output/preoptimized-distances/wals-gower-mode-dm.RData", compress="xz"); rm(wals.gower.mode.dm,d); # cache it pre-optimized for on-demand loading
   
   load( "../input/distances/WALS/wals-euclidean-dm.RData" ); wals.euclidean.dm <- as.matrix(wals.euclidean.dm); # wals.euclidean.dm (with missing data)
-  d <- wals.euclidean.dm; save(d, file="../output/preotimized-distances/wals-euclidean-dm.RData", compress="xz"); rm(wals.euclidean.dm,d); # cache it pre-optimized for on-demand loading
+  d <- wals.euclidean.dm; save(d, file="../output/preoptimized-distances/wals-euclidean-dm.RData", compress="xz"); rm(wals.euclidean.dm,d); # cache it pre-optimized for on-demand loading
   
   load( "../input/distances/WALS/wals-euclidean-mode-dm.RData" ); wals.euclidean.mode.dm <- as.matrix(wals.euclidean.mode.dm); # wals.euclidean.mode.dm (with mode imputation for missing data)
-  d <- wals.euclidean.mode.dm; save(d, file="../output/preotimized-distances/wals-euclidean-mode-dm.RData", compress="xz"); rm(wals.euclidean.mode.dm,d); # cache it pre-optimized for on-demand loading
+  d <- wals.euclidean.mode.dm; save(d, file="../output/preoptimized-distances/wals-euclidean-mode-dm.RData", compress="xz"); rm(wals.euclidean.mode.dm,d); # cache it pre-optimized for on-demand loading
   
   # AUTOTYP (the row and column names are the AUTOTYP codes (LID)):
   load("../input/distances/AUTOTYP/autotyp-dist.RData"); # autotyp.dm (with missing data, using ony features with single values per language, courtesy of Balthasar Bickel)
-  d <- autotyp.dm; save(d, file="../output/preotimized-distances/autotyp-dm.RData", compress="xz"); rm(autotyp.dm,d); # cache it pre-optimized for on-demand loading
+  d <- autotyp.dm; save(d, file="../output/preoptimized-distances/autotyp-dm.RData", compress="xz"); rm(autotyp.dm,d); # cache it pre-optimized for on-demand loading
   
   # Geographic distances (the row and column names are the Glottolog codes):
   if( COMPUTE_GEO_DISTS )
@@ -227,13 +227,12 @@ if( PREOPTIMIZE_DISTS )
     rm(m); rm(tmp);
     
     save( geo.dm, file="../input/distances/geo-great-circle-ellipsoid-dists.RData", compress="xz" );
-  } else
-  {
-    load( file="../input/distances/geo-great-circle-ellipsoid-dists.RData" ); # geo.dm 
-    # Normalize it between 0 and 1 by dividing it with the maximum distance (which is very close to the maximum possible distance on Earth of about 21,000km):
-    geo.dm <- geo.dm / max(as.numeric(geo.dm),na.rm=TRUE);
-    d <- geo.dm; save(d, file="../output/preotimized-distances/geo-dm.RData", compress="xz"); rm(geo.dm,d); # cache it pre-optimized for on-demand loading
   }
+  load( file="../input/distances/geo-great-circle-ellipsoid-dists.RData" ); # geo.dm 
+  # Normalize it between 0 and 1 by dividing it with the maximum distance (which is very close to the maximum possible distance on Earth of about 21,000km):
+  geo.dm <- geo.dm / max(as.numeric(geo.dm),na.rm=TRUE);
+  d <- geo.dm; save(d, file="../output/preoptimized-distances/geo-dm.RData", compress="xz"); rm(geo.dm,d); # cache it pre-optimized for on-demand loading
+  
   
   # The MG2015 [Maurits, L. & Griffiths, T.L. (2015) PNAS 111 (37):13576--13581] distances
   # there's one distance matrix for each of the four classifications (WALS, Ethnologue, Glottolog and AUTOTYP)
@@ -264,16 +263,16 @@ if( PREOPTIMIZE_DISTS )
   }
   
   load("../input/distances/MG2015/MG2015-wals-alpha=0.69.RData"); rownames(MG2015.WALS) <- colnames(MG2015.WALS) <-.change.row.col.names.to.codes(MG2015.WALS, "wals");  # MG2015.WALS
-  d <- MG2015.WALS; save(d, file="../output/preotimized-distances/mg2015-wals-dm.RData", compress="xz"); rm(MG2015.WALS,d); # cache it pre-optimized for on-demand loading
+  d <- MG2015.WALS; save(d, file="../output/preoptimized-distances/mg2015-wals-dm.RData", compress="xz"); rm(MG2015.WALS,d); # cache it pre-optimized for on-demand loading
   
   load("../input/distances/MG2015/MG2015-ethnologue-alpha=0.69.RData"); rownames(MG2015.Ethnologue) <- colnames(MG2015.Ethnologue) <-.change.row.col.names.to.codes(MG2015.Ethnologue, "iso");  # MG2015.Ethnologue
-  d <- MG2015.Ethnologue; save(d, file="../output/preotimized-distances/mg2015-ethnologue-dm.RData", compress="xz"); rm(MG2015.Ethnologue,d); # cache it pre-optimized for on-demand loading
+  d <- MG2015.Ethnologue; save(d, file="../output/preoptimized-distances/mg2015-ethnologue-dm.RData", compress="xz"); rm(MG2015.Ethnologue,d); # cache it pre-optimized for on-demand loading
   
   load("../input/distances/MG2015/MG2015-glottolog-alpha=0.69.RData"); rownames(MG2015.Glottolog) <- colnames(MG2015.Glottolog) <-.change.row.col.names.to.codes(MG2015.Glottolog, "glottolog");  # MG2015.Glottolog
-  d <- MG2015.Glottolog; save(d, file="../output/preotimized-distances/mg2015-glottolog-dm.RData", compress="xz"); rm(MG2015.Glottolog,d); # cache it pre-optimized for on-demand loading
+  d <- MG2015.Glottolog; save(d, file="../output/preoptimized-distances/mg2015-glottolog-dm.RData", compress="xz"); rm(MG2015.Glottolog,d); # cache it pre-optimized for on-demand loading
   
   load("../input/distances/MG2015/MG2015-autotyp-alpha=0.69.RData"); rownames(MG2015.AUTOTYP) <- colnames(MG2015.AUTOTYP) <-.change.row.col.names.to.codes(MG2015.AUTOTYP, "autotyp");  # MG2015.AUTOTYP
-  d <- MG2015.AUTOTYP; save(d, file="../output/preotimized-distances/mg2015-autotyp-dm.RData", compress="xz"); rm(MG2015.AUTOTYP,d); # cache it pre-optimized for on-demand loading
+  d <- MG2015.AUTOTYP; save(d, file="../output/preoptimized-distances/mg2015-autotyp-dm.RData", compress="xz"); rm(MG2015.AUTOTYP,d); # cache it pre-optimized for on-demand loading
   
   gc(); # call the garbage collector to make sure the space is freeded after this memory-hungry step
 }
@@ -290,19 +289,18 @@ CLASSIFICATIONS = c("wals", "ethnologue", "glottolog", "autotyp");
 METHODS   = c("constant", "proportional", "grafen", "nnls", "nj", "ga"); 
 CONSTANT  = 1.0; # the positive constant required by some methods
 DISTS.CODES = read.table(text="Distance              ShortName  File                                                          Code      \n
-                               asjp16                asjp       ../output/preotimized-distances/asjp16-dm.RData               iso       \n
-                               wals(gower)           w:g        ../output/preotimized-distances/wals-gower-dm.RData           wals      \n
-                               wals(gower,mode)      w:gm       ../output/preotimized-distances/wals-gower-mode-dm.RData      wals      \n
-                               wals(euclidean)       w:e        ../output/preotimized-distances/wals-euclidean-dm.RData       wals      \n
-                               wals(euclidean,mode)  w:em       ../output/preotimized-distances/wals-euclidean-mode-dm.RData  wals      \n
-                               autotyp               atyp       ../output/preotimized-distances/autotyp-dm.RData              autotyp   \n
-                               mg2015(wals)          mg:w       ../output/preotimized-distances/mg2015-wals-dm.RData          wals      \n
-                               mg2015(ethnologue)    mg:e       ../output/preotimized-distances/mg2015-ethnologue-dm.RData    iso       \n
-                               mg2015(glottolog)     mg:g       ../output/preotimized-distances/mg2015-glottolog-dm.RData     glottolog \n
-                               mg2015(autotyp)       mg:a       ../output/preotimized-distances/mg2015-autotyp-dm.RData       autotyp   \n
-                               geo                   geo        ../output/preotimized-distances/geo-dm.RData                  glottolog \n",
+                               asjp16                asjp       ../output/preoptimized-distances/asjp16-dm.RData               iso       \n
+                               wals(gower)           w:g        ../output/preoptimized-distances/wals-gower-dm.RData           wals      \n
+                               wals(gower,mode)      w:gm       ../output/preoptimized-distances/wals-gower-mode-dm.RData      wals      \n
+                               wals(euclidean)       w:e        ../output/preoptimized-distances/wals-euclidean-dm.RData       wals      \n
+                               wals(euclidean,mode)  w:em       ../output/preoptimized-distances/wals-euclidean-mode-dm.RData  wals      \n
+                               autotyp               atyp       ../output/preoptimized-distances/autotyp-dm.RData              autotyp   \n
+                               mg2015(wals)          mg:w       ../output/preoptimized-distances/mg2015-wals-dm.RData          wals      \n
+                               mg2015(ethnologue)    mg:e       ../output/preoptimized-distances/mg2015-ethnologue-dm.RData    iso       \n
+                               mg2015(glottolog)     mg:g       ../output/preoptimized-distances/mg2015-glottolog-dm.RData     glottolog \n
+                               mg2015(autotyp)       mg:a       ../output/preoptimized-distances/mg2015-autotyp-dm.RData       autotyp   \n
+                               geo                   geo        ../output/preoptimized-distances/geo-dm.RData                  glottolog \n",
                          sep="", quote="", header=TRUE, stringsAsFactors=FALSE); # the distances required by some methods
-              
 
 ######################
 #
@@ -716,10 +714,13 @@ if( COMPUTE_BRLEN )
                                       dists.codes=NULL,           # the data.frame of distance matrices to be used by "nnls", "ga" and "nj", and the codes used as the distance matrices' row and column names
                                       replace.NA.brlen.with=NA,   # some methods produce NA branch length (if the actual brlen cannot be estimated from the data): replace it by another numeric value?
                                       restore.collapsed.singles=TRUE, # some standard methods need to collapse singles, but we can restore them
+                                      remove.all.missing.distances=TRUE, # remove languages with missing distance info?
                                       parallel.mc.cores=4,
                                       quotes="'"
   )
   {
+    start.time <- Sys.time(); cat(paste0("Staring processing classification '",classification,"' @ ",start.time,"\n"));
+    
     # Helper function: given a distances matrix with row and column names as language codes and which code to use, generate the corresponding submatrix with row and column full language names:
     dists.submatrix <- function( roots, dist.mat, code=c("iso","wals","autotyp","glottolog") )
     {
@@ -893,6 +894,7 @@ if( COMPUTE_BRLEN )
                                        distmatrix=d,
                                        replace.NA.brlen.with=replace.NA.brlen.with, 
                                        restore.collapsed.singles=restore.collapsed.singles,
+                                       remove.all.missing.distances=remove.all.missing.distances,
                                        filename.postfix=paste( "-", method, 
                                                                ifelse( is.na(d.c.k$k[i]), "", paste( "=", sprintf("%.02f",d.c.k$k[i]), sep="") ), 
                                                                ifelse( is.na(d.c.k$Distance[i]), "", paste( "+", d.c.k$Distance[i], sep="") ), 
@@ -905,178 +907,31 @@ if( COMPUTE_BRLEN )
       }
     }
     
+    end.time <- Sys.time(); cat(paste0("Ended processing classification '",classification,"' @ ",end.time," (took ",sprintf("%.1f minutes",difftime(end.time,start.time,units="mins")),")","\n"));
+    
     return (TRUE);
   }
   compute.brlength.trees <- cmpfun(compute.brlength.trees);
 
   # Compute the branch lengths for each classification:
-  for( classification in CLASSIFICATIONS )
+  x <- mclapply( CLASSIFICATIONS, function( classification )
   {
     # Apply only the relevant mg2015 distances:
-    dists.codes <- DISTS.CODES[ -grep("mg2015", DISTS.CODES$Distance, fixed=TRUE), ]; dists.codes <- rbind(dists.codes, DISTS.CODES[ DISTS.CODES$Distance == paste0("mg2015(",classification,")"), ]);
+    if( length(grep("mg2015", DISTS.CODES$Distance, fixed=TRUE)) > 0 )
+    {
+      dists.codes <- DISTS.CODES[ -grep("mg2015", DISTS.CODES$Distance, fixed=TRUE), ]; 
+      dists.codes <- rbind(dists.codes, DISTS.CODES[ DISTS.CODES$Distance == paste0("mg2015(",classification,")"), ]);
+    } else
+    {
+      dists.codes <- DISTS.CODES;
+    }
     # Compute the branch lengths:
     compute.brlength.trees( dir.name="../output", classification=classification, 
                             export.nexus=EXPORT_NEXUS, nexus.translate.block=EXPORT_NEXUS_TRANSLATE_BLOCK, export.csv=EXPORT_CSV,
                             methods=METHODS, constant=CONSTANT, dists.codes=dists.codes, replace.NA.brlen.with=NA, restore.collapsed.singles=TRUE,
                             parallel.mc.cores=CPU_CORES, quotes=quotes );
-  }
+  }, mc.cores=length(CLASSIFICATIONS) );
 }
-
-
-##################################
-#
-# Compare trees across methods
-#
-##################################
-
-if( COMPARE_TREES )
-{
-  # For a given classification compare all corresponding trees for various methods
-  compare.brlength.trees <- function( dir.name,          # the directory where the original trees are and where the resulting trees will be saved
-                                      classification,    # the classification: there must be a trees file in ./output/classification/classification-newick.csv
-                                      methods="all",     # the branch length methods to be used; can be "all", "none", or any subset of {"constant", "proportional", "grafen", "nnls", "ga", "nj"}
-                                      constant=1.0,      # the positive constant required by the methods "constant" and "proportional"
-                                      dists.codes=NULL,  # the data.frame of distance matrices to be used by "nnls", "ga" and "nj", and the codes used as the distance matrices' row and column names
-                                      parallel.mc.cores=4,
-                                      quotes="'"
-  )
-  {
-    # Sanity checks:
-    if( constant <= 0 )
-    {
-      cat( "The constant must be positive\n" );
-      return (FALSE);
-    }
-    
-    # Expand the methods to be used:
-    if( length(methods) == 1 && methods == "none" )
-    {
-      # Nothing to do:
-      return (TRUE);
-    } else if( length(methods) == 1 && methods == "all" )
-    {
-      # All methods
-      methods = c("constant", "proportional", "grafen", "nnls", "ga", "nj");
-    } else if( !all( methods %in% c("constant", "proportional", "grafen", "nnls", "ga", "nj"), na.rm=TRUE ) )
-    {
-      cat( "Unknown methods\n" );
-      return (FALSE);
-    }  
-    
-    # The return value is a data.frame which for each family tree and two methods gives the distance(s):
-    all.methods <- lapply( methods, function(method)
-    {
-      # Decide which constant and/or distances to use depending on the method (and store that in the d.c.k data.frame):
-      if( method == "grafen" )
-      {
-        d.c.k <- data.frame("Distance"=NA, "ShortName"=NA, "File"=NA, "Code"=NA, "k"=NA);
-      } else if( method %in% c("constant", "proportional") )
-      {
-        d.c.k <- data.frame("Distance"=NA, "ShortName"=NA, "File"=NA, "Code"=NA, "k"=constant);
-      } else if( method %in% c("nnls", "ga", "nj") )
-      {
-        d.c.k <- cbind(dists.codes, "k"=NA);
-      } else
-      {
-        # Unknown method; how did I get here?
-        return (NULL);
-      }
-      
-      ret.val <- lapply( 1:nrow(d.c.k), function(i){
-        return(data.frame("Classification"=classification,
-                          "Method"=as.character(method),
-                          "Constant"=d.c.k$k[i],
-                          "Distance"=d.c.k$Distance[i],
-                          "FileName"=paste(  dir.name, "/", classification, "/", classification, "-newick", "-", method, 
-                                             ifelse( is.na(d.c.k$k[i]), "", paste( "=", sprintf("%.02f",d.c.k$k[i]), sep="") ), 
-                                             ifelse( is.na(d.c.k$Distance[i]), "", paste( "+", d.c.k$Distance[i], sep="") ),
-                                             ".csv", sep="" ),
-                          stringsAsFactors=FALSE ));
-      } );
-      return (as.data.frame(do.call(rbind,ret.val)));
-    } );
-    all.methods <- as.data.frame(do.call(rbind, all.methods));
-    
-    # Read all the family trees from the topology file:
-    cat( paste( "Caching the trees for classification '", classification, "'...\n", sep="") );
-    roots <- languageclassification( classif.name=classification, csv.file=paste(dir.name,"/",classification,"/",classification,"-newick.csv",sep=""), csv.name.column="Family", csv.tree.column="Tree");
-    if( is.null(roots) || length(roots) == 0 || !inherits(roots,"languageclassification") )
-    {
-      return (FALSE);
-    }
-    
-    # Cache the trees for faster processing:
-    roots.cached <- list();
-    for( i in 1:nrow(all.methods) )
-    {
-      roots.cached[[i]] <- languageclassification( classif.name=all.methods$FileName[i], csv.file=all.methods$FileName[i], csv.name.column="Family", csv.tree.column="Tree" );
-      names(roots.cached)[i] <- all.methods$FileName[i];
-    }
-    
-    # All pairs of different methods:
-    all.pairs.of.methods <- expand.grid( 1:nrow(all.methods), 1:nrow(all.methods) ); 
-    all.pairs.of.methods <- all.pairs.of.methods[ all.pairs.of.methods[,1] > all.pairs.of.methods[,2], ]; # avoid comparisons with itself and allow only unique pairings
-    all.pairs.of.methods <- all.pairs.of.methods[,c(2,1)];
-    
-    # For each pair of methods and family tree, compute the distances:
-    cat( "    ... and computing the distances between the trees...\n" );
-    ret.val <- mclapply( 1:nrow(all.pairs.of.methods), function(i)
-    {
-      #cat("i=",i,"\n");
-      # Load the trees for this pair of methods:
-      roots1 <- roots.cached[[ all.pairs.of.methods[i,1] ]];
-      if( is.null(roots1) || length(roots1) == 0 || !inherits(roots1,"languageclassification") )
-      {
-        return (NULL);
-      }
-      roots2 <- roots.cached[[ all.pairs.of.methods[i,2] ]];
-      if( is.null(roots2) || length(roots2) == 0 || !inherits(roots2,"languageclassification") )
-      {
-        return (NULL);
-      }
-      
-      # For each family tree, compute the distances:
-      ret.val <- lapply( 1:length(roots), function(j)
-      {
-        #cat( "j=",j,"\n");
-        # Get the corresponding trees:
-        tree.name <- get.name(roots[[j]]);
-        tree1 <- find.language.family( roots1, tree.name );
-        tree2 <- find.language.family( roots2, tree.name );
-        # Compute the distances:
-        d <- compare.trees(tree1, tree2);
-        # Build the retun value:
-        return (data.frame("Family"=tree.name,
-                           "Classification"=classification,
-                           "Method1"=all.methods$Method[all.pairs.of.methods[i,1]],
-                           "Constant1"=all.methods$Constant[all.pairs.of.methods[i,1]],
-                           "Distance1"=all.methods$Distance[all.pairs.of.methods[i,1]],
-                           "Method2"=all.methods$Method[all.pairs.of.methods[i,2]],
-                           "Constant2"=all.methods$Constant[all.pairs.of.methods[i,2]],
-                           "Distance2"=all.methods$Distance[all.pairs.of.methods[i,2]],
-                           "d.PH85"=d["PH85"], "d.score"=d["score"]));
-      } );
-      return (as.data.frame(do.call(rbind, ret.val)));
-    }, mc.cores=parallel.mc.cores 
-    );
-    ret.val <- as.data.frame(do.call(rbind, ret.val));
-    return( ret.val);  
-  }
-  compare.brlength.trees <- cmpfun(compare.brlength.trees);
-  
-  # Compare the trees for each of the classifications:
-  for( classification in CLASSIFICATIONS )
-  {
-    # Apply only the relevant mg2015 distances:
-    dists.codes <- DISTS.CODES[ -grep("mg2015", DISTS.CODES$Distance, fixed=TRUE), ]; dists.codes <- rbind(dists.codes, DISTS.CODES[ DISTS.CODES$Distance == paste0("mg2015(",classification,")"), ]);
-    # Compare the trees for this classification:
-    tmp <- compare.brlength.trees( dir.name="../output", classification=classification, 
-                                   methods=METHODS, constant=CONSTANT, dists.codes=dists.codes,
-                                   parallel.mc.cores=CPU_CORES, quotes=quotes );
-    write.table( tmp, tree.comparisons, quote=FALSE, sep="\t", row.names=FALSE, col.names=(classification=="wals"), append=!(classification=="wals") ); # first classification only: overwrite the file
-  }  
-}
-
 
 
 
