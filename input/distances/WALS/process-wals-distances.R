@@ -25,7 +25,7 @@
 wals_languages <- read.table( "../../wals/languages.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
 wals_languages <- unique(wals_languages[, c("ID", "ISO639P3code", "Glottocode", "Name", "Latitude", "Longitude", "Genus", "Family")]); # keep only the ones needed
 names(wals_languages) <- c("wals_code", "iso_code", "glottocode", "Name", "latitude", "longitude", "genus", "family");
-wals_languages <- wals_languages[ !is.na(wals_languages$iso_code) & wals_languages$iso_code != "", ]; # keep only the ones with a ISO code
+wals_languages <- wals_languages[ !is.na(wals_languages$iso_code) & wals_languages$iso_code != "", ]; # keep only the actual languages
 wals_features <- read.table( "../../wals/parameters.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
 wals_languages <- cbind(wals_languages, matrix(NA, nrow=nrow(wals_languages), ncol=nrow(wals_features))); 
 names(wals_languages)[9:ncol(wals_languages)] <- paste0("X", wals_features$ID);
@@ -36,12 +36,27 @@ for( i in 1:nrow(wals_languages) )
   s <- wals_values[ wals_values$Language_ID == wals_languages$wals_code[i], ];
   if( nrow(s) > 0 ) wals_languages[i, paste0("X",s$Parameter_ID) ] <- s$Value;
 }
+wals_languages <- wals_languages[ rowSums(!is.na(wals_languages[,9:ncol(wals_languages)])) > 0, ]; rownames(wals_languages) <- NULL; # remove entries with just missing data
+# there are some glottocodes/iso codes that are duplicated: keep the one with most non-missing information
+dup_codes <- which(duplicated(wals_languages$iso_code) | duplicated(wals_languages$glottocode));
+.find_mode <- function(x, na.rm=TRUE) { if(na.rm){ x <- x[!is.na(x)] }; if(is.null(x) || length(x) == 0){ return (NA) }; u <- unique(x); tab <- tabulate(match(x, u)); u[tab == max(tab)] }
+for( i in dup_codes)
+{
+  s <- which( wals_languages$iso_code == wals_languages$iso_code[i] | wals_languages$glottocode == wals_languages$glottocode[i], );
+  if( is.null(s) || length(s) == 0 ) stop("is.null(s) || length(s) == 0");
+  s.keep <- as.numeric(names(which.max(rowSums(!is.na(wals_languages[s,9:ncol(wals_languages)])))));
+  if( is.na(s.keep) || length(s.keep) != 1 ) stop("is.na(s.keep) || length(s.keep) != 1");
+  wals_languages[s,] <- wals_languages[s.keep,];
+}
+wals_languages <- wals_languages[ -which(duplicated(wals_languages$iso_code) | duplicated(wals_languages$glottocode)), ];
+# save it to disk for later use:
+write.table(wals_languages, file="../../wals/languages_values.csv", col.names=TRUE, sep=",", quote=TRUE, row.names=FALSE);
 
 
 # --- ORIGINAL CODE ---
 
 # Load the wals data:
-wals <- wals_languages; # rename it for compatibility with the old code
+wals <- read.table( "../../wals/languages_values.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
 #wals <- read.table( "../../wals/language.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
 
 # Keep only the numeric values of the features (discard the explanations):
@@ -135,19 +150,19 @@ if( FALSE ) # takes some CPU time to run!
 {
   library(vegan);
   # With missing data:
-  mantel( wals.gower.dm,     wals.manhattan.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.65, p=0.001  <--- gower and manhattan are very similar
-  mantel( wals.gower.dm,     wals.euclidean.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.40, p=0.001
-  mantel( wals.manhattan.dm, wals.euclidean.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.41, p=0.001
+  mantel( wals.gower.dm,     wals.manhattan.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.65, p=0.001  <--- gower and manhattan are very similar
+  mantel( wals.gower.dm,     wals.euclidean.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.39, p=0.001
+  mantel( wals.manhattan.dm, wals.euclidean.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.39, p=0.001
   
   # With mode imputation:
-  mantel( wals.gower.mode.dm,     wals.manhattan.mode.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.95, p=0.001  <--- gower and manhattan are very similar
-  mantel( wals.gower.mode.dm,     wals.euclidean.mode.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.52, p=0.001
-  mantel( wals.manhattan.mode.dm, wals.euclidean.mode.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.54, p=0.001
+  mantel( wals.gower.mode.dm,     wals.manhattan.mode.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.95, p=0.001  <--- with mode imputation all are very similar
+  mantel( wals.gower.mode.dm,     wals.euclidean.mode.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.51, p=0.001
+  mantel( wals.manhattan.mode.dm, wals.euclidean.mode.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.54, p=0.001
     
   # Between missing data and mode imputation:
-  mantel( wals.gower.dm,     wals.gower.mode.dm,     permutations=999, na.rm=TRUE, parallel=6 ); # r=0.15, p=0.001
-  mantel( wals.euclidean.dm, wals.euclidean.mode.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.19, p=0.001
-  mantel( wals.manhattan.dm, wals.manhattan.mode.dm, permutations=999, na.rm=TRUE, parallel=6 ); # r=0.27, p=0.001
+  mantel( wals.gower.dm,     wals.gower.mode.dm,     permutations=999, na.rm=TRUE, parallel=4 ); # r=0.16, p=0.001  <--- mode imputation distorts things
+  mantel( wals.euclidean.dm, wals.euclidean.mode.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.19, p=0.001
+  mantel( wals.manhattan.dm, wals.manhattan.mode.dm, permutations=999, na.rm=TRUE, parallel=4 ); # r=0.28, p=0.001
 }
 
 

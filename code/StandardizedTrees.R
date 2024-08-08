@@ -66,43 +66,17 @@ if( MATCH_CODES )
   ethn.data$Name <- sapply( as.character(ethn.data$Name), function( s ){ normalize.language.name(s); } );
   
   # The wals data contains the WALS, ISO and Glottolog codes for a subset of languages:
-  wals.data <- read.table( "../input/wals/language.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
+  wals.data <- read.table( "../input/wals/languages_values.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
   wals.data <- wals.data[ , c("wals_code", "iso_code", "glottocode", "Name", "latitude", "longitude") ];
   wals.data$Name <- sapply( as.character(wals.data$Name), function( s ){ normalize.language.name(s); } );
   
   # The Glottolog data contains the ISO and Glottolog codes for a much larger set of languages:
-  library(rjson);
-  glott.json <- fromJSON( file="../input/glottolog/glottocodes2iso.json" );
-  glott.json <- glott.json$resources; # select the actual resources and not the properties
-  glott.data <- lapply( glott.json, function(x){ 
-                                        # Look for an ISO code:
-                                        isos <- NULL;
-                                        if( length(x$identifiers) > 0 )
-                                        {
-                                          for( i in 1:length(x$identifiers) )
-                                          {
-                                            if( x$identifiers[[i]]$type == "iso639-3" )
-                                            {
-                                              isos <- c( isos, x$identifiers[[i]]$identifier );
-                                            }
-                                          }
-                                        }
-                                        if( length(isos) > 1 )
-                                        {
-                                          cat( "Multiple ISOs found for glottocode ", x$id, ": packing them separated by '-'!\n" );
-                                          isos <- paste( isos, collapse="-", sep="" );
-                                        }
-                                        return ( data.frame( "Name"=x$name, 
-                                                             "Glottocode"=x$id, 
-                                                             "ISO"=ifelse( is.null(isos), NA, isos ), 
-                                                             "latitude"=ifelse(is.null(x$latitude),NA,x$latitude),
-                                                             "longitude"=ifelse(is.null(x$latitude),NA,x$longitude) ) );
-                                      } );
-  glott.data <- do.call( rbind, glott.data );
+  glott.data <- read.csv("../input/glottolog/languages_and_dialects_geo.csv");
+  glott.data <- glott.data[, c("name", "glottocode", "isocodes", "latitude", "longitude")]; names(glott.data) <- c("Name", "Glottocode", "ISO", "latitude", "longitude");
   glott.data$Name <- sapply( as.character(glott.data$Name), function( s ){ normalize.language.name(s); } );
-  rm(glott.json);
+  glott.data$ISO[ glott.data$ISO == "" ] <- NA; 
   
-  # The autotyp data contains the ISO, Glottolog and autoty (LID) mappings:
+  # The autotyp data contains the ISO, Glottolog and AUTOTYP (LID) mappings:
   autotyp.data <- read.table( "../input/autotyp/autotyp-trees.csv", header=TRUE, sep="\t", quote="", stringsAsFactors=FALSE );
   autotyp.data$language <- sapply( as.character(autotyp.data$language), function( s ){ normalize.language.name(s); } );
   
@@ -119,8 +93,8 @@ if( MATCH_CODES )
         (abs(code.mappings$latitude.glot - code.mappings$latitude.wals) >= 1.0 | abs(code.mappings$latitude.glot - code.mappings$latitude.wals) >= 1.0));
   if( sum(s,na.rm=TRUE) > 0 )
   {
-    cat( "There are disagreements larger than 1 degree between Glottolog and WALS for ", nrow(unique(code.mappings[s,c("ISO","wals_code","Glottocode")])), " languages (WALS codes): ", paste( unique(code.mappings$wals_code[s]), collapse=",", sep="" ), "; keeping the WALS coordinates!\n" );
-    code.mappings[s,c("latitude.glot","longitude.glot")] <- code.mappings[s,c("latitude.wals","longitude.wals")];
+    cat( "There are disagreements larger than 1 degree between Glottolog and WALS for ", nrow(unique(code.mappings[s,c("ISO","wals_code","Glottocode")])), " languages (WALS codes): ", paste( unique(code.mappings$wals_code[s]), collapse=",", sep="" ), "; keeping the Glottolog coordinates!\n" );
+    #code.mappings[s,c("latitude.glot","longitude.glot")] <- code.mappings[s,c("latitude.wals","longitude.wals")];
   }
   # See how many languages with ISO codes but no geographic coordinates there are:
   code.mappings$ISO[ is.na(code.mappings$ISO) ] <- "";
@@ -274,7 +248,7 @@ if( PREOPTIMIZE_DISTS )
   load("../input/distances/MG2015/MG2015-autotyp-alpha=0.69.RData"); rownames(MG2015.AUTOTYP) <- colnames(MG2015.AUTOTYP) <-.change.row.col.names.to.codes(MG2015.AUTOTYP, "autotyp");  # MG2015.AUTOTYP
   d <- MG2015.AUTOTYP; save(d, file="../output/preoptimized-distances/mg2015-autotyp-dm.RData", compress="xz"); rm(MG2015.AUTOTYP,d); # cache it pre-optimized for on-demand loading
   
-  gc(); # call the garbage collector to make sure the space is freeded after this memory-hungry step
+  gc(); # call the garbage collector to make sure the space is freed after this memory-hungry step
 }
 
 
@@ -285,10 +259,10 @@ if( PREOPTIMIZE_DISTS )
 ######################################################################################
 
 # the branch length methods to be used; can be "all", "none", or any subset of {"constant", "proportional", "grafen", "nnls", "ga", "nj"}
-CLASSIFICATIONS = c("wals", "ethnologue", "glottolog", "autotyp");
-METHODS   = c("constant", "proportional", "grafen", "nnls", "nj", "ga"); 
+CLASSIFICATIONS = c("wals", "glottolog"); #c("wals", "ethnologue", "glottolog", "autotyp");  --> update just WALS and Glottolog trees, but don't touch the others!
+METHODS   = c("constant", "proportional", "grafen", "nnls", "nj"); # , "ga"); --> GA has issues: don't update it for now!  
 CONSTANT  = 1.0; # the positive constant required by some methods
-DISTS.CODES = read.table(text="Distance              ShortName  File                                                          Code      \n
+DISTS.CODES = read.table(text="Distance              ShortName  File                                                           Code      \n
                                asjp16                asjp       ../output/preoptimized-distances/asjp16-dm.RData               iso       \n
                                wals(gower)           w:g        ../output/preoptimized-distances/wals-gower-dm.RData           wals      \n
                                wals(gower,mode)      w:gm       ../output/preoptimized-distances/wals-gower-mode-dm.RData      wals      \n
@@ -311,8 +285,9 @@ DISTS.CODES = read.table(text="Distance              ShortName  File            
 if( TRANSFORM_TREES )
 {
   # WALS languages info:
-  wals.data <- read.table( "../input/wals/language.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
+  wals.data <- read.table( "../input/wals/languages_values.csv", header=TRUE, sep=",", quote="\"", stringsAsFactors=FALSE );
   wals.data <- wals.data[, c("wals_code", "iso_code", "glottocode", "Name", "latitude", "longitude", "genus", "family" ) ];
+  wals.data <- wals.data[ !is.na(wals.data$iso_code) & wals.data$iso_code != "", ]; # keep only the actual languages
   
   # Replace troublesome characters in language and family names:
   wals.data$Name <- sapply( as.character(wals.data$Name), function( s ){ normalize.language.name(s); } );
@@ -371,7 +346,7 @@ if( TRANSFORM_TREES )
 #
 ######################
 
-if( TRANSFORM_TREES )
+if( TRANSFORM_TREES && FALSE ) # Ethnologue has changed too much and it is not such an important language classification system anymore, so don't touch it.
 {
   # The Enthologue trees: we need to download and parse them from the Ethnologue website:
   fams.file <- paste("../input/ethnologue/fams.html",sep="");
@@ -575,7 +550,7 @@ if( TRANSFORM_TREES )
 if( TRANSFORM_TREES )
 {
   # The Glottolog trees: parse them and export them in the Family\tTree format, also updating the convention on the language codes:
-  glott.fams <- readLines( "../input/glottolog/tree-glottolog-newick.txt" );
+  glott.fams <- readLines( "../input/glottolog/tree_glottolog_newick.txt", warn=FALSE );
   mapping <- code.mappings[,c("ISO","WALS","AUTOTYP","Glottolog")]
   roots <- NULL;
   for( i in 1:length(glott.fams) )
@@ -624,7 +599,7 @@ if( TRANSFORM_TREES )
 #
 ######################
 
-if( TRANSFORM_TREES )
+if( TRANSFORM_TREES && FALSE ) # I did not attempt to update the AUTOTYP trees so leave it untouched
 {
   # AUTOTYP data:
   autotyp.data <- read.table( "../input/autotyp/autotyp-trees.csv", header=TRUE, sep="\t", quote="", stringsAsFactors=FALSE );
@@ -874,9 +849,9 @@ if( COMPUTE_BRLEN )
         # Load and adapt the distance matrix:
         if( !is.na(d.c.k$Distance[i]) )
         {
-          load(d.c.k$File[i]); if( is.null(d) || class(d) != "matrix" || nrow(d) != ncol(d) || nrow(d) < 1 ){ cat("Distance ", d.c.k$Distance[i], " is malformed\n"); return (FALSE); }
+          load(d.c.k$File[i]); if( is.null(d) || !inherits(d, "matrix") || nrow(d) != ncol(d) || nrow(d) < 1 ){ cat("Distance ", d.c.k$Distance[i], " is malformed\n"); return (FALSE); }
           d <- dists.submatrix(roots, d,  d.c.k$Code[i]); 
-          if( is.null(d) || class(d) != "matrix" || nrow(d) != ncol(d) || nrow(d) < 1 ){ cat("Distance ", d.c.k$Distance[i], " is empty for classification ", classification, "\n"); return (FALSE); }
+          if( is.null(d) || !inherits(d, "matrix") || nrow(d) != ncol(d) || nrow(d) < 1 ){ cat("Distance ", d.c.k$Distance[i], " is empty for classification ", classification, "\n"); return (FALSE); }
         } else
         {
           d <- NULL;
@@ -900,7 +875,7 @@ if( COMPUTE_BRLEN )
                                                                ifelse( is.na(d.c.k$Distance[i]), "", paste( "+", d.c.k$Distance[i], sep="") ), 
                                                                sep="" ), 
                                        quotes=quotes, 
-                                       parallel.mc.cores=parallel.mc.cores );
+                                       parallel.mc.cores=1 ); #parallel.mc.cores );
         
         # Free up the space:
         rm(d);
@@ -930,7 +905,7 @@ if( COMPUTE_BRLEN )
                             export.nexus=EXPORT_NEXUS, nexus.translate.block=EXPORT_NEXUS_TRANSLATE_BLOCK, export.csv=EXPORT_CSV,
                             methods=METHODS, constant=CONSTANT, dists.codes=dists.codes, replace.NA.brlen.with=NA, restore.collapsed.singles=TRUE,
                             parallel.mc.cores=CPU_CORES, quotes=quotes );
-  }, mc.cores=length(CLASSIFICATIONS) );
+  }, mc.cores=1); #length(CLASSIFICATIONS) );
 }
 
 

@@ -55,7 +55,7 @@ CPU_CORES_GA   = FALSE; # the number of parallel threads for GA, FALSE for none 
 # Replace characters by other characters in a string:
 .replace.multiple.chars <- function(string, replacements=NULL)
 {
-  if( is.null(string) || is.na(string) || string=="" || is.null(replacements) || is.na(replacements) || replacements=="" ) return (string);
+  if( is.null(string) || is.na(string) || string=="" || is.null(replacements) || all(is.na(replacements)) || all(replacements=="") ) return (string);
   for( i in 1:length(replacements) ) string <- gsub( names(replacements)[i], replacements[i], string, fixed=TRUE );
   return (string);
 }
@@ -452,7 +452,7 @@ print.familytree <- function( tree, as.Newick=FALSE, digits=3, use.ASCII=FALSE, 
   if( as.Newick || is.na(root <- find.root(tree)) )
   {
     # Print it as a Newick tree:
-    .internal.write.tree <- function(phy, digits = 10) # adapted from ape::.write.tree2() to make sure node names are not altered during writting
+    .internal.write.tree <- function(phy, digits = 10) # adapted from ape::.write.tree2() to make sure node names are not altered during writing
     {
       brl <- !is.null(phy$edge.length)
       nodelab <- !is.null(phy$node.label)
@@ -493,8 +493,7 @@ print.familytree <- function( tree, as.Newick=FALSE, digits=3, use.ASCII=FALSE, 
       parent <- phy$edge[, 1]
       children <- phy$edge[, 2]
       kids <- vector("list", n + phy$Nnode)
-      for (i in 1:length(parent)) kids[[parent[i]]] <- c(kids[[parent[i]]], 
-                                                         children[i])
+      for (i in 1:length(parent)) kids[[parent[i]]] <- c(kids[[parent[i]]], children[i])
       ind <- match(1:max(phy$edge), phy$edge[, 2])
       LS <- 4 * n + 5
       if (brl) 
@@ -505,8 +504,7 @@ print.familytree <- function( tree, as.Newick=FALSE, digits=3, use.ASCII=FALSE, 
       k <- 1
       cp("")
       cp("(")
-      getRoot <- function(phy) phy$edge[, 1][!match(phy$edge[, 
-                                                             1], phy$edge[, 2], 0)][1]
+      getRoot <- function(phy) phy$edge[, 1][!match(phy$edge[, 1], phy$edge[, 2], 0)][1]
       root <- getRoot(phy)
       desc <- kids[[root]]
       for (j in desc) {
@@ -824,7 +822,7 @@ extract.path <- cmpfun(extract.path);
 # Add a path (root -> tip, given as a vector of node names, possibly with branch lengths given as a vector of numbers [the original brlenghts have priority for the shared path]) to an existing tree:
 add.tree.path <- function( tree, path, brlens=NULL, warn.on.duplicated.tip=TRUE )
 {
-  if( is.null(path) || is.na(path) || length(path)==0  )
+  if( is.null(path) || any(is.na(path)) || length(path)==0  )
   {
     # Nothing to add!
     return (tree);
@@ -1342,7 +1340,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     all.lgs <- rownames(d);
     
     # Incrementally remove the language with the most NAs, until there's no NAs left in the matrix:
-    while( !is.na(d) && nrow(d)>0 )
+    while( !is.null(d) && nrow(d)>0 )
     {
       na.rows <- rowSums(is.na(d)); max.na.row <- which.max(na.rows);
       if( na.rows[ max.na.row ] > 0 )
@@ -1353,7 +1351,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
         break;
       }
     }
-    if( is.na(d) || nrow(d) <= 1 )
+    if( is.null(d) || nrow(d) <= 1 )
     {
       # No non-missing data!
       return (NULL);
@@ -1404,7 +1402,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
       }
     } else
     {
-      # Only one is absent: fill it rom the other one:
+      # Only one is absent: fill it from the other one:
       if( is.null(rownames(distmatrix)) )
       {
         rownames(distmatrix) <- colnames(distmatrix);
@@ -1416,7 +1414,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     
     # Extract the submatrix corresponding to these languages:
     distmatrix <- distmatrix[ rownames(distmatrix) %in% lgs, colnames(distmatrix) %in% lgs ];
-    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
     {
       if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
       return (list("tree"=NULL,"comment"=paste("NNLS: the distances matrix is too small",sep="")));
@@ -1439,13 +1437,13 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     {
       # Remove languages that have the corresponding row/column full of NAs (except maybe for the diagonal):
       lgs.to.remove <- (rowSums(is.na(distmatrix)) == 1); distmatrix <- distmatrix[ !lgs.to.remove, !lgs.to.remove ];
-      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
       {
         if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
         return (list("tree"=NULL,"comment"=paste("NNLS: the distances matrix is too small",sep="")));
       }
       lgs.to.remove <- (colSums(is.na(distmatrix)) == 1); distmatrix <- distmatrix[ !lgs.to.remove, !lgs.to.remove ];
-      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
       {
         if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
         return (list("tree"=NULL,"comment"=paste("NNLS: the distances matrix is too small",sep="")));
@@ -1474,7 +1472,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     # Use nnls.tree in phangorn:
     collapsed.singles.info <- collapse.singles.reversible( subtree ); # collapse singles but make sure we can restore them later
     rescaledphylo <- NULL; 
-    nnls.message <- capture.output( try( rescaledphylo <- nnls.tree( distmatrix, collapsed.singles.info$collapsed.tree, rooted=TRUE, trace=0 ), silent=FALSE ), type="message" );    
+    nnls.message <- paste0(capture.output( try( rescaledphylo <- nnls.tree( distmatrix, collapsed.singles.info$collapsed.tree, rooted=TRUE, method="ultrametric", trace=0 ), silent=FALSE ), type="message" ), collapse="");    
     if( is.null(rescaledphylo) )
     {
       # Some failure, hopefully the message is already printed:
@@ -1511,7 +1509,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     # Restore the collapsed singles:
     if( restore.collapsed.singles ) rescaledphylo <- reverse.collapse.singles( rescaledphylo, collapsed.singles.info );
     # DEBUG
-    #if( !all.equal.phylo(rescaledphylo, subtree, use.edge.length=FALSE) ) stop("reverse.collapse.singles() destroyed the topology for ", get.name(tree),"\n");
+    if( !all.equal.phylo(rescaledphylo, subtree, use.edge.length=FALSE) ) stop("reverse.collapse.singles() destroyed the topology for ", get.name(tree),"\n");
     # END DEBUG
     
     return (list("tree"=rescaledphylo,"comment"=paste("NNLS",nnls.message,sep="")));
@@ -1558,20 +1556,20 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     
     # Extract the submatrix corresponding to these languages:
     distmatrix <- distmatrix[ rownames(distmatrix) %in% lgs, colnames(distmatrix) %in% lgs ];
-    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
     {
       if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
       return (list("tree"=NULL,"comment"=paste("NJ: the distances matrix is too small",sep="")));
     }
     # Remove languages that have the corresponding row/column full of NAs (except maybe for the diagonal):
     lgs.to.remove <- (rowSums(is.na(distmatrix)) == 1); distmatrix <- distmatrix[ !lgs.to.remove, !lgs.to.remove ];
-    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
     {
       if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
       return (list("tree"=NULL,"comment"=paste("NJ: the distances matrix is too small",sep="")));
     }
     lgs.to.remove <- (colSums(is.na(distmatrix)) == 1); distmatrix <- distmatrix[ !lgs.to.remove, !lgs.to.remove ];
-    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
     {
       if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
       return (list("tree"=NULL,"comment"=paste("NJ: the distances matrix is too small",sep="")));
@@ -1601,7 +1599,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     
     # Apply the NJ algorithm to build the tree:
     njphylo <- NULL; #njphylo <- njs( distmatrix ); #try( njphylo <- upgma( distmatrix ), silent=TRUE );
-    nj.message <- capture.output( try( njphylo <- njs( distmatrix ), silent=FALSE ), type="message" );
+    nj.message <- paste0(capture.output( try( njphylo <- njs( distmatrix ), silent=FALSE ), type="message" ),collapse="");
     if( is.null(njphylo) )
     {
       # Some failure, hopefully the message is already printed:
@@ -1638,6 +1636,8 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
   # Map a given distances matrix between languages to the tree with minimal distortion (implementation based on genetic algorithms):
   .compute.brlen.ga <- function( tree, distmatrix, method="SSE", replace.NA.brlen.with=NA, restore.collapsed.singles=TRUE, remove.all.missing.distances=TRUE )
   {
+    return (list("tree"=NULL,"comment"="GA: not yet updated! Please use NNLS instead!"));
+    
     # Check the matrix dimensions and match to the languages:
     lgs <- extract.languages( tree );
     if( is.null(lgs) || length(lgs) <= 1 )
@@ -1676,7 +1676,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     
     # Extract the submatrix corresponding to these languages:
     distmatrix <- distmatrix[ rownames(distmatrix) %in% lgs, colnames(distmatrix) %in% lgs ];
-    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+    if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
     {
       if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
       return (list("tree"=NULL,"comment"=paste("GA: the distances matrix is too small",sep="")));
@@ -1699,13 +1699,13 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     {
       # Remove languages that have the corresponding row/column full of NAs (except maybe for the diagonal):
       lgs.to.remove <- (rowSums(is.na(distmatrix)) == 1); distmatrix <- distmatrix[ !lgs.to.remove, !lgs.to.remove ];
-      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
       {
         if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
         return (list("tree"=NULL,"comment"=paste("GA: the distances matrix is too small",sep="")));
       }
       lgs.to.remove <- (colSums(is.na(distmatrix)) == 1); distmatrix <- distmatrix[ !lgs.to.remove, !lgs.to.remove ];
-      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || class(distmatrix) != "matrix"  || nrow(distmatrix) <= 1 )
+      if( is.null(distmatrix) || sum(!is.na(distmatrix)) == 0 || !inherits(distmatrix, "matrix")  || nrow(distmatrix) <= 1 )
       {
         if( PRINT_DEBUG_MESSAGES ) cat( "The distances matrix is too small...\n" );
         return (list("tree"=NULL,"comment"=paste("GA: the distances matrix is too small",sep="")));
@@ -1761,6 +1761,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     # Optimized cophenetic.phylo: assume the ordering was already done:
     .dist.nodes.optimized <- function(x) 
     {
+browser()
         n <- Ntip(x);
         m <- x$Nnode;
         nm <- n + m;
@@ -1829,7 +1830,7 @@ compute.brlen <- function( tree, method=c("none","constant","proportional","graf
     no.cores <- ifelse( exists("CPU_CORES_GA"), CPU_CORES_GA, FALSE );
     ga.trees <- ga( type = "real-valued", 
                     fitness = .fitness.function,
-                    min = rep(0.0,nparams), max = rep(max(as.numeric(distmatrix),na.rm=TRUE),nparams), # individual branches can't get below 0.0 or over the maximum distance between tips
+                    lower = rep(0.0,nparams), upper = rep(max(as.numeric(distmatrix),na.rm=TRUE),nparams), # individual branches can't get below 0.0 or over the maximum distance between tips
                     popSize = popSize, maxiter = maxiter, run=run, monitor=NULL,
                     subphylo=subphylo, distmatrix=distmatrix, method=method, 
                     parallel=no.cores );
@@ -2054,7 +2055,7 @@ find.language.family <- cmpfun(find.language.family);
 # Add a new language (given as a path from family to language) to a languageclassification:
 add.language.to.languageclassification <- function( classif, path, brlens=NULL, warn.on.duplicated.tip=TRUE )
 {
-  if( is.null(path) || is.na(path) || length(path)==0 )
+  if( is.null(path) || any(is.na(path)) || length(path)==0 )
   {
     cat( "Adding path '", paste0(path,collapse=","), "' to collection failed\n" );
     return (NULL);

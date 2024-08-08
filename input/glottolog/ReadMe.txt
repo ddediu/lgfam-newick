@@ -1,4 +1,14 @@
-This folder contains the Glottolog languages, language classifications and mappings between glottocodes and ISO clodes, downloaded from the glottolog.org website.
-The Glottolog data is released under a Creative Commons Attribution-ShareAlike 3.0 Unported License [CC BY-SA 3.0]; http://creativecommons.org/licenses/by-sa/3.0/.
 
-Hammarström, Harald & Forkel, Robert & Haspelmath, Martin & Nordhoff, Sebastian. 2014. Glottolog 2.3. Leipzig: Max Planck Institute for Evolutionary Anthropology. (Available online at http://glottolog.org, Accessed on 2014-11-28.)  
+Glottolog 5.0 data download
+===========================
+
+Data of Glottolog 5.0 is published under the following license:
+https://creativecommons.org/licenses/by/4.0/
+
+It should be cited as
+
+Hammarström, Harald & Forkel, Robert & Haspelmath, Martin & Bank, Sebastian. 2024.
+Glottolog 5.0.
+Leipzig: Max Planck Institute for Evolutionary Anthropology.
+https://doi.org/10.5281/zenodo.8131084
+(Available online at http://glottolog.org, Accessed on 2024-03-11.)
